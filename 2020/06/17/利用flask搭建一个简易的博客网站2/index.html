@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | Hexo</title>
+  <title>利用Flask搭建一个简易的博客网站(2) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="app.py 的实现和功能app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;) 这里我们首先import各种flask 的插件:1. pagedown是comment需要的markdown 插件2. Flask是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/02/11/hello-world/index.html">
+<meta property="og:title" content="利用Flask搭建一个简易的博客网站(2)">
+<meta property="og:url" content="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="app.py 的实现和功能app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;) 这里我们首先import各种flask 的插件:1. pagedown是comment需要的markdown 插件2. Flask是">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-10T21:38:32.733Z">
-<meta property="article:modified_time" content="2021-02-10T21:38:32.733Z">
+<meta property="article:published_time" content="2020-06-17T09:50:50.000Z">
+<meta property="article:modified_time" content="2021-02-10T22:46:42.321Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,12 +73,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-利用flask搭建一个简易的博客网站2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/11/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-02-10T21:38:32.733Z" itemprop="datePublished">2021-02-11</time>
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/" class="article-date">
+  <time class="dt-published" datetime="2020-06-17T09:50:50.000Z" itemprop="datePublished">2020-06-17</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Flask/">Flask</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -87,7 +91,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hello World
+      利用Flask搭建一个简易的博客网站(2)
     </h1>
   
 
@@ -95,20 +99,24 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="app-py-的实现和功能"><a href="#app-py-的实现和功能" class="headerlink" title="app.py 的实现和功能"></a>app.py 的实现和功能</h2><p>app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&#39;.&#39;)</span><br></pre></td></tr></table></figure>
+<p>这里我们首先import各种flask 的插件:<br>1. pagedown是comment需要的markdown 插件<br>2. Flask是flask本体，不说了吧<br>3. bootstrap 是一个把各种常用blocks（即各种CSS和JS的模板）包含的package,这样在template中可以直接extend bootstrap 例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#39;bootstrap&#x2F;base.html&#39; %&#125;</span><br><span class="line">&#123;% from &#39;bootstrap&#x2F;wtf.html&#39; import quick_form %&#125;</span><br></pre></td></tr></table></figure>
+<p>这样template就可以方便地调用这些模板</p>
+<p>4. moment 是一个方便利用时间的插件<br>5. migrate 是为database提供版本备份的插件。功能可以等价于 git 之于code<br>6. login是一个管理用户登录的插件</p>
+<p>app中的 register_blueprint函数把blueprint_list中所有的视图module（包含所有视图函数）注册到flask 对象上。</p>
+<p>register_extensions函数把所有上述的插件注册到对象上，之后在我们创建了flask对象后，调用这个函数即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@login_manager.user_loader</span><br><span class="line">def user_loader(id):</span><br><span class="line"># 只有主键才可以使用 query.get 方法查询</span><br><span class="line">return User.query.get(id)</span><br></pre></td></tr></table></figure>
+<p>这个函数会告诉login_manager登录用户的信息， 即callback（回调函数）这样系统便能识别登录用户的身份。返回的是user对象。</p>
+<p>create_app 函数则是用来 初始化对象，添加相关配置， 并注册插件和蓝图，最后返回对象。</p>
+<p>关于添加相关配置的方法，我在下一章会提到。</p>
+<p>这样一个最为重要的一个环节就完成了！[]<del>(￣▽￣)</del>*庆祝一下吧！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/11/hello-world/" data-id="ckl00k9rw0001vwuc7oowatr5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/" data-id="ckl00yzs4000dh4ucgf9u9t5z" data-title="利用Flask搭建一个简易的博客网站(2)" class="article-share-link">Share</a>
       
       
       
@@ -118,19 +126,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/02/11/post-title/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/06/18/%E9%BB%98%E8%AE%A4%E5%B7%A5%E5%85%B7%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          post title
+          默认工具包
         
       </div>
     </a>
   
   
-    <a href="/2021/01/18/%E8%BF%91%E5%86%B5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">近况</div>
+      <div class="article-nav-title">利用Flask搭建一个简易的博客网站(1)</div>
     </a>
   
 </nav>

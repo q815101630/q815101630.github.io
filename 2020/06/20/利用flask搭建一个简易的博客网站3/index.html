@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | Hexo</title>
+  <title>利用Flask搭建一个简易的博客网站(3) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="manage.py 和 configs.py 的应用 我们知道当我们创建好 app文件，即完成一个可以创建新的flask对象的函数时，在命令行执行这个函数时，就会进入flask服务器。 我们可以新建一个manage的模块来方便我们调试服务器，即在manage中来启用这个create_app的函数，这样我们可以自定义多种启动服务器的方式，例如开发模式或者测试模式。 在同目录下新建configs.py">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/02/11/hello-world/index.html">
+<meta property="og:title" content="利用Flask搭建一个简易的博客网站(3)">
+<meta property="og:url" content="http://example.com/2020/06/20/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%993/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="manage.py 和 configs.py 的应用 我们知道当我们创建好 app文件，即完成一个可以创建新的flask对象的函数时，在命令行执行这个函数时，就会进入flask服务器。 我们可以新建一个manage的模块来方便我们调试服务器，即在manage中来启用这个create_app的函数，这样我们可以自定义多种启动服务器的方式，例如开发模式或者测试模式。 在同目录下新建configs.py">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-10T21:38:32.733Z">
-<meta property="article:modified_time" content="2021-02-10T21:38:32.733Z">
+<meta property="article:published_time" content="2020-06-20T14:32:46.000Z">
+<meta property="article:modified_time" content="2021-02-10T22:46:42.326Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="flask">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -73,12 +74,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-利用flask搭建一个简易的博客网站3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/11/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-02-10T21:38:32.733Z" itemprop="datePublished">2021-02-11</time>
+    <a href="/2020/06/20/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%993/" class="article-date">
+  <time class="dt-published" datetime="2020-06-20T14:32:46.000Z" itemprop="datePublished">2020-06-20</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Flask/">Flask</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -87,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hello World
+      利用Flask搭建一个简易的博客网站(3)
     </h1>
   
 
@@ -95,42 +100,45 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>manage.py 和 configs.py 的应用</p>
+<p>我们知道当我们创建好 app文件，即完成一个可以创建新的flask对象的函数时，在命令行执行这个函数时，就会进入flask服务器。</p>
+<p>我们可以新建一个manage的模块来方便我们调试服务器，即在manage中来启用这个create_app的函数，这样我们可以自定义多种启动服务器的方式，例如开发模式或者测试模式。</p>
+<p>在同目录下新建configs.py</p>
+<p>具体的设置看源代码就可以了，主要包含SECRET_KEY, FLASK_ENV 和一些MAIL_SERVER等的设置。我们把这些配置定义在具体的类下面， 这样当这个类名通过最后设置的字典简写的方式传入create_app中， <code>app.config.from_object(configs.get(config))</code> 让类里的配置直接传入flask对象的配置。</p>
+<p>关于一些不能被公开的配置，例如SECRETE_KEY, MAIL_PASSWORD等，我们可以用到一个dotenv插件来方便我们配置。</p>
+<p>查一下如何import dotenv，我们在当前文件夹新建.env 和 .flaskenv。 .env可以用来配置一些涉密的配置信息，如我上述。.flaskenv是用来配置一些关于flask服务器的配置，是可公开的。这样我们设置好了之后，系统就会自动添加这些配置信息，我们在configs.py就可以用到例如<code>MAIL_PASSWORD = os.getenv(&#39;MAIL_PASSWORD&#39;)</code> 来得到我们想要的配置信息。</p>
+<p>记住，必须在manage.py或者configs.py中启用dotenv才可以使用</p>
+<p><code>from dotenv import load_dotenv   load_dotenv(override=True)</code></p>
+<p>override确认了env中会override系统中的配置信息。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/11/hello-world/" data-id="ckl00k9rw0001vwuc7oowatr5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/06/20/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%993/" data-id="ckl00yzs30009h4uc02vmgeja" data-title="利用Flask搭建一个简易的博客网站(3)" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/" rel="tag">flask</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2021/02/11/post-title/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/06/23/beian-new/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          post title
+          beian_new
         
       </div>
     </a>
   
   
-    <a href="/2021/01/18/%E8%BF%91%E5%86%B5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/18/%E9%BB%98%E8%AE%A4%E5%B7%A5%E5%85%B7%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">近况</div>
+      <div class="article-nav-title">默认工具包</div>
     </a>
   
 </nav>

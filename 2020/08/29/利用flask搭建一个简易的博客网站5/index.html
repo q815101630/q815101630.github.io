@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | Hexo</title>
+  <title>利用Flask搭建一个简易的博客网站(5) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="本地化时间 我们可以利用 Flask-Moment 来对网站做统一的时间规划 在安装和import 进 app.py 后，通过 Moment(app) 注册 进入模板文件 templates&#x2F;base.html ，添加 &amp;#123;% block scripts %&amp;#125;&#96;   &#96;&amp;#123;&amp;#123; super() &amp;#125;&amp;#125;&#96;   &#96;&amp;#123;&amp;#123; momen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/02/11/hello-world/index.html">
+<meta property="og:title" content="利用Flask搭建一个简易的博客网站(5)">
+<meta property="og:url" content="http://example.com/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本地化时间 我们可以利用 Flask-Moment 来对网站做统一的时间规划 在安装和import 进 app.py 后，通过 Moment(app) 注册 进入模板文件 templates&#x2F;base.html ，添加 &amp;#123;% block scripts %&amp;#125;&#96;   &#96;&amp;#123;&amp;#123; super() &amp;#125;&amp;#125;&#96;   &#96;&amp;#123;&amp;#123; momen">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-10T21:38:32.733Z">
-<meta property="article:modified_time" content="2021-02-10T21:38:32.733Z">
+<meta property="article:published_time" content="2020-08-29T15:10:19.000Z">
+<meta property="article:modified_time" content="2021-02-10T22:46:42.348Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,12 +73,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-利用flask搭建一个简易的博客网站5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/11/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-02-10T21:38:32.733Z" itemprop="datePublished">2021-02-11</time>
+    <a href="/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/" class="article-date">
+  <time class="dt-published" datetime="2020-08-29T15:10:19.000Z" itemprop="datePublished">2020-08-29</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -87,7 +91,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hello World
+      利用Flask搭建一个简易的博客网站(5)
     </h1>
   
 
@@ -95,20 +99,27 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>本地化时间</p>
+<p>我们可以利用 Flask-Moment 来对网站做统一的时间规划</p>
+<p>在安装和import 进 app.py 后，通过 Moment(app) 注册</p>
+<p>进入模板文件 <code>templates/base.html</code> ，添加</p>
+<p><code>&#123;% block scripts %&#125;`  
+`&#123;&#123; super() &#125;&#125;`  
+`&#123;&#123; moment.include_moment() &#125;&#125;`  
+`&#123;&#123; moment.lang('zh-cn') &#125;&#125;`  
+`&#123;% endblock %&#125;</code></p>
+<p>这样我们就在模板上成功注册了Moment</p>
+<p>再进入视图文件front.py import datetime</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def index():</span><br><span class="line">    &#39;&#39;&#39;网站首页&#39;&#39;&#39;</span><br><span class="line">    date_time &#x3D; datetime.utcnow() # Moment 默认自动转换到当地时区</span><br><span class="line">    return render_template(&#39;index.html&#39;, date_time&#x3D;date_time)</span><br></pre></td></tr></table></figure>
+<p>再在index下 把date_time 传入index.html, 通过已经注册了的Moment 能帮助我们显示当前时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;page-header&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Hello World&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;br &#x2F;&gt;</span><br><span class="line">  &lt;p&gt;当前时间：&#123;&#123; moment(date_time).format(&#39;LLL&#39;) &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;p&gt;上次刷新页面时间据现在：&#123;&#123; moment(date_time).fromNow(refresh&#x3D;True) &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>再启动应用，就能自动显示出时间和日期啦</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/11/hello-world/" data-id="ckl00k9rw0001vwuc7oowatr5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/" data-id="ckl00yzs5000fh4uc5yps0nfp" data-title="利用Flask搭建一个简易的博客网站(5)" class="article-share-link">Share</a>
       
       
       
@@ -118,19 +129,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/02/11/post-title/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/18/%E8%BF%91%E5%86%B5/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          post title
+          近况
         
       </div>
     </a>
   
   
-    <a href="/2021/01/18/%E8%BF%91%E5%86%B5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/22/%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">近况</div>
+      <div class="article-nav-title">二叉树相关问题</div>
     </a>
   
 </nav>

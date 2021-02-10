@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>利用Flask搭建一个简易的博客网站(1) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="主要基本结构Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。 本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。   首先确定这个服务器的基础结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Flask搭建一个简易的博客网站(1)">
+<meta property="og:url" content="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="主要基本结构Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。 本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。   首先确定这个服务器的基础结构">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png">
+<meta property="og:image" content="https://azumeow.com/wp-content/uploads/2020/06/MTV-Diagram.png">
+<meta property="og:image" content="https://azumeow.com/wp-content/uploads/2020/06/mtv_drawing1.png">
+<meta property="article:published_time" content="2020-06-17T09:30:30.000Z">
+<meta property="article:modified_time" content="2021-02-10T22:46:42.317Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="flask">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-利用flask搭建一个简易的博客网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="article-date">
+  <time class="dt-published" datetime="2020-06-17T09:30:30.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Flask/">Flask</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      利用Flask搭建一个简易的博客网站(1)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png"></p>
+<h2 id="主要基本结构"><a href="#主要基本结构" class="headerlink" title="主要基本结构"></a>主要基本结构</h2><p>Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。</p>
+<p>本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。  </p>
+<p>首先确定这个服务器的基础结构：下面是project的packages结构：</p>
+<ul>
+<li>handlers<ul>
+<li>  init.py</li>
+<li>  front.py</li>
+<li>  user.py</li>
+</ul>
+</li>
+<li>scripts<ul>
+<li>  generate_fake_data.py</li>
+</ul>
+</li>
+<li>  static</li>
+<li>  migrations</li>
+<li>templates<ul>
+<li>  users</li>
+<li>  front</li>
+</ul>
+</li>
+<li>  app.py</li>
+<li>  config.py</li>
+<li>  decorator.py</li>
+<li>  email_app.py</li>
+<li>  forms.py</li>
+<li>  manage.py</li>
+<li>  models.py</li>
+</ul>
+<p>flaska 是自己给这个服务器取得名字（无所谓）， handlers是用来处理view function 的文件夹，包括user.py和front.py.</p>
+<p>这里顺便补充一下什么是view function， 如果要了解view function, 我们需要懂得什么是MVT software design pattern. MVT means Model, View, and Template. It is a popular pattern or model to design a web server of software by using Flask or Django.  </p>
+<p>I can briefly introduce this concept by showing a picture, and this is more straightforward as well.  </p>
+<ul>
+<li><img src="https://azumeow.com/wp-content/uploads/2020/06/MTV-Diagram.png">  A flowchart of how MVT works</li>
+<li><img src="https://azumeow.com/wp-content/uploads/2020/06/mtv_drawing1.png">  Stack way of thinking MVT</li>
+</ul>
+<p>To talk about the view part in this chart, what I simply think about the <strong>view</strong> is the logic behind the webpage, which directs how will <strong>one link connects to another link</strong> in the webserver. Also, it is used to help to know in what circumstance the webpage is available to a certain user or not. Generally, it is the logic behind the webserver.</p>
+<p>Model(模块) refers to where ORM mapping located in the server framework.<br>我们想要把数据库的关系表（我使用的是relational database）能够简易地在py file 里得到使用，这个时候就得使用 ORM 把关系映射到类里。比如把一个表映射成一个类。</p>
+<p>Template（样板）属于前端内容，即我们要为客户呈现什么样的内容，具体布局是怎样的，我们就需要利用 html，css，js来实现。我们在view里调用样板，来达到某个网页链接呈现某个页面的效果。</p>
+<p>整个的流程能够通过图一来得到完整的诠释。即 model是数据库的映射，template是具体网页的呈现，view是服务器内部的运用template的逻辑。</p>
+<p>view还会create, update, delete 数据库，比如我们创建新用户时，就是在更新数据库。view也提供数据用来呈现给用户。反过来样板会传入用户的form用以更新数据库。</p>
+<p>好了，handlers和templates解释完毕。scripts在这里主要用于测试用。static是静态文件，即我们网站的图标和css文件存储于此。</p>
+<p>介绍完了基本的package 结构，主要的几个modules一一来说。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" data-id="ckl00yzrz0005h4uca1664ewh" data-title="利用Flask搭建一个简易的博客网站(1)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          利用Flask搭建一个简易的博客网站(2)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/13/hello-world-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello, World!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flask/">Flask</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Miscellaneous/">Miscellaneous</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azumeow/" rel="tag">Azumeow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Introduction/" rel="tag">Introduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Azumeow/" style="font-size: 10px;">Azumeow</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/python/" style="font-size: 15px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/11/post-title/">post title</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E8%BF%91%E5%86%B5/">近况</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/">利用Flask搭建一个简易的博客网站(5)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树相关问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
