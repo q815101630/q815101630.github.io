@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>利用Flask搭建一个简易的博客网站(1) | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta name="description" content="主要基本结构Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。 本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。   首先确定这个服务器的基础结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Flask搭建一个简易的博客网站(1)">
 <meta property="og:url" content="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Deer City">
 <meta property="og:description" content="主要基本结构Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。 本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。   首先确定这个服务器的基础结构">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png">
@@ -23,87 +37,178 @@
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<link rel="canonical" href="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  <title>利用Flask搭建一个简易的博客网站(1) | Deer City</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Deer City</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Lucheng Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-利用flask搭建一个简易的博客网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="article-date">
-  <time class="dt-published" datetime="2020-06-17T09:30:30.000Z" itemprop="datePublished">2020-06-17</time>
-</a>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Flask/">Flask</a>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      利用Flask搭建一个简易的博客网站(1)
-    </h1>
-  
 
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="Blog by Lucheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Deer City">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          利用Flask搭建一个简易的博客网站(1)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-17 17:30:30" itemprop="dateCreated datePublished" datetime="2020-06-17T17:30:30+08:00">2020-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-11 06:46:42" itemprop="dateModified" datetime="2021-02-11T06:46:42+08:00">2021-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index"><span itemprop="name">Flask</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
         <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png"></p>
 <h2 id="主要基本结构"><a href="#主要基本结构" class="headerlink" title="主要基本结构"></a>主要基本结构</h2><p>Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。</p>
@@ -150,157 +255,198 @@
 <p>好了，handlers和templates解释完毕。scripts在这里主要用于测试用。static是静态文件，即我们网站的图标和css文件存储于此。</p>
 <p>介绍完了基本的package 结构，主要的几个modules一一来说。</p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" data-id="ckl00yzrz0005h4uca1664ewh" data-title="利用Flask搭建一个简易的博客网站(1)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/flask/" rel="tag"># flask</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/13/hello-world-1/" rel="prev" title="Hello, World!">
+      <i class="fa fa-chevron-left"></i> Hello, World!
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/" rel="next" title="利用Flask搭建一个简易的博客网站(2)">
+      利用Flask搭建一个简易的博客网站(2) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">主要基本结构</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">Blog by Lucheng</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          利用Flask搭建一个简易的博客网站(2)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/06/13/hello-world-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello, World!</div>
-    </a>
-  
-</nav>
 
   
-</article>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flask/">Flask</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Miscellaneous/">Miscellaneous</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
-    </div>
-  </div>
+<script src="/js/schemes/muse.js"></script>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azumeow/" rel="tag">Azumeow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Introduction/" rel="tag">Introduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-    </div>
-  </div>
+<script src="/js/next-boot.js"></script>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Azumeow/" style="font-size: 10px;">Azumeow</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/python/" style="font-size: 15px;">python</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/02/11/post-title/">post title</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/11/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/18/%E8%BF%91%E5%86%B5/">近况</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/">利用Flask搭建一个简易的博客网站(5)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/22/%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树相关问题</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
