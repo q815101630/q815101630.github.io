@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这篇文字随手用来记录 Js 和 Python 的区别 主要内容来自YouTube 视频 Learn JavaScript - Full Course for Beginners [TOC] Declare Variable: var can be declared for any types. Without the var , the variable will be a global vari">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Hands On Notes">
+<meta property="og:url" content="http://example.com/2021/03/02/JsHandsOn/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="这篇文字随手用来记录 Js 和 Python 的区别 主要内容来自YouTube 视频 Learn JavaScript - Full Course for Beginners [TOC] Declare Variable: var can be declared for any types. Without the var , the variable will be a global vari">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-02T13:12:04.000Z">
+<meta property="article:modified_time" content="2021-03-02T14:45:33.138Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="-- JavaScript -- Briefly">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/03/02/JsHandsOn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript Hands On Notes | Deer City</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Deer City</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Lucheng Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/JsHandsOn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucheng">
+      <meta itemprop="description" content="Blog by Lucheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Deer City">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript Hands On Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-02 21:12:04 / Modified: 22:45:33" itemprop="dateCreated datePublished" datetime="2021-03-02T21:12:04+08:00">2021-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>这篇文字随手用来记录 Js 和 Python 的区别</h1>
+<p>主要内容来自YouTube 视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=PkZNo7MFNFg">Learn JavaScript - Full Course for Beginners</a></p>
+<p>[TOC]</p>
+<h1><strong>Declare Variable</strong>:</h1>
+<p><code>var</code> can be declared for any types.</p>
+<p>Without the <code>var</code> , the variable will be a global variable, which can be created in a function and accessed from outside of function.</p>
+<h1><strong>Declare function</strong>:</h1>
+<p><code>function function(val)</code></p>
+<h1><strong>Comparison</strong>:</h1>
+<p><code>===, ==</code></p>
+<p><code>===</code> will looks at type difference, <code>==</code> will not</p>
+<p><code>!==</code> will checks types, <code>!=</code> will not</p>
+<h1><strong>Js has switch</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sequentialSizes</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> answer = <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">switch</span>(val)&#123;</span><br><span class="line">	case1: </span><br><span class="line">	case2:</span><br><span class="line">	case3:</span><br><span class="line">		answer = <span class="string">&quot;low&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		anwer = <span class="string">&#x27;mid&#x27;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><strong>null</strong></h1>
+<p>null is called <code>undefined</code></p>
+<h1>Dictionary(Object)</h1>
+<p>(the person in video called this “Object”) <strong>这里是JSON Object！</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Dogs = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;Camper&quot;</span>, <span class="comment">// called property: value</span></span><br><span class="line">	<span class="string">&quot;legs&quot;</span>: <span class="number">4</span>,</span><br><span class="line">	<span class="string">&quot;tails&quot;</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;haha&quot;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = Dogs.name <span class="comment">// one way of accessing</span></span><br><span class="line"><span class="keyword">var</span> name = Dogs[name]</span><br><span class="line"></span><br><span class="line"><span class="comment">//Delete</span></span><br><span class="line"><span class="keyword">delete</span> Dogs.name</span><br><span class="line"><span class="keyword">delete</span> Dogs[name]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkObj</span>(<span class="params">checkProp</span>)</span>&#123;  <span class="comment">//check if a object has a certain property</span></span><br><span class="line">	<span class="keyword">if</span> (myObj.hasOwnProperty(checkProp))&#123;</span><br><span class="line">		<span class="keyword">return</span> myObj[checkProp];</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;Not Found&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Object Exercise:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">var collection &#x3D; &#123;</span><br><span class="line">	&quot;2548&quot;:&#123;</span><br><span class="line">		&quot;album&quot;: &quot;slippery When Wet&quot;,</span><br><span class="line">		&quot;artist&quot;: &quot;Bon Jovi&quot;,</span><br><span class="line">		&quot;tracks&quot;: [</span><br><span class="line">			&quot;Let it Rock&quot;,</span><br><span class="line">			&quot;You Give Love a Bad Name&quot;</span><br><span class="line">		]</span><br><span class="line">	&#125;，</span><br><span class="line">	&quot;2523&quot;:&#123;</span><br><span class="line">		&quot;album&quot;: &quot;slippery When Wet&quot;,</span><br><span class="line">		&quot;artist&quot;: &quot;Bon Jovi&quot;,</span><br><span class="line">		&quot;tracks&quot;: [</span><br><span class="line">			&quot;Let it Rock&quot;,</span><br><span class="line">			&quot;You Give Love a Bad Name&quot;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var collectionCopy &#x3D; JSON.parse(JSON.stringify(collection))</span><br><span class="line">function updateRecords(id, prop, value)&#123;</span><br><span class="line">	if (value &#x3D;&#x3D;&#x3D; &quot;&quot;)&#123;</span><br><span class="line">	delete collection[id][pro];	</span><br><span class="line">	&#125; else if(prop &#x3D;&#x3D;&#x3D; &quot;tracks&quot;)&#123;</span><br><span class="line">		collection[id][prop] &#x3D; collection[id][prop] || [];</span><br><span class="line">		collection[id][prop].push(value);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		collection[id][prop] &#x3D; value;</span><br><span class="line">	&#125;</span><br><span class="line">	return collection</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(updateRecords(5439, &quot;artist&quot;, &quot;ABBA&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1><strong>Traverse the Array</strong></h1>
+<p>和Java一样</p>
+<h1><strong>Math</strong></h1>
+<p>Js also has Math module</p>
+<h1><strong>convert str to int</strong></h1>
+<p><code>parseInt(str) </code></p>
+<p><code>parseInt(str, 2)</code>  parse in base 2</p>
+<h1><strong>Easy condition</strong></h1>
+<p>condition? statement-if-true: statement-if-false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSign</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">	retun num &gt; <span class="number">0</span> ? <span class="string">&quot;positive&quot;</span> : num &lt;<span class="number">0</span> ? <span class="string">&quot;negative&quot;</span> : <span class="string">&quot;zero&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><strong>let, var, const</strong></h1>
+<p><code>let</code> cannot be declared twice</p>
+<p><code>let</code> is defined in scope. <code>var</code> is not</p>
+<p><code>const</code> is read-only, cannot write</p>
+<p><code>const SENTENCE = &quot;good!&quot;;</code></p>
+<h1><strong>Array</strong></h1>
+<p>array is immutable</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">freezeObj</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">	&quot;use strict&quot;</span>;</span><br><span class="line">	<span class="keyword">const</span> MATH_CONSTANTS = &#123;</span><br><span class="line">		PI: <span class="number">3.14</span></span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">Object</span>.freeze(MATH_CONSTANTS); <span class="comment">//make object immutalbe </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><strong>Anonymous function</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> magic = <span class="function">() =&gt;</span> <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// () means function, =&gt; means return </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myConcat = <span class="function">(<span class="params">arr1, arr2</span>) =&gt;</span> &#123;arr1.concat(arr2)&#125;;</span><br></pre></td></tr></table></figure>
+<h1><strong>Array filter</strong></h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(num &#x3D;&gt; Number.isInteger(num) &amp;&amp; num &gt;0).map(x &#x3D;&gt; x *x);</span><br></pre></td></tr></table></figure>
+<h1><strong>Default parameter</strong></h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const increment &#x3D; (function()&#123;</span><br><span class="line">	return funtion increment(number, value &#x3D;1 )&#123;</span><br><span class="line">		return number+value;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1>Rest argument</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	retuurn <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">...args</span>)</span>&#123;</span><br><span class="line">	   <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a+b, <span class="number">0</span>);</span><br><span class="line">	   &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr2 &#x3D; [...arr1]; \\ copy values</span><br><span class="line">arr2 &#x3D; arr1; \\copy the same reference</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>const [, , ... arr] = list</code> we can specify which index should be changed.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greeting = <span class="string">&quot;Hello, my name is $&#123;person.name&#125;&quot;</span> \\inside curly brase is Js</span><br></pre></td></tr></table></figure>
+<h1><strong>Create an object</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> createPerson = <span class="function">(<span class="params">name, age, gender</span>) =&gt;</span> (&#123;name, age, gender&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(createPerson(<span class="string">&quot;Zodiac Hasbro&quot;</span>, <span class="number">56</span>, <span class="string">&quot;male&quot;</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> SpaceShuttle = <span class="function"><span class="keyword">function</span>(<span class="params">targetPlanet</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.targetPlanet = targetPlanet;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> zeus = <span class="keyword">new</span> SpaceShuttle(<span class="string">&quot;Jupiter&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(zeus.targetPlanet);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class SpaceShuttle&#123;</span><br><span class="line">	constructor(targetPlanet)&#123;</span><br><span class="line">		this.targetPlanet &#x3D; targetPlanet;</span><br><span class="line">		&#125;</span><br><span class="line">&#125; </span><br><span class="line">var zeus &#x3D; new SpaceShuttle(&quot;Jupiter&quot;);</span><br><span class="line"></span><br><span class="line">console.log(zeus.targetPlanet);</span><br></pre></td></tr></table></figure>
+<h1><strong>Getter, Setter</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params">author</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._author = author;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> <span class="title">writer</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>._author;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> <span class="title">writer</span>(<span class="params">updatedAuthor</span>)&#123;</span><br><span class="line">            <span class="built_in">this</span>._author = updatedAuthor;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Thermostat</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="title">constructor</span>(<span class="params">temp</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>._temp = <span class="number">5</span>/<span class="number">9</span> * (temp-<span class="number">32</span>);</span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">get</span> <span class="title">temperature</span>()&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>._temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span> <span class="title">temperature</span>(<span class="params">updatedTemp</span>)&#123;</span><br><span class="line">            <span class="built_in">this</span>._temp = updatedTemp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Thermostat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Thermostat = makeClass();</span><br><span class="line"><span class="keyword">const</span> thermos = <span class="keyword">new</span> Thermostat(<span class="number">76</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(thermos._temp)</span><br></pre></td></tr></table></figure>
+<h1><strong>export, import</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;capitalizeString&#125; <span class="keyword">from</span> <span class="string">&quot;./string_function&quot;</span></span><br><span class="line"><span class="keyword">const</span> cap = capitalizeString(<span class="string">&quot;hello!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(cap)</span><br><span class="line"></span><br><span class="line"><span class="comment">//在另一个文件里</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> capitalizeString = <span class="function"><span class="params">str</span> =&gt;</span> str.toUpperCase()</span><br><span class="line"><span class="comment">//capitalizeString 是一个方法，parameter 是str</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>&#123;capitalizeString&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="string">&#x27;bar&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> capitalizing <span class="keyword">from</span> <span class="string">&quot;./where&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">subtract</span>(<span class="params">x,y</span>)</span>&#123;<span class="keyword">return</span> x-y&#125;;</span><br><span class="line"><span class="keyword">import</span> subtract <span class="keyword">from</span> <span class="string">&quot;./where&quot;</span></span><br></pre></td></tr></table></figure>
+<p>差不多这就是一些Syntax区别，具体要用再查找吧！ 😄</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript-Briefly/" rel="tag"># -- JavaScript -- Briefly</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/24/DivideConquerReci4/" rel="prev" title="DivideConquer Reci4">
+      <i class="fa fa-chevron-left"></i> DivideConquer Reci4
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">这篇文字随手用来记录 Js 和 Python 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Declare Variable:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Declare function:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Comparison:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Js has switch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">Dictionary(Object)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">Traverse the Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">convert str to int</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">Easy condition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">let, var, const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">Anonymous function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">Array filter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">16.</span> <span class="nav-text">Default parameter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">17.</span> <span class="nav-text">Rest argument</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">18.</span> <span class="nav-text">Create an object</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">19.</span> <span class="nav-text">Getter, Setter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">20.</span> <span class="nav-text">export, import</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lucheng</p>
+  <div class="site-description" itemprop="description">Blog by Lucheng</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucheng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru02.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"dialog":{"enable":true,"hitokoto":true},"userConfig":{"dialogListEnable":false,"dialogList":["梦里不觉秋已深，余情岂是为他人"]},"log":false});</script></body>
+</html>
