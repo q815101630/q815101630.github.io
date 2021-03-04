@@ -232,13 +232,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="http://manage.py">manage.py</a> 和 <a target="_blank" rel="noopener" href="http://configs.py">configs.py</a> 的应用</p>
+        <p>manage.py 和 configs.py 的应用</p>
 <p>我们知道当我们创建好 app文件，即完成一个可以创建新的flask对象的函数时，在命令行执行这个函数时，就会进入flask服务器。</p>
 <p>我们可以新建一个manage的模块来方便我们调试服务器，即在manage中来启用这个create_app的函数，这样我们可以自定义多种启动服务器的方式，例如开发模式或者测试模式。</p>
-<p><a target="_blank" rel="noopener" href="http://xn--configs-nw3kg06borhj9wf5am81dsf9c.py">在同目录下新建configs.py</a></p>
+<p>在同目录下新建configs.py</p>
 <p>具体的设置看源代码就可以了，主要包含SECRET_KEY, FLASK_ENV 和一些MAIL_SERVER等的设置。我们把这些配置定义在具体的类下面， 这样当这个类名通过最后设置的字典简写的方式传入create_app中， <code>app.config.from_object(configs.get(config))</code> 让类里的配置直接传入flask对象的配置。</p>
 <p>关于一些不能被公开的配置，例如SECRETE_KEY, MAIL_PASSWORD等，我们可以用到一个dotenv插件来方便我们配置。</p>
-<p>查一下如何import dotenv，我们在当前文件夹新建.env 和 .flaskenv。 .env可以用来配置一些涉密的配置信息，如我上述。.flaskenv是用来配置一些关于flask服务器的配置，是可公开的。这样我们设置好了之后，系统就会自动添加这些配置信息，我们在configs.py就可以用到例如<code>MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')</code> 来得到我们想要的配置信息。</p>
+<p>查一下如何import dotenv，我们在当前文件夹新建.env 和 .flaskenv。 .env可以用来配置一些涉密的配置信息，如我上述。.flaskenv是用来配置一些关于flask服务器的配置，是可公开的。这样我们设置好了之后，系统就会自动添加这些配置信息，我们在configs.py就可以用到例如<code>MAIL_PASSWORD = os.getenv(&#39;MAIL_PASSWORD&#39;)</code> 来得到我们想要的配置信息。</p>
 <p>记住，必须在manage.py或者configs.py中启用dotenv才可以使用</p>
 <p><code>from dotenv import load_dotenv   load_dotenv(override=True)</code></p>
 <p>override确认了env中会override系统中的配置信息。</p>
@@ -343,7 +343,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

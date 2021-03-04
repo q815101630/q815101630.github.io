@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="¶app.py 的实现和功能 app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;) 这里我们首先import各种flask 的插件: 1. pagedown是comment需要的markdown 插件 2. Fl">
+  <meta name="description" content="app.py 的实现和功能app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;)  这里我们首先import各种flask 的插件:1. pagedown是comment需要的markdown 插件2. Flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Flask搭建一个简易的博客网站(2)">
 <meta property="og:url" content="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%992/index.html">
 <meta property="og:site_name" content="Deer City">
-<meta property="og:description" content="¶app.py 的实现和功能 app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;) 这里我们首先import各种flask 的插件: 1. pagedown是comment需要的markdown 插件 2. Fl">
+<meta property="og:description" content="app.py 的实现和功能app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。 12import syssys.path.append(&#39;.&#39;)  这里我们首先import各种flask 的插件:1. pagedown是comment需要的markdown 插件2. Flask">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-17T09:50:50.000Z">
 <meta property="article:modified_time" content="2021-02-10T22:46:42.321Z">
@@ -231,25 +231,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="app-py-的实现和功能"><a class="header-anchor" href="#app-py-的实现和功能">¶</a><a target="_blank" rel="noopener" href="http://app.py">app.py</a> 的实现和功能</h2>
-<p><a target="_blank" rel="noopener" href="http://app.py">app.py</a> 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。</p>
+        <h2 id="app-py-的实现和功能"><a href="#app-py-的实现和功能" class="headerlink" title="app.py 的实现和功能"></a>app.py 的实现和功能</h2><p>app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&#39;.&#39;)</span><br></pre></td></tr></table></figure>
-<p>这里我们首先import各种flask 的插件:<br>
-1. pagedown是comment需要的markdown 插件<br>
-2. Flask是flask本体，不说了吧<br>
-3. bootstrap 是一个把各种常用blocks（即各种CSS和JS的模板）包含的package,这样在template中可以直接extend bootstrap 例如：</p>
+
+<p>这里我们首先import各种flask 的插件:<br>1. pagedown是comment需要的markdown 插件<br>2. Flask是flask本体，不说了吧<br>3. bootstrap 是一个把各种常用blocks（即各种CSS和JS的模板）包含的package,这样在template中可以直接extend bootstrap 例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#39;bootstrap&#x2F;base.html&#39; %&#125;</span><br><span class="line">&#123;% from &#39;bootstrap&#x2F;wtf.html&#39; import quick_form %&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这样template就可以方便地调用这些模板</p>
-<p>4. moment 是一个方便利用时间的插件<br>
-5. migrate 是为database提供版本备份的插件。功能可以等价于 git 之于code<br>
-6. login是一个管理用户登录的插件</p>
+<p>4. moment 是一个方便利用时间的插件<br>5. migrate 是为database提供版本备份的插件。功能可以等价于 git 之于code<br>6. login是一个管理用户登录的插件</p>
 <p>app中的 register_blueprint函数把blueprint_list中所有的视图module（包含所有视图函数）注册到flask 对象上。</p>
 <p>register_extensions函数把所有上述的插件注册到对象上，之后在我们创建了flask对象后，调用这个函数即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@login_manager.user_loader</span><br><span class="line">def user_loader(id):</span><br><span class="line"># 只有主键才可以使用 query.get 方法查询</span><br><span class="line">return User.query.get(id)</span><br></pre></td></tr></table></figure>
+
 <p>这个函数会告诉login_manager登录用户的信息， 即callback（回调函数）这样系统便能识别登录用户的身份。返回的是user对象。</p>
 <p>create_app 函数则是用来 初始化对象，添加相关配置， 并注册插件和蓝图，最后返回对象。</p>
 <p>关于添加相关配置的方法，我在下一章会提到。</p>
-<p>这样一个最为重要的一个环节就完成了！[]<sub>(￣▽￣)</sub>*庆祝一下吧！</p>
+<p>这样一个最为重要的一个环节就完成了！[]<del>(￣▽￣)</del>*庆祝一下吧！</p>
 
     </div>
 
@@ -349,7 +346,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
