@@ -22,17 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Blog by Lucheng">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Deer City">
-<meta property="og:url" content="http://example.com/categories/uncategorized/index.html">
+  <meta name="description" content="¶简单入门 jQuery（3） 因为一些奇奇怪怪的bug，Form Selector 在这里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery(3)">
+<meta property="og:url" content="http://example.com/2021/03/18/jQuery_3/index.html">
 <meta property="og:site_name" content="Deer City">
-<meta property="og:description" content="Blog by Lucheng">
+<meta property="og:description" content="¶简单入门 jQuery（3） 因为一些奇奇怪怪的bug，Form Selector 在这里">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-18T11:52:52.000Z">
+<meta property="article:modified_time" content="2021-03-21T16:54:15.105Z">
 <meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="jQuery">
+<meta property="article:tag" content="front-end">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/uncategorized/">
+<link rel="canonical" href="http://example.com/2021/03/18/jQuery_3/">
 
 
 <script id="page-configurations">
@@ -40,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Category: uncategorized | Deer City</title>
+  <title>jQuery(3) | Deer City</title>
   
 
 
@@ -162,120 +167,139 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">uncategorized
-          <small>Category</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/18/jQuery_3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucheng">
+      <meta itemprop="description" content="Blog by Lucheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Deer City">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jQuery(3)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-18 19:52:52" itemprop="dateCreated datePublished" datetime="2021-03-18T19:52:52+08:00">2021-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-22 00:54:15" itemprop="dateModified" datetime="2021-03-22T00:54:15+08:00">2021-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h1 id="简单入门-jQuery（3）"><a class="header-anchor" href="#简单入门-jQuery（3）">¶</a>简单入门 jQuery（3）</h1>
+<p>因为一些奇奇怪怪的bug，Form Selector 在这里</p>
+<span id="more"></span>
+<p>以下内容全部来源：</p>
+<p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/22/">https://www.lanqiao.cn/courses/22/</a></p>
+<h1 id="FormSelector"><a class="header-anchor" href="#FormSelector">¶</a>FormSelector</h1>
+<p>为了使用户能够更加灵活的操作表单，jQuery 中专门加入了表单选择器，利用这个选择器，我们能够特别方便的获取到表单的某个或某类型的元素。</p>
+<blockquote>
+<ul>
+<li>:input 选取所有的 <input> 、<textarea>、<select>和 <button>元素。</li>
+<li>:text 选取所有的单行文本框。</li>
+<li>:password 选取所有的密码框</li>
+<li>:radio 选取所有的单选框</li>
+<li>:checkbox 选取所有的多选框</li>
+<li>:submit 选取所有的提交按钮</li>
+<li>:image 选取所有的图像</li>
+<li>:reset 选取所有的重置按钮</li>
+<li>:button 选取所有的按钮</li>
+<li>:file 选取所有的上传域</li>
+<li>:hidden 选取所有不可见元素</li>
+</ul>
+</blockquote>
+<p>示例：选取所有的 input 元素，并设置高度。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">text</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">text</span>=<span class="string">&quot;textaera&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">      $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">&#x27;:input&#x27;</span>).css(&#123;</span></span><br><span class="line"><span class="javascript">          height: <span class="string">&#x27;300px&#x27;</span>,</span></span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>#form1 :input 返回id为form1 后所有input, textarea, select 和 button 元素<br>
+#form1 input 返回id为form1 后所有input</p>
+<p>$(#form1 :input).length 得到表单内表单元素的个数，包括<input>,<textarea>,<select>,<button>元素</p>
+<p>$(#form1 input).length 得到表单内<input>元素的个数</p>
+<p>如果想要获得表单内单行文本框的个数，可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;假定已经有一个id名为form1的表单</span><br><span class="line">$(&#39;#form1 :text&#39;).lenth;</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-18T12:01:33+08:00"
-              content="2021-01-18">
-          01-18
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JS/" rel="tag"># JS</a>
+              <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+              <a href="/tags/front-end/" rel="tag"># front-end</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/18/%E8%BF%91%E5%86%B5/" itemprop="url">
-            <span itemprop="name">近况</span>
-          </a>
-      </div>
+        
 
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/18/jQuery_1/" rel="prev" title="jQuery(1)">
+      <i class="fa fa-chevron-left"></i> jQuery(1)
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-08-29T23:10:19+08:00"
-              content="2020-08-29">
-          08-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/" itemprop="url">
-            <span itemprop="name">利用Flask搭建一个简易的博客网站(5)</span>
-          </a>
-      </div>
-
-    </header>
+      </footer>
+    
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-23T17:55:01+08:00"
-              content="2020-06-23">
-          06-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/23/%E9%A6%96%E9%A1%B5/" itemprop="url">
-            <span itemprop="name">首页</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-18T22:19:22+08:00"
-              content="2020-06-18">
-          06-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/18/%E9%BB%98%E8%AE%A4%E5%B7%A5%E5%85%B7%E5%8C%85/" itemprop="url">
-            <span itemprop="name">默认工具包</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -322,6 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8-jQuery%EF%BC%883%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">简单入门 jQuery（3）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FormSelector"><span class="nav-number">2.</span> <span class="nav-text">FormSelector</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -470,6 +495,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '28c9999c797b2f400dcb',
+      clientSecret: '556c6128115fe56fa54cbb8090b6fc5e3067e476',
+      repo        : 'q815101630.github.io',
+      owner       : 'q815101630',
+      admin       : ['q815101630'],
+      id          : '6e73017e3507336356e1c3314a1c0441',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru02.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"dialog":{"enable":true,"hitokoto":true},"userConfig":{"dialogListEnable":false,"dialogList":["梦里不觉秋已深，余情岂是为他人"]},"log":false});</script></body>
 </html>
