@@ -300,7 +300,7 @@
       
           <p>本地化时间</p>
 <p>我们可以利用 Flask-Moment 来对网站做统一的时间规划</p>
-<p>在安装和import 进 app.py 后，通过 Moment(app) 注册</p>
+<p>在安装和import 进 <a target="_blank" rel="noopener" href="http://app.py">app.py</a> 后，通过 Moment(app) 注册</p>
 <p>进入模板文件 <code>templates/base.html</code> ，添加</p>
 <p><code>&#123;% block scripts %&#125;`  
 `&#123;&#123; super() &#125;&#125;`  
@@ -308,14 +308,11 @@
 `&#123;&#123; moment.lang('zh-cn') &#125;&#125;`  
 `&#123;% endblock %&#125;</code></p>
 <p>这样我们就在模板上成功注册了Moment</p>
-<p>再进入视图文件front.py import datetime</p>
+<p><a target="_blank" rel="noopener" href="http://xn--front-ln2hk9lejk64bfn9ahl7f1ip.py">再进入视图文件front.py</a> import datetime</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def index():</span><br><span class="line">    &#39;&#39;&#39;网站首页&#39;&#39;&#39;</span><br><span class="line">    date_time &#x3D; datetime.utcnow() # Moment 默认自动转换到当地时区</span><br><span class="line">    return render_template(&#39;index.html&#39;, date_time&#x3D;date_time)</span><br></pre></td></tr></table></figure>
-
 <p>再在index下 把date_time 传入index.html, 通过已经注册了的Moment 能帮助我们显示当前时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;page-header&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Hello World&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;br &#x2F;&gt;</span><br><span class="line">  &lt;p&gt;当前时间：&#123;&#123; moment(date_time).format(&#39;LLL&#39;) &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;p&gt;上次刷新页面时间据现在：&#123;&#123; moment(date_time).fromNow(refresh&#x3D;True) &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
 <p>再启动应用，就能自动显示出时间和日期啦</p>
 
       
@@ -391,49 +388,62 @@
 
       
           <blockquote>
-<p>同じ人なんて いないから<br>孤独でも仕方ない<br>でもね<br>あぁ 聴きたい 歌や 声が あるから<br>あぁ 泣いた 本や 映画が あるから<br>あなたを導く夢はある<br>照らしてみせてよ</p>
+<p>同じ人なんて いないから<br>
+孤独でも仕方ない<br>
+でもね<br>
+あぁ 聴きたい 歌や 声が あるから<br>
+あぁ 泣いた 本や 映画が あるから<br>
+あなたを導く夢はある<br>
+照らしてみせてよ</p>
 <p>Gifts</p>
 </blockquote>
 <p><strong><em>Gifts - Superfly</em></strong></p>
-<h3 id="Pre-In-Post-Traversal-Successor-Node-Serialization-Origami"><a href="#Pre-In-Post-Traversal-Successor-Node-Serialization-Origami" class="headerlink" title="Pre,In,Post Traversal; Successor Node; Serialization; Origami"></a><em>Pre,In,Post Traversal; Successor Node; Serialization; Origami</em></h3><p>之前几周都比较水，算法课也没有怎么认真看，最近得慢慢补上来<br>不过算法还是需要慢慢消化，真正理解并且多复习，记忆才是最重要的</p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a><em>DFS</em></h3><p>Pre, In, Post Order Traversal in Binary Tree</p>
+<h3 id="Pre-In-Post-Traversal-Successor-Node-Serialization-Origami"><a class="header-anchor" href="#Pre-In-Post-Traversal-Successor-Node-Serialization-Origami">¶</a><em>Pre,In,Post Traversal; Successor Node; Serialization; Origami</em></h3>
+<p>之前几周都比较水，算法课也没有怎么认真看，最近得慢慢补上来<br>
+不过算法还是需要慢慢消化，真正理解并且多复习，记忆才是最重要的</p>
+<h3 id="DFS"><a class="header-anchor" href="#DFS">¶</a><em>DFS</em></h3>
+<p>Pre, In, Post Order Traversal in Binary Tree</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">    def __init__(self, data):</span><br><span class="line">        self.value &#x3D; data</span><br><span class="line">        self.left &#x3D; None</span><br><span class="line">        self.right &#x3D; None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def preOrderTraversal(head):</span><br><span class="line">    if head is None:</span><br><span class="line">        return None</span><br><span class="line">    print(head.value + &#39; &#39;)</span><br><span class="line">    preOrderTraversal(head.left)</span><br><span class="line">    preOrderTraversal(head.right)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def inOrderTraversal(head):</span><br><span class="line">    if head is None:</span><br><span class="line">        return None</span><br><span class="line">    inOrderTraversal(head.left)</span><br><span class="line">    print(head.value + &#39; &#39;)</span><br><span class="line">    inOrderTraversal(head.right)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def postOrderTraversal(head):</span><br><span class="line">    if head is None:</span><br><span class="line">        return None</span><br><span class="line">    postOrderTraversal(head.left)</span><br><span class="line">    postOrderTraversal(head.right)</span><br><span class="line">    print(head.value + &#39; &#39;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Breadth-First-Search-BFS"><a href="#Breadth-First-Search-BFS" class="headerlink" title="Breadth First Search (BFS)"></a><em>Breadth First Search (BFS)</em></h3><h4 id="这里是关于一道求树最大宽度的解，本质是用了BFS"><a href="#这里是关于一道求树最大宽度的解，本质是用了BFS" class="headerlink" title="这里是关于一道求树最大宽度的解，本质是用了BFS"></a><em>这里是关于一道求树最大宽度的解，本质是用了BFS</em></h4><p>这里最核心的BFS是用java写的</p>
+<h3 id="Breadth-First-Search-BFS"><a class="header-anchor" href="#Breadth-First-Search-BFS">¶</a><em>Breadth First Search (BFS)</em></h3>
+<h4 id="这里是关于一道求树最大宽度的解，本质是用了BFS"><a class="header-anchor" href="#这里是关于一道求树最大宽度的解，本质是用了BFS">¶</a><em>这里是关于一道求树最大宽度的解，本质是用了BFS</em></h4>
+<p>这里最核心的BFS是用java写的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static void treeBFS(Node head) &#123;</span><br><span class="line">if (head &#x3D;&#x3D; null) &#123;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line">Queue&lt;Node&gt; queue &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">queue.add(head);</span><br><span class="line">while (!queue.isEmpty()) &#123;</span><br><span class="line">Node cur &#x3D; queue.poll();</span><br><span class="line">System.out.println(cur.value+&quot; &quot;);</span><br><span class="line">if (cur.left !&#x3D; null) &#123;</span><br><span class="line">queue.add(cur.left);</span><br><span class="line">&#125;</span><br><span class="line">if (cur.right !&#x3D; null) &#123;</span><br><span class="line">queue.add(cur.right);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>此题的python解以及测试：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">from collections import deque</span><br><span class="line"></span><br><span class="line">def breathFirstSearch(head):</span><br><span class="line">    queue &#x3D; deque()</span><br><span class="line">    if head is None:</span><br><span class="line">        return None</span><br><span class="line">    levelMap &#x3D; &#123;&#125;</span><br><span class="line">    levelMap[head] &#x3D; 1</span><br><span class="line">    queue.append(head)</span><br><span class="line"></span><br><span class="line">    cLevel &#x3D; 1</span><br><span class="line">    cNodes &#x3D; 0 # set to 0 because we need to use +&#x3D;1 in while to make loop run</span><br><span class="line">    maxa &#x3D; 0</span><br><span class="line">    while queue:</span><br><span class="line">        cur &#x3D; queue.popleft()</span><br><span class="line">        level &#x3D; levelMap.get(cur)</span><br><span class="line"></span><br><span class="line">        if level &#x3D;&#x3D; cLevel:</span><br><span class="line">            cNodes +&#x3D; 1 # nodes on current level +&#x3D;1</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;level: &#123;&#125;, nodes: &#123;&#125;&quot;.format(cLevel, cNodes))</span><br><span class="line">            if cNodes &gt; maxa:</span><br><span class="line">                maxa &#x3D; cNodes</span><br><span class="line">            cLevel +&#x3D; 1</span><br><span class="line">            cNodes &#x3D; 1 # cNodes is the first element of the level, (it has been popped)</span><br><span class="line"></span><br><span class="line">        print(&quot;Node: &#123;&#125;, level: &#123;&#125;&quot;.format(cur.value, level))</span><br><span class="line">        if cur.left is not None:</span><br><span class="line">            levelMap[cur.left] &#x3D; level + 1</span><br><span class="line">            queue.append(cur.left)</span><br><span class="line">        if cur.right is not None:</span><br><span class="line">            levelMap[cur.right] &#x3D; level + 1</span><br><span class="line">            queue.append(cur.right)</span><br><span class="line"></span><br><span class="line">    print(&quot;level: &#123;&#125;, nodes: &#123;&#125;&quot;.format(level, cNodes))</span><br><span class="line"></span><br><span class="line">    &#39;&#39;&#39;catch the max of the last level: it will not enter the while as all stuffs has been poped&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">    print(&quot;the max level is &#123;&#125;&quot;.format(max(maxa, cNodes)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    head &#x3D; Node(1)</span><br><span class="line">    head.left &#x3D; Node(2)</span><br><span class="line">    head.right &#x3D; Node(3)</span><br><span class="line">    head.left.left &#x3D; Node(4)</span><br><span class="line">    head.left.right &#x3D; Node(5)</span><br><span class="line">    head.right.left &#x3D; Node(6)</span><br><span class="line">    head.right.right &#x3D; Node(7)</span><br><span class="line">    breathFirstSearch(head)</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h3 id="在中序遍历中后继节点与前驱节点的直接查找"><a href="#在中序遍历中后继节点与前驱节点的直接查找" class="headerlink" title="在中序遍历中后继节点与前驱节点的直接查找"></a><em>在中序遍历中后继节点与前驱节点的直接查找</em></h3><h4 id="A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal"><a href="#A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal" class="headerlink" title="A direct way of finding the successor node and previous node in the in-order traversal"></a><em>A direct way of finding the successor node and previous node in the in-order traversal</em></h4><p><strong>S_uccessor:_</strong><br><strong><em>Two situations:</em></strong></p>
+<h3 id="在中序遍历中后继节点与前驱节点的直接查找"><a class="header-anchor" href="#在中序遍历中后继节点与前驱节点的直接查找">¶</a><em>在中序遍历中后继节点与前驱节点的直接查找</em></h3>
+<h4 id="A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal"><a class="header-anchor" href="#A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal">¶</a><em>A direct way of finding the successor node and previous node in the in-order traversal</em></h4>
+<p><strong>S_uccessor:_</strong><br>
+<strong><em>Two situations:</em></strong></p>
 <ol>
-<li> the leftest child in the right tree of a node X is the next node in the traversal of node X.</li>
-<li> if the X does not have right tree, go to the parent node, and continue if the parent is always the right child of its parent, until it is the left child of the parent Y. this Y is the next node of X. However, there is no such y, means x does not have the next node.</li>
+<li>the leftest child in the right tree of a node X is the next node in the traversal of node X.</li>
+<li>if the X does not have right tree, go to the parent node, and continue if the parent is always the right child of its parent, until it is the left child of the parent Y. this Y is the next node of X. However, there is no such y, means x does not have the next node.</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;&#39; to find the next node of a node in the in-order traversal&#39;&#39;&#39;</span><br><span class="line">class Node:</span><br><span class="line">    def __init__(self, val):</span><br><span class="line">        self.value &#x3D; val</span><br><span class="line">        self.left &#x3D; None</span><br><span class="line">        self.right &#x3D; None</span><br><span class="line">        self.parent &#x3D; None</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">two situations:</span><br><span class="line">1. the leftest child in the right tree of a node X is the next node in the traversal of node X</span><br><span class="line">2. if the X does not have right tree, go to the parent node, and continue if the parent</span><br><span class="line">is always the right child of its parent, until it is the left child of the parent Y. this Y</span><br><span class="line">is the next node of X. However, there is no such y, means x does not have the next node.</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">def findSuccessor(node):</span><br><span class="line">    if node is None:</span><br><span class="line">        return None</span><br><span class="line">    if node.right is not None:</span><br><span class="line">        return getMostLeft(node.right)</span><br><span class="line">    else:</span><br><span class="line">        parent &#x3D; node.parent</span><br><span class="line">        while parent is not None and node !&#x3D; parent.left:</span><br><span class="line">            node &#x3D; parent</span><br><span class="line">            parent &#x3D; node.parent</span><br><span class="line">        return parent</span><br><span class="line"></span><br><span class="line">def getMostLeft(node):</span><br><span class="line">    if node is None:</span><br><span class="line">        return None</span><br><span class="line">    while node.left is not None:</span><br><span class="line">        node &#x3D; node.left</span><br><span class="line">    return node</span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Previous Node:</em></strong><br><strong><em>Two situations:</em></strong></p>
+<p><strong><em>Previous Node:</em></strong><br>
+<strong><em>Two situations:</em></strong></p>
 <ol>
-<li> if the node has left child, the prev node is rightest of the left child.</li>
-<li> if the node X does not have left child, we keep going to its parent. if the parent is also the left child of its parent, keep going until it is the right child of a parent. the parent here is its previous node X.</li>
+<li>if the node has left child, the prev node is rightest of the left child.</li>
+<li>if the node X does not have left child, we keep going to its parent. if the parent is also the left child of its parent, keep going until it is the right child of a parent. the parent here is its previous node X.</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def getPreviousNode(node):</span><br><span class="line">    if node is None:</span><br><span class="line">        return None</span><br><span class="line">    elif node.left:</span><br><span class="line">        return getMostRight(node.left)</span><br><span class="line">    else:</span><br><span class="line">        parent &#x3D; node.parent</span><br><span class="line">        while parent and node !&#x3D; parent.right:</span><br><span class="line">            node &#x3D; parent</span><br><span class="line">            parent &#x3D; node.parent</span><br><span class="line">        return parent</span><br><span class="line"></span><br><span class="line">def getMostRight(node):</span><br><span class="line">    if not node:</span><br><span class="line">        return None</span><br><span class="line">    while node.right:</span><br><span class="line">        node &#x3D; node.right</span><br><span class="line">    return node</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h3 id="Serialization-and-Deserialization"><a href="#Serialization-and-Deserialization" class="headerlink" title="_Serialization and Deserialization"></a>_Serialization and Deserialization</h3><p>序列化 和 反序列化_</p>
-<p>Serialization:<br>serialize the binary tree in the memory into string and<br>deserialize it from the string to memory.<br>Structure and Data should be preserved.</p>
+<h3 id="Serialization-and-Deserialization"><a class="header-anchor" href="#Serialization-and-Deserialization">¶</a>_Serialization and Deserialization</h3>
+<p>序列化 和 反序列化_</p>
+<p>Serialization:<br>
+serialize the binary tree in the memory into string and<br>
+deserialize it from the string to memory.<br>
+Structure and Data should be preserved.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">    def __init__(self, val):</span><br><span class="line">        self.value &#x3D; val</span><br><span class="line">        self.left &#x3D; None</span><br><span class="line">        self.right &#x3D; None</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &quot;Node &lt;&#123;&#125;&gt;&quot;.format(self.value)</span><br><span class="line"></span><br><span class="line">    __str__ &#x3D; __repr__</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;record a node by _ and do not ignore the None node&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def preOrderSerialize(head):</span><br><span class="line">    if head is None:</span><br><span class="line">        return &#39;#_&#39;</span><br><span class="line">    output &#x3D; str(head.value) + &quot;_&quot;</span><br><span class="line">    output +&#x3D; preOrderSerialize(head.left)  # output is waiting for further recursion from the left</span><br><span class="line">    output +&#x3D; preOrderSerialize(head.right)  # waiting for the right</span><br><span class="line">    return output  # return output itself to append to the output on the upper level</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from collections import deque</span><br><span class="line"></span><br><span class="line">def preOrderDeserialize_String(string):</span><br><span class="line">    values &#x3D; string.split(&#39;_&#39;)</span><br><span class="line">    queue &#x3D; deque()</span><br><span class="line">    for i in values:</span><br><span class="line">        queue.append(i)</span><br><span class="line">    return preOrderDeserialize_Tree_subprocess(queue)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def preOrderDeserialize_Tree_subprocess(queue):</span><br><span class="line">    value &#x3D; queue.popleft()</span><br><span class="line">    if value &#x3D;&#x3D; &#39;#&#39;:</span><br><span class="line">        return None</span><br><span class="line">    head &#x3D; Node(int(value))</span><br><span class="line">    head.left &#x3D; preOrderDeserialize_Tree_subprocess(queue)</span><br><span class="line">    head.right &#x3D; preOrderDeserialize_Tree_subprocess(queue)</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>
-
 <p>应用： 一个树是否是另外一个树的子树</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;&#39;</span><br><span class="line">application: is a tree t1 the subtree of another tree t2 ?</span><br><span class="line">answer: serialize both and check t1_string is part of t2_string</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">def isSubtreeOf(t1, t2):</span><br><span class="line">    t1_string &#x3D; preOrderSerialize(t1)</span><br><span class="line">    t2_string &#x3D; preOrderSerialize(t2)</span><br><span class="line">    return t1_string in t2_string</span><br></pre></td></tr></table></figure>
-
 <p>Test:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    head &#x3D; Node(1)</span><br><span class="line">    head.left &#x3D; Node(2)</span><br><span class="line">    head.right &#x3D; Node(3)</span><br><span class="line">    head.left.left &#x3D; Node(4)</span><br><span class="line">    head.left.right &#x3D; Node(5)</span><br><span class="line">    head.right.left &#x3D; Node(6)</span><br><span class="line">    head.right.right &#x3D; Node(7)</span><br><span class="line">    serial &#x3D; preOrderSerialize(head)</span><br><span class="line">    print(&quot;this is a serialized tree: \n&#123;&#125;&quot;.format(serial))</span><br><span class="line">    head &#x3D; preOrderDeserialize_String(serial)</span><br><span class="line">    print(&quot;Now the tree has be deserialized, start to check&quot;)</span><br><span class="line">    print(head, head.left, head.right, head.left.left, head.left.right, head.right.left, head.right.right)</span><br><span class="line">    print(&quot;\nnow check if t2 is a subtree of t1:&quot;)</span><br><span class="line">    head_2 &#x3D; Node(3)</span><br><span class="line">    head_2.left &#x3D; Node(6)</span><br><span class="line">    head_2.right &#x3D; Node(7)</span><br><span class="line">    print(isSubtreeOf(head_2, head))</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h3 id="Origami-折纸问题"><a href="#Origami-折纸问题" class="headerlink" title="Origami 折纸问题"></a><em>Origami 折纸问题</em></h3><p>这道题需要再实际折一下更好理解</p>
-<p>_Fold the paper inwards (always), everytime after the first inward folding, we will have two new fold mark (one inward mark upon and outward mark below every fold marks in current level<br>(current times of folding))  </p>
+<h3 id="Origami-折纸问题"><a class="header-anchor" href="#Origami-折纸问题">¶</a><em>Origami 折纸问题</em></h3>
+<p>这道题需要再实际折一下更好理解</p>
+<p>_Fold the paper inwards (always), everytime after the first inward folding, we will have two new fold mark (one inward mark upon and outward mark below every fold marks in current level<br>
+(current times of folding))</p>
 <p>Solution: the folding process is a tree with inward mark. all heads of left child is inward, and all head of right child is outward_</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def printAllFolds(N):</span><br><span class="line">    printProcess(1, N, True)</span><br><span class="line"></span><br><span class="line">def printProcess(i, N, down):  # args: (level, the total times of folding, inwards)</span><br><span class="line">    if i &gt; N:</span><br><span class="line">        return None</span><br><span class="line">    printProcess(i+1, N, True)</span><br><span class="line">    if down:</span><br><span class="line">        print(&#39;inwards&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;outwards&#39;)</span><br><span class="line">    printProcess(i+1, N, False)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    printAllFolds(2)</span><br></pre></td></tr></table></figure>
       
@@ -508,20 +518,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="配置映射类和数据库"><a href="#配置映射类和数据库" class="headerlink" title="配置映射类和数据库"></a>配置映射类和数据库</h2><p><img src="https://azumeow.com/wp-content/uploads/2020/08/wm-1024x415.gif"></p>
-<p>直接贴一个实验楼的图来更好阐述整个流程。<br>图片版权为实验楼所有</p>
+          <h2 id="配置映射类和数据库"><a class="header-anchor" href="#配置映射类和数据库">¶</a>配置映射类和数据库</h2>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/08/wm-1024x415.gif" alt=""></p>
+<p>直接贴一个实验楼的图来更好阐述整个流程。<br>
+图片版权为实验楼所有</p>
 <p>我们之前说到了MVT model， 即整个服务的基本架构是由 model，view，template来实现的。那我们就开始model部分的回顾吧！</p>
 <p>如图所示，M模型的功能是映射类（ORM），即对数据库（我们使用的是MySQL)进行交互。为了更加便捷得能够与数据库进行交互，避免直接使用SQL语句查询，我们可以利用 flask-sqlalchemy插件来进行ORM的部署，它是专门为flask提供支持的sqlalchemy拓展。简单来说，如果不使用它，我们就必须自己搭建ORM，这就涉及到python的元组（metaclass）和动态创建类的内容了 （我这里当时自学时没有懂 = =）</p>
-<p>既然有现成的工具，我们就需要好好利用它（为自己的笨找到了看似合理的借口 :) ）。</p>
+<p>既然有现成的工具，我们就需要好好利用它（为自己的笨找到了看似合理的借口 😃 ）。</p>
 <p><code>pip install flask-sqlalchemy   pip install flask-moment</code></p>
-<p>首先安装相关的插件，再进入model.py 中import这些插件，并添加如下的代码。<br>可以先忽略具体的表中 某些Column的内容</p>
+<p>首先安装相关的插件，<a target="_blank" rel="noopener" href="http://xn--model-ep5hjj3315b.py">再进入model.py</a> 中import这些插件，并添加如下的代码。<br>
+可以先忽略具体的表中 某些Column的内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask_sqlalchemy import SQLAlchemy</span><br><span class="line">db &#x3D; SQLAlchemy()</span><br><span class="line">class Role(db.Model):</span><br><span class="line">    id &#x3D; db.Column(db.Integer, primary_key&#x3D;True)</span><br><span class="line">    name &#x3D; db.Column(db.String(64), unique&#x3D;True)</span><br><span class="line">    default &#x3D; db.Column(db.Boolean, default&#x3D;False, index&#x3D;True)</span><br><span class="line">    permissions &#x3D; db.Column(db.Integer)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &#39;&lt;Role: &#123;&#125;&gt;&#39;.format(self.name)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class User(db.Model, UserMixin):</span><br><span class="line">    def __init__(self, **kw):</span><br><span class="line">        &#39;&#39;&#39;default role&#39;&#39;&#39;</span><br><span class="line">        # inherit the core of ORM</span><br><span class="line">        super().__init__(**kw)</span><br><span class="line">        self.role &#x3D; Role.query.filter_by(default&#x3D;True).first()</span><br><span class="line"></span><br><span class="line">    # necessary</span><br><span class="line">    id &#x3D; db.Column(db.Integer, primary_key&#x3D;True)</span><br><span class="line">    name &#x3D; db.Column(db.String(64), unique&#x3D;True, index&#x3D;True)</span><br><span class="line">    email &#x3D; db.Column(db.String(64), unique&#x3D;True, index&#x3D;True)  # index helps to do query in front</span><br><span class="line"></span><br><span class="line">    # info related</span><br><span class="line">    _password &#x3D; db.Column(&#39;password&#39;, db.String(128))</span><br><span class="line">    confirmed &#x3D; db.Column(db.Boolean, default&#x3D;False)</span><br><span class="line">    role_id &#x3D; db.Column(db.Integer, db.ForeignKey(&#39;role.id&#39;))</span><br><span class="line">    role &#x3D; db.relationship(&#39;Role&#39;, backref&#x3D;db.backref(&#39;users&#39;, lazy&#x3D;&#39;dynamic&#39;))</span><br><span class="line"></span><br><span class="line">    # personalize</span><br><span class="line">    age &#x3D; db.Column(db.Integer)</span><br><span class="line">    gender &#x3D; db.Column(db.Enum(Gender))</span><br><span class="line">    phone_num &#x3D; db.Column(db.String(32), unique&#x3D;True)</span><br><span class="line">    location &#x3D; db.Column(db.String(64))</span><br><span class="line">    about_me &#x3D; db.Column(db.Text())</span><br><span class="line">    avatar_hash &#x3D; db.Column(db.String(128))</span><br><span class="line">    small_avatar_hash &#x3D; db.Column(db.String(128))</span><br><span class="line"></span><br><span class="line">    # other</span><br><span class="line">    create_at &#x3D; db.Column(db.DateTime, default&#x3D;datetime.utcnow())</span><br><span class="line">    last_seen &#x3D; db.Column(db.DateTime, default&#x3D;datetime.utcnow())</span><br><span class="line"></span><br><span class="line">    # getter</span><br><span class="line">    @property</span><br><span class="line">    def password(self):</span><br><span class="line">        return self._password</span><br></pre></td></tr></table></figure>
-
 <p>关于最后这两个方法，一个是password的getter， 一个是 password的setter</p>
 <p>这User类便是一个经典的ORM映射关系的实现，即一个类映射到数据库的一个表。</p>
-<p>Role表名默认为类名，这个表内有这几个Column：id, name, default, permissions。 __repr__是用来显示这个类的实例，即表的某个row（在这里是具体的某个权限）。我们显示 &lt;Role: self.name&gt; 来代表这个权限。</p>
+<p>Role表名默认为类名，这个表内有这几个Column：id, name, default, permissions。 __repr__是用来显示这个类的实例，即表的某个row（在这里是具体的某个权限）。我们显示 &lt;Role: <a target="_blank" rel="noopener" href="http://self.name">self.name</a>&gt; 来代表这个权限。</p>
 <p>相应的， user类代表的是user表，某个row代表的是具体的用户，每个row都需要有对用的id, name, email, password信息。db.Column()第一个参数是这个column的类型或者是名字，具体的信息可以查阅官方文档：</p>
 <p><a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/">https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/</a></p>
 <p>这样，基础的映射类就创建好了，我们现在需要创建相对于的数据库（表）</p>
@@ -604,7 +615,8 @@
           <p>最近正在上左神的算法基础课，左神讲的非常透彻，重要的还是课下把课上讲的和作业的自己实现并且加以复习。</p>
 <p>这篇复习集（姑且取个名字）总结下个人在这段时间学习到的算法topics，这样方便我以后回来复习。</p>
 <hr>
-<h2 id="排序-Sort"><a href="#排序-Sort" class="headerlink" title="排序 Sort"></a>排序 Sort</h2><p>直接上干货</p>
+<h2 id="排序-Sort"><a class="header-anchor" href="#排序-Sort">¶</a>排序 Sort</h2>
+<p>直接上干货</p>
 <p><strong><em>Sort Algorithm</em></strong></p>
 <p><strong><em>Time Complexity</em></strong></p>
 <p><strong><em>Space Complexity</em></strong></p>
@@ -637,41 +649,47 @@
 <p>O(N)</p>
 <p>O(N)</p>
 <p>True</p>
-<p>归并排序，堆排序，和快速排序是最快并且最方便使用的三种排序。根据需求选择需要的排序算法。  </p>
+<p>归并排序，堆排序，和快速排序是最快并且最方便使用的三种排序。根据需求选择需要的排序算法。</p>
 <p>桶排序包括了 计数排序和基数排序，桶排序尽管很快但是对数据状况有要求，例如计排要求数据状况处于一个相对窄的域，基数排序要求样本都为十进制数</p>
 <p>对于使用递归调用的排序算法可利用Master Theorem分析时间复杂度：</p>
-<p><img src="https://azumeow.com/wp-content/uploads/2020/07/6a2b5943d03e647b0061f4c327cc38cf7d43ff03.svg"></p>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/07/6a2b5943d03e647b0061f4c327cc38cf7d43ff03.svg" alt=""></p>
 <p>适用于子过程（subprocess）缩小的规模都是 n/b，调用a次subprocess（且都是等规模地缩小），加上其他的 f(n) 或者 可以表示为 O(n^d)的 时间操作。</p>
 <p>这样就能细分为三种情况：</p>
 <ul>
-<li>  log b (a) &lt; d =&gt; O(n^d)</li>
-<li>  log b (a) &gt; d =&gt; O(n^(log b (a)))</li>
-<li>  log b (a) = d =&gt; O(n^(d) * log(n))</li>
+<li>log b (a) &lt; d =&gt; O(n^d)</li>
+<li>log b (a) &gt; d =&gt; O(n^(log b (a)))</li>
+<li>log b (a) = d =&gt; O(n^(d) * log(n))</li>
 </ul>
-<p>快排：不追求稳定性，指标最优，常数最优。<br>堆排：追求更少的额外空间复杂度。<br>归并：追求稳定性。</p>
-<h3 id="排序相关练习题目"><a href="#排序相关练习题目" class="headerlink" title="排序相关练习题目"></a>排序相关练习题目</h3><ul>
-<li>  局部最小： arr无序，相邻不相等，返回任意一个局小index</li>
-<li>提出奇次数：arr中只有一个数出现了奇数次，其余为偶数次，找到这个数<ul>
-<li>  拓展：有两个数出现奇数次，其余为偶数次，找到这两数</li>
+<p>快排：不追求稳定性，指标最优，常数最优。<br>
+堆排：追求更少的额外空间复杂度。<br>
+归并：追求稳定性。</p>
+<h3 id="排序相关练习题目"><a class="header-anchor" href="#排序相关练习题目">¶</a>排序相关练习题目</h3>
+<ul>
+<li>局部最小： arr无序，相邻不相等，返回任意一个局小index</li>
+<li>提出奇次数：arr中只有一个数出现了奇数次，其余为偶数次，找到这个数
+<ul>
+<li>拓展：有两个数出现奇数次，其余为偶数次，找到这两数</li>
 </ul>
 </li>
-<li>  小和（small sum）：arr中一个数左边比当前数小的数累加起来，叫做这个数组的小和，求arr 的小和</li>
-<li>  逆序对：一个arr中左边的数如果比右边的数大，则这两个数构成逆序对，打印所有逆序对</li>
-<li>  几乎有序的数组，每个元素排好序最多不移动k距离，求最好的排序算法排序</li>
-<li>  荷兰国旗</li>
+<li>小和（small sum）：arr中一个数左边比当前数小的数累加起来，叫做这个数组的小和，求arr 的小和</li>
+<li>逆序对：一个arr中左边的数如果比右边的数大，则这两个数构成逆序对，打印所有逆序对</li>
+<li>几乎有序的数组，每个元素排好序最多不移动k距离，求最好的排序算法排序</li>
+<li>荷兰国旗</li>
 </ul>
 <hr>
-<h2 id="链表-Linked-List-和"><a href="#链表-Linked-List-和" class="headerlink" title="链表 Linked List 和"></a>链表 Linked List 和</h2><h2 id="哈希表（字典）Hash-Table"><a href="#哈希表（字典）Hash-Table" class="headerlink" title="哈希表（字典）Hash Table"></a>哈希表（字典）Hash Table</h2><p>单链表和双向链表是重要的数据结构</p>
+<h2 id="链表-Linked-List-和"><a class="header-anchor" href="#链表-Linked-List-和">¶</a>链表 Linked List 和</h2>
+<h2 id="哈希表（字典）Hash-Table"><a class="header-anchor" href="#哈希表（字典）Hash-Table">¶</a>哈希表（字典）Hash Table</h2>
+<p>单链表和双向链表是重要的数据结构</p>
 <p>关于链表， 基础的问题有：</p>
 <ul>
-<li>  反转单向链表和双向链表</li>
-<li>  打印两个有序链表的公共部分</li>
+<li>反转单向链表和双向链表</li>
+<li>打印两个有序链表的公共部分</li>
 </ul>
 <p>进阶一点的问题有：</p>
 <ul>
-<li>  判断一个链表是否为回文结构（palindrome）</li>
-<li>  复制含有随机指针节点的链表</li>
-<li>  两个单链表相交的问题</li>
+<li>判断一个链表是否为回文结构（palindrome）</li>
+<li>复制含有随机指针节点的链表</li>
+<li>两个单链表相交的问题</li>
 </ul>
 
       
@@ -819,13 +837,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>manage.py 和 configs.py 的应用</p>
+          <p><a target="_blank" rel="noopener" href="http://manage.py">manage.py</a> 和 <a target="_blank" rel="noopener" href="http://configs.py">configs.py</a> 的应用</p>
 <p>我们知道当我们创建好 app文件，即完成一个可以创建新的flask对象的函数时，在命令行执行这个函数时，就会进入flask服务器。</p>
 <p>我们可以新建一个manage的模块来方便我们调试服务器，即在manage中来启用这个create_app的函数，这样我们可以自定义多种启动服务器的方式，例如开发模式或者测试模式。</p>
-<p>在同目录下新建configs.py</p>
+<p><a target="_blank" rel="noopener" href="http://xn--configs-nw3kg06borhj9wf5am81dsf9c.py">在同目录下新建configs.py</a></p>
 <p>具体的设置看源代码就可以了，主要包含SECRET_KEY, FLASK_ENV 和一些MAIL_SERVER等的设置。我们把这些配置定义在具体的类下面， 这样当这个类名通过最后设置的字典简写的方式传入create_app中， <code>app.config.from_object(configs.get(config))</code> 让类里的配置直接传入flask对象的配置。</p>
 <p>关于一些不能被公开的配置，例如SECRETE_KEY, MAIL_PASSWORD等，我们可以用到一个dotenv插件来方便我们配置。</p>
-<p>查一下如何import dotenv，我们在当前文件夹新建.env 和 .flaskenv。 .env可以用来配置一些涉密的配置信息，如我上述。.flaskenv是用来配置一些关于flask服务器的配置，是可公开的。这样我们设置好了之后，系统就会自动添加这些配置信息，我们在configs.py就可以用到例如<code>MAIL_PASSWORD = os.getenv(&#39;MAIL_PASSWORD&#39;)</code> 来得到我们想要的配置信息。</p>
+<p>查一下如何import dotenv，我们在当前文件夹新建.env 和 .flaskenv。 .env可以用来配置一些涉密的配置信息，如我上述。.flaskenv是用来配置一些关于flask服务器的配置，是可公开的。这样我们设置好了之后，系统就会自动添加这些配置信息，我们在configs.py就可以用到例如<code>MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')</code> 来得到我们想要的配置信息。</p>
 <p>记住，必须在manage.py或者configs.py中启用dotenv才可以使用</p>
 <p><code>from dotenv import load_dotenv   load_dotenv(override=True)</code></p>
 <p>override确认了env中会override系统中的配置信息。</p>
@@ -975,22 +993,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="app-py-的实现和功能"><a href="#app-py-的实现和功能" class="headerlink" title="app.py 的实现和功能"></a>app.py 的实现和功能</h2><p>app.py 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。</p>
+          <h2 id="app-py-的实现和功能"><a class="header-anchor" href="#app-py-的实现和功能">¶</a><a target="_blank" rel="noopener" href="http://app.py">app.py</a> 的实现和功能</h2>
+<p><a target="_blank" rel="noopener" href="http://app.py">app.py</a> 在整个project 中主要作用是把各种插件添加进Flask。大致就是 创建一个Flask对象，并把所有插件注册到这个对象上，即一个插件控制器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&#39;.&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>这里我们首先import各种flask 的插件:<br>1. pagedown是comment需要的markdown 插件<br>2. Flask是flask本体，不说了吧<br>3. bootstrap 是一个把各种常用blocks（即各种CSS和JS的模板）包含的package,这样在template中可以直接extend bootstrap 例如：</p>
+<p>这里我们首先import各种flask 的插件:<br>
+1. pagedown是comment需要的markdown 插件<br>
+2. Flask是flask本体，不说了吧<br>
+3. bootstrap 是一个把各种常用blocks（即各种CSS和JS的模板）包含的package,这样在template中可以直接extend bootstrap 例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#39;bootstrap&#x2F;base.html&#39; %&#125;</span><br><span class="line">&#123;% from &#39;bootstrap&#x2F;wtf.html&#39; import quick_form %&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这样template就可以方便地调用这些模板</p>
-<p>4. moment 是一个方便利用时间的插件<br>5. migrate 是为database提供版本备份的插件。功能可以等价于 git 之于code<br>6. login是一个管理用户登录的插件</p>
+<p>4. moment 是一个方便利用时间的插件<br>
+5. migrate 是为database提供版本备份的插件。功能可以等价于 git 之于code<br>
+6. login是一个管理用户登录的插件</p>
 <p>app中的 register_blueprint函数把blueprint_list中所有的视图module（包含所有视图函数）注册到flask 对象上。</p>
 <p>register_extensions函数把所有上述的插件注册到对象上，之后在我们创建了flask对象后，调用这个函数即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@login_manager.user_loader</span><br><span class="line">def user_loader(id):</span><br><span class="line"># 只有主键才可以使用 query.get 方法查询</span><br><span class="line">return User.query.get(id)</span><br></pre></td></tr></table></figure>
-
 <p>这个函数会告诉login_manager登录用户的信息， 即callback（回调函数）这样系统便能识别登录用户的身份。返回的是user对象。</p>
 <p>create_app 函数则是用来 初始化对象，添加相关配置， 并注册插件和蓝图，最后返回对象。</p>
 <p>关于添加相关配置的方法，我在下一章会提到。</p>
-<p>这样一个最为重要的一个环节就完成了！[]<del>(￣▽￣)</del>*庆祝一下吧！</p>
+<p>这样一个最为重要的一个环节就完成了！[]<sub>(￣▽￣)</sub>*庆祝一下吧！</p>
 
       
     </div>
@@ -1064,45 +1085,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png"></p>
-<h2 id="主要基本结构"><a href="#主要基本结构" class="headerlink" title="主要基本结构"></a>主要基本结构</h2><p>Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。</p>
-<p>本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。  </p>
+          <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png" alt=""></p>
+<h2 id="主要基本结构"><a class="header-anchor" href="#主要基本结构">¶</a>主要基本结构</h2>
+<p>Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。</p>
+<p>本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。</p>
 <p>首先确定这个服务器的基础结构：下面是project的packages结构：</p>
 <ul>
-<li>handlers<ul>
-<li>  init.py</li>
-<li>  front.py</li>
-<li>  user.py</li>
-</ul>
-</li>
-<li>scripts<ul>
-<li>  generate_fake_data.py</li>
-</ul>
-</li>
-<li>  static</li>
-<li>  migrations</li>
-<li>templates<ul>
-<li>  users</li>
-<li>  front</li>
-</ul>
-</li>
-<li>  app.py</li>
-<li>  config.py</li>
-<li>  decorator.py</li>
-<li>  email_app.py</li>
-<li>  forms.py</li>
-<li>  manage.py</li>
-<li>  models.py</li>
-</ul>
-<p>flaska 是自己给这个服务器取得名字（无所谓）， handlers是用来处理view function 的文件夹，包括user.py和front.py.</p>
-<p>这里顺便补充一下什么是view function， 如果要了解view function, 我们需要懂得什么是MVT software design pattern. MVT means Model, View, and Template. It is a popular pattern or model to design a web server of software by using Flask or Django.  </p>
-<p>I can briefly introduce this concept by showing a picture, and this is more straightforward as well.  </p>
+<li>handlers
 <ul>
-<li><img src="https://azumeow.com/wp-content/uploads/2020/06/MTV-Diagram.png">  A flowchart of how MVT works</li>
-<li><img src="https://azumeow.com/wp-content/uploads/2020/06/mtv_drawing1.png">  Stack way of thinking MVT</li>
+<li><a target="_blank" rel="noopener" href="http://init.py">init.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://front.py">front.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://user.py">user.py</a></li>
+</ul>
+</li>
+<li>scripts
+<ul>
+<li>generate_fake_data.py</li>
+</ul>
+</li>
+<li>static</li>
+<li>migrations</li>
+<li>templates
+<ul>
+<li>users</li>
+<li>front</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="http://app.py">app.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://config.py">config.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://decorator.py">decorator.py</a></li>
+<li>email_app.py</li>
+<li><a target="_blank" rel="noopener" href="http://forms.py">forms.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://manage.py">manage.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://models.py">models.py</a></li>
+</ul>
+<p>flaska 是自己给这个服务器取得名字（无所谓）， handlers是用来处理view function 的文件夹，<a target="_blank" rel="noopener" href="http://xn--user-4h0gi65f.xn--pyfront-9r4l.py">包括user.py和front.py</a>.</p>
+<p>这里顺便补充一下什么是view function， 如果要了解view function, 我们需要懂得什么是MVT software design pattern. MVT means Model, View, and Template. It is a popular pattern or model to design a web server of software by using Flask or Django.</p>
+<p>I can briefly introduce this concept by showing a picture, and this is more straightforward as well.</p>
+<ul>
+<li>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/06/MTV-Diagram.png" alt=""></p>
+<p>A flowchart of how MVT works</p>
+</li>
+<li>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/06/mtv_drawing1.png" alt=""></p>
+<p>Stack way of thinking MVT</p>
+</li>
 </ul>
 <p>To talk about the view part in this chart, what I simply think about the <strong>view</strong> is the logic behind the webpage, which directs how will <strong>one link connects to another link</strong> in the webserver. Also, it is used to help to know in what circumstance the webpage is available to a certain user or not. Generally, it is the logic behind the webserver.</p>
-<p>Model(模块) refers to where ORM mapping located in the server framework.<br>我们想要把数据库的关系表（我使用的是relational database）能够简易地在py file 里得到使用，这个时候就得使用 ORM 把关系映射到类里。比如把一个表映射成一个类。</p>
+<p>Model(模块) refers to where ORM mapping located in the server framework.<br>
+我们想要把数据库的关系表（我使用的是relational database）能够简易地在py file 里得到使用，这个时候就得使用 ORM 把关系映射到类里。比如把一个表映射成一个类。</p>
 <p>Template（样板）属于前端内容，即我们要为客户呈现什么样的内容，具体布局是怎样的，我们就需要利用 html，css，js来实现。我们在view里调用样板，来达到某个网页链接呈现某个页面的效果。</p>
 <p>整个的流程能够通过图一来得到完整的诠释。即 model是数据库的映射，template是具体网页的呈现，view是服务器内部的运用template的逻辑。</p>
 <p>view还会create, update, delete 数据库，比如我们创建新用户时，就是在更新数据库。view也提供数据用来呈现给用户。反过来样板会传入用户的form用以更新数据库。</p>
@@ -1326,6 +1358,8 @@
 
 
 
+
+  
 
   
 
