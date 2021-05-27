@@ -168,6 +168,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucheng">
+      <meta itemprop="description" content="Blog by Lucheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Deer City">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/17/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="post-title-link" itemprop="url">利用Flask搭建一个简易的博客网站(1)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-17 17:30:30" itemprop="dateCreated datePublished" datetime="2020-06-17T17:30:30+08:00">2020-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-11 06:46:42" itemprop="dateModified" datetime="2021-02-11T06:46:42+08:00">2021-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index"><span itemprop="name">Flask</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/220px-Flask_logo.svg.png" alt=""></p>
+<h2 id="主要基本结构"><a class="header-anchor" href="#主要基本结构">¶</a>主要基本结构</h2>
+<p>Flask 是一个方便简洁的web搭建的python框架，如果刚刚学习完python基础，可以尝试利用Flask 搭建一个简易的博客网站。</p>
+<p>本文旨在利用我为数不多的python知识和搭配网上的教程 （主要来源于实验楼的教程）提供一个较为全面（不）的self-reflection。 这篇文章也用于帮助我理顺搭建服务器时的思路和具体一些功能实现的再摸索。</p>
+<p>首先确定这个服务器的基础结构：下面是project的packages结构：</p>
+<ul>
+<li>handlers
+<ul>
+<li><a target="_blank" rel="noopener" href="http://init.py">init.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://front.py">front.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://user.py">user.py</a></li>
+</ul>
+</li>
+<li>scripts
+<ul>
+<li>generate_fake_data.py</li>
+</ul>
+</li>
+<li>static</li>
+<li>migrations</li>
+<li>templates
+<ul>
+<li>users</li>
+<li>front</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="http://app.py">app.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://config.py">config.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://decorator.py">decorator.py</a></li>
+<li>email_app.py</li>
+<li><a target="_blank" rel="noopener" href="http://forms.py">forms.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://manage.py">manage.py</a></li>
+<li><a target="_blank" rel="noopener" href="http://models.py">models.py</a></li>
+</ul>
+<p>flaska 是自己给这个服务器取得名字（无所谓）， handlers是用来处理view function 的文件夹，<a target="_blank" rel="noopener" href="http://xn--user-4h0gi65f.xn--pyfront-9r4l.py">包括user.py和front.py</a>.</p>
+<p>这里顺便补充一下什么是view function， 如果要了解view function, 我们需要懂得什么是MVT software design pattern. MVT means Model, View, and Template. It is a popular pattern or model to design a web server of software by using Flask or Django.</p>
+<p>I can briefly introduce this concept by showing a picture, and this is more straightforward as well.</p>
+<ul>
+<li>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/06/MTV-Diagram.png" alt=""></p>
+<p>A flowchart of how MVT works</p>
+</li>
+<li>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/06/mtv_drawing1.png" alt=""></p>
+<p>Stack way of thinking MVT</p>
+</li>
+</ul>
+<p>To talk about the view part in this chart, what I simply think about the <strong>view</strong> is the logic behind the webpage, which directs how will <strong>one link connects to another link</strong> in the webserver. Also, it is used to help to know in what circumstance the webpage is available to a certain user or not. Generally, it is the logic behind the webserver.</p>
+<p>Model(模块) refers to where ORM mapping located in the server framework.<br>
+我们想要把数据库的关系表（我使用的是relational database）能够简易地在py file 里得到使用，这个时候就得使用 ORM 把关系映射到类里。比如把一个表映射成一个类。</p>
+<p>Template（样板）属于前端内容，即我们要为客户呈现什么样的内容，具体布局是怎样的，我们就需要利用 html，css，js来实现。我们在view里调用样板，来达到某个网页链接呈现某个页面的效果。</p>
+<p>整个的流程能够通过图一来得到完整的诠释。即 model是数据库的映射，template是具体网页的呈现，view是服务器内部的运用template的逻辑。</p>
+<p>view还会create, update, delete 数据库，比如我们创建新用户时，就是在更新数据库。view也提供数据用来呈现给用户。反过来样板会传入用户的form用以更新数据库。</p>
+<p>好了，handlers和templates解释完毕。scripts在这里主要用于测试用。static是静态文件，即我们网站的图标和css文件存储于此。</p>
+<p>介绍完了基本的package 结构，主要的几个modules一一来说。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/13/hello-world-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -316,7 +444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
