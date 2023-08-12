@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶这篇文字随手用来记录 Js 和 Python 的区别 主要内容来自YouTube 视频 Learn JavaScript - Full Course for Beginners">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Hands On Notes">
+<meta property="og:url" content="http://example.com/2021/03/02/JsHandsOn/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶这篇文字随手用来记录 Js 和 Python 的区别 主要内容来自YouTube 视频 Learn JavaScript - Full Course for Beginners">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-03T05:12:04.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.327Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="Briefly">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>JavaScript Hands On Notes - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript Hands On Notes">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-02 21:12" pubdate>
+        March 2, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript Hands On Notes</h1>
+            
+            <div class="markdown-body">
+              <h1 id="这篇文字随手用来记录-Js-和-Python-的区别"><a class="header-anchor" href="#这篇文字随手用来记录-Js-和-Python-的区别">¶</a>这篇文字随手用来记录 Js 和 Python 的区别</h1>
+<p>主要内容来自YouTube 视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=PkZNo7MFNFg">Learn JavaScript - Full Course for Beginners</a></p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Declare-Variable-Declare-Variable"><a class="header-anchor" href="#Declare-Variable-Declare-Variable">¶</a>Declare Variable{Declare Variable}:</h1>
+<h2 id="Declaring"><a class="header-anchor" href="#Declaring">¶</a>Declaring</h2>
+<p><code>var</code> can be declared for any types.</p>
+<p>Without the <code>var</code> , the variable will be a global variable, which can be created in a function and accessed from outside of function.</p>
+<h1 id="Declare-function"><a class="header-anchor" href="#Declare-function">¶</a><strong>Declare function</strong>:</h1>
+<p><code>function function(val)</code></p>
+<h1 id="Comparison"><a class="header-anchor" href="#Comparison">¶</a><strong>Comparison</strong>:</h1>
+<p><code>===, ==</code></p>
+<p><code>===</code> will looks at type difference, <code>==</code> will not</p>
+<p><code>!==</code> will checks types, <code>!=</code> will not</p>
+<h1 id="Js-has-switch"><a class="header-anchor" href="#Js-has-switch">¶</a><strong>Js has switch</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sequentialSizes</span>(<span class="hljs-params">val</span>)</span>&#123;<br>	<span class="hljs-keyword">var</span> answer = <span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-keyword">switch</span>(val)&#123;<br>	case1: <br>	case2:<br>	case3:<br>		answer = <span class="hljs-string">&quot;low&quot;</span>;<br>		<span class="hljs-keyword">break</span>;<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>		anwer = <span class="hljs-string">&#x27;mid&#x27;</span>;<br>		<span class="hljs-keyword">break</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="null"><a class="header-anchor" href="#null">¶</a><strong>null</strong></h1>
+<p>null is called <code>undefined</code></p>
+<h1 id="Dictionary-Object"><a class="header-anchor" href="#Dictionary-Object">¶</a>Dictionary(Object)</h1>
+<p>(the person in video called this “Object”) <strong>这里是JSON Object！</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> Dogs = &#123;<br>	<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Camper&quot;</span>, <span class="hljs-comment">// called property: value</span><br>	<span class="hljs-string">&quot;legs&quot;</span>: <span class="hljs-number">4</span>,<br>	<span class="hljs-string">&quot;tails&quot;</span>:<span class="hljs-number">1</span>,<br>	<span class="hljs-string">&quot;friends&quot;</span>:[<span class="hljs-string">&quot;haha&quot;</span>]<br>&#125;;<br><br><span class="hljs-keyword">var</span> name = Dogs.name <span class="hljs-comment">// one way of accessing</span><br><span class="hljs-keyword">var</span> name = Dogs[name]<br><br><span class="hljs-comment">//Delete</span><br><span class="hljs-keyword">delete</span> Dogs.name<br><span class="hljs-keyword">delete</span> Dogs[name]<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkObj</span>(<span class="hljs-params">checkProp</span>)</span>&#123;  <span class="hljs-comment">//check if a object has a certain property</span><br>	<span class="hljs-keyword">if</span> (myObj.hasOwnProperty(checkProp))&#123;<br>		<span class="hljs-keyword">return</span> myObj[checkProp];<br>	&#125; <span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Not Found&quot;</span><br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>Object Exercise:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs xquery">var<span class="hljs-built_in"> collection</span> = &#123;<br>	<span class="hljs-string">&quot;2548&quot;</span>:&#123;<br>		<span class="hljs-string">&quot;album&quot;</span>: <span class="hljs-string">&quot;slippery When Wet&quot;</span>,<br>		<span class="hljs-string">&quot;artist&quot;</span>: <span class="hljs-string">&quot;Bon Jovi&quot;</span>,<br>		<span class="hljs-string">&quot;tracks&quot;</span>: [<br>			<span class="hljs-string">&quot;Let it Rock&quot;</span>,<br>			<span class="hljs-string">&quot;You Give Love a Bad Name&quot;</span><br>		]<br>	&#125;，<br>	<span class="hljs-string">&quot;2523&quot;</span>:&#123;<br>		<span class="hljs-string">&quot;album&quot;</span>: <span class="hljs-string">&quot;slippery When Wet&quot;</span>,<br>		<span class="hljs-string">&quot;artist&quot;</span>: <span class="hljs-string">&quot;Bon Jovi&quot;</span>,<br>		<span class="hljs-string">&quot;tracks&quot;</span>: [<br>			<span class="hljs-string">&quot;Let it Rock&quot;</span>,<br>			<span class="hljs-string">&quot;You Give Love a Bad Name&quot;</span><br>		]<br>	&#125;<br>&#125;<br><br>var collectionCopy = JSON.parse(JSON.stringify<span class="hljs-built_in">(collection</span>))<br><span class="hljs-keyword">function</span> updateRecords<span class="hljs-built_in">(id</span>, prop, <span class="hljs-keyword">value</span>)&#123;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">value</span> === <span class="hljs-string">&quot;&quot;</span>)&#123;<br>	<span class="hljs-keyword">delete</span><span class="hljs-built_in"> collection</span><span class="hljs-built_in">[id</span>][pro];	<br>	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(prop === <span class="hljs-string">&quot;tracks&quot;</span>)&#123;<br>	<span class="hljs-built_in">	collection</span><span class="hljs-built_in">[id</span>][prop] =<span class="hljs-built_in"> collection</span><span class="hljs-built_in">[id</span>][prop] || [];<br>	<span class="hljs-built_in">	collection</span><span class="hljs-built_in">[id</span>][prop].push(<span class="hljs-keyword">value</span>);<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>	<span class="hljs-built_in">	collection</span><span class="hljs-built_in">[id</span>][prop] = <span class="hljs-keyword">value</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span><span class="hljs-built_in"> collection</span><br>&#125;<br><br>console.log(updateRecords(<span class="hljs-number">5439</span>, <span class="hljs-string">&quot;artist&quot;</span>, <span class="hljs-string">&quot;ABBA&quot;</span>));<br><br></code></pre></td></tr></table></figure>
+<h1 id="Traverse-the-Array"><a class="header-anchor" href="#Traverse-the-Array">¶</a><strong>Traverse the Array</strong></h1>
+<p>和Java一样</p>
+<h1 id="Math"><a class="header-anchor" href="#Math">¶</a><strong>Math</strong></h1>
+<p>Js also has Math module</p>
+<h1 id="convert-str-to-int"><a class="header-anchor" href="#convert-str-to-int">¶</a><strong>convert str to int</strong></h1>
+<p><code>parseInt(str) </code></p>
+<p><code>parseInt(str, 2)</code>  parse in base 2</p>
+<h1 id="Easy-condition"><a class="header-anchor" href="#Easy-condition">¶</a><strong>Easy condition</strong></h1>
+<p>condition? statement-if-true: statement-if-false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkSign</span>(<span class="hljs-params">num</span>)</span>&#123;<br>	retun num &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;positive&quot;</span> : num &lt;<span class="hljs-number">0</span> ? <span class="hljs-string">&quot;negative&quot;</span> : <span class="hljs-string">&quot;zero&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="let-var-const"><a class="header-anchor" href="#let-var-const">¶</a><strong>let, var, const</strong></h1>
+<p><code>let</code> cannot be declared twice</p>
+<p><code>let</code> is defined in scope. <code>var</code> is not</p>
+<p><code>const</code> is read-only, cannot write</p>
+<p><code>const SENTENCE = &quot;good!&quot;;</code></p>
+<h1 id="Array"><a class="header-anchor" href="#Array">¶</a><strong>Array</strong></h1>
+<p>array is immutable</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">freezeObj</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-meta">	&quot;use strict&quot;</span>;<br>	<span class="hljs-keyword">const</span> MATH_CONSTANTS = &#123;<br>		PI: <span class="hljs-number">3.14</span><br>	&#125;;<br>	<br>	<span class="hljs-built_in">Object</span>.freeze(MATH_CONSTANTS); <span class="hljs-comment">//make object immutalbe </span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="Anonymous-function"><a class="header-anchor" href="#Anonymous-function">¶</a><strong>Anonymous function</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> magic = <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); <span class="hljs-comment">// () means function, =&gt; means return </span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> myConcat = <span class="hljs-function">(<span class="hljs-params">arr1, arr2</span>) =&gt;</span> &#123;arr1.concat(arr2)&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="Array-filter"><a class="header-anchor" href="#Array-filter">¶</a><strong>Array filter</strong></h1>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">arr.filter(<span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> <span class="hljs-built_in">Number</span>.isInteger(num) &amp;&amp; num &gt;<span class="hljs-number">0</span>).map(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x *x);<br></code></pre></td></tr></table></figure>
+<h1 id="Default-parameter"><a class="header-anchor" href="#Default-parameter">¶</a><strong>Default parameter</strong></h1>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> increment = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> funtion <span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params"><span class="hljs-built_in">number</span>, value =<span class="hljs-number">1</span> </span>)</span>&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-built_in">number</span>+value;<br>	&#125;;<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h1 id="Rest-argument"><a class="header-anchor" href="#Rest-argument">¶</a>Rest argument</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> num = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	retuurn <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">...args</span>)</span>&#123;<br>	   <span class="hljs-keyword">return</span> args.reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>) =&gt;</span> a+b, <span class="hljs-number">0</span>);<br>	   &#125;;<br>&#125;)();<br><span class="hljs-built_in">console</span>.log(sum(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>));<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">arr2</span> = [...arr1]<span class="hljs-comment">; \\ copy values</span><br><span class="hljs-attr">arr2</span> = arr1<span class="hljs-comment">; \\copy the same reference</span><br><br></code></pre></td></tr></table></figure>
+<p><code>const [, , ... arr] = list</code> we can specify which index should be changed.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> greeting = <span class="hljs-string">&quot;Hello, my name is $&#123;person.name&#125;&quot;</span> \\inside curly brase is Js<br></code></pre></td></tr></table></figure>
+<h1 id="Create-an-object"><a class="header-anchor" href="#Create-an-object">¶</a><strong>Create an object</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> createPerson = <span class="hljs-function">(<span class="hljs-params">name, age, gender</span>) =&gt;</span> (&#123;name, age, gender&#125;);<br><span class="hljs-built_in">console</span>.log(createPerson(<span class="hljs-string">&quot;Zodiac Hasbro&quot;</span>, <span class="hljs-number">56</span>, <span class="hljs-string">&quot;male&quot;</span>));<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> SpaceShuttle = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">targetPlanet</span>)</span>&#123;<br>	<span class="hljs-built_in">this</span>.targetPlanet = targetPlanet;<br>&#125;<br><span class="hljs-keyword">var</span> zeus = <span class="hljs-keyword">new</span> SpaceShuttle(<span class="hljs-string">&quot;Jupiter&quot;</span>);<br><br><span class="hljs-built_in">console</span>.log(zeus.targetPlanet);<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpaceShuttle</span></span>&#123;<br>	<span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">targetPlanet</span>)</span>&#123;<br>		<span class="hljs-built_in">this</span>.targetPlanet = targetPlanet;<br>		&#125;<br>&#125; <br><span class="hljs-keyword">var</span> zeus = <span class="hljs-keyword">new</span> SpaceShuttle(<span class="hljs-string">&quot;Jupiter&quot;</span>);<br><br><span class="hljs-built_in">console</span>.log(zeus.targetPlanet);<br></code></pre></td></tr></table></figure>
+<h1 id="Getter-Setter"><a class="header-anchor" href="#Getter-Setter">¶</a><strong>Getter, Setter</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Book</span></span>&#123;<br>	<span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">author</span>)</span>&#123;<br>        <span class="hljs-built_in">this</span>._author = author;<br>    &#125;<br>    <span class="hljs-keyword">get</span> <span class="hljs-title">writer</span>()&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._author;<br>    &#125;<br>    <span class="hljs-keyword">set</span> <span class="hljs-title">writer</span>(<span class="hljs-params">updatedAuthor</span>)&#123;<br>            <span class="hljs-built_in">this</span>._author = updatedAuthor;<br>        &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeClass</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Thermostat</span></span>&#123;<br>        <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">temp</span>)</span>&#123;<br>            <span class="hljs-built_in">this</span>._temp = <span class="hljs-number">5</span>/<span class="hljs-number">9</span> * (temp-<span class="hljs-number">32</span>);<br>        &#125;  <br>        <span class="hljs-keyword">get</span> <span class="hljs-title">temperature</span>()&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._temp;<br>        &#125;<br>        <span class="hljs-keyword">set</span> <span class="hljs-title">temperature</span>(<span class="hljs-params">updatedTemp</span>)&#123;<br>            <span class="hljs-built_in">this</span>._temp = updatedTemp;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> Thermostat;<br>&#125;<br><br><span class="hljs-keyword">const</span> Thermostat = makeClass();<br><span class="hljs-keyword">const</span> thermos = <span class="hljs-keyword">new</span> Thermostat(<span class="hljs-number">76</span>);<br><br><span class="hljs-built_in">console</span>.log(thermos._temp)<br></code></pre></td></tr></table></figure>
+<h1 id="export-import"><a class="header-anchor" href="#export-import">¶</a><strong>export, import</strong></h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;capitalizeString&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./string_function&quot;</span><br><span class="hljs-keyword">const</span> cap = capitalizeString(<span class="hljs-string">&quot;hello!&quot;</span>);<br><br><span class="hljs-built_in">console</span>.log(cap)<br><br><span class="hljs-comment">//在另一个文件里</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> capitalizeString = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.toUpperCase()<br><span class="hljs-comment">//capitalizeString 是一个方法，parameter 是str</span><br><br><span class="hljs-keyword">export</span>&#123;capitalizeString&#125;;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> foo = <span class="hljs-string">&#x27;bar&#x27;</span>;<br><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> capitalizing <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./where&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subtract</span>(<span class="hljs-params">x,y</span>)</span>&#123;<span class="hljs-keyword">return</span> x-y&#125;;<br><span class="hljs-keyword">import</span> subtract <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./where&quot;</span><br></code></pre></td></tr></table></figure>
+<p>差不多这就是一些Syntax区别，具体要用再查找吧！ 😄</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JS/">JS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Briefly/">Briefly</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/18/jQuery_2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jQuery(2)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/24/DivideConquerReci4/">
+                        <span class="hidden-mobile">DivideConquer Reci4</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

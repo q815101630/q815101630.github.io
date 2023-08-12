@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MicroService Basic + Blog Example Quite interested at learning new things… Thus, why not start learning Microservice from now?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microservice Basic - Blog (1)">
+<meta property="og:url" content="http://example.com/2022/01/12/microservice-basic/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="MicroService Basic + Blog Example Quite interested at learning new things… Thus, why not start learning Microservice from now?">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/Microservices.png">
+<meta property="article:published_time" content="2022-01-12T19:39:32.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.337Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="microservice">
+<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="express.js">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/Microservices.png">
+  
+  
+  <title>Microservice Basic - Blog (1) - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/backgrounds/chengdu/bingFen.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Microservice Basic - Blog (1)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-12 11:39" pubdate>
+        January 12, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Microservice Basic - Blog (1)</h1>
+            
+            <div class="markdown-body">
+              <p>MicroService Basic + Blog Example</p>
+<p>Quite interested at learning new things… Thus, why not start learning Microservice from now?</p>
+<span id="more"></span>
+<blockquote>
+<p>The banner image shows a traditional snack 冰粉 (bing fen) that I used to have almost every day in my home city. It has both a sour and sweet taste with ice underneath. Different vendors have their different recipes with what items you can put into, but they all share items such as watermelon, bing fen (the transparent, jellyfish-like thing.)<br>
+My memory about bingfen always comes with the mid-summer where there is no better dessert compared to a bowl of bingfen that can cool me down. In fact, it is not hard to make bingfen at home. Even here in the states, I found there is bingfen powder in Asian supermarkets that allows you to directly make it in your kitchen. Interestingly, the origin of bingfen is seeds of the shoo-fly plant, which is also called the apple of Peru originated from South America.</p>
+</blockquote>
+<h1 id="Microservice-Basic"><a class="header-anchor" href="#Microservice-Basic">¶</a>Microservice Basic</h1>
+<h1 id="Basics-Post-Example"><a class="header-anchor" href="#Basics-Post-Example">¶</a>Basics + Post Example</h1>
+<p>What is microservice</p>
+<h3 id="Monolithic-Server"><a class="header-anchor" href="#Monolithic-Server">¶</a>Monolithic Server</h3>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208549.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121207335.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h3 id="Microservice"><a class="header-anchor" href="#Microservice">¶</a>Microservice</h3>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208702.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208903.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><strong>Each service is self-contained!</strong></p>
+<p>In summary: A single microservice contains all</p>
+<ul>
+<li>Routing</li>
+<li>Middlewares</li>
+<li>Business Logic</li>
+<li>Database access</li>
+</ul>
+<p>to implement one feature of our app</p>
+<h3 id="Data-Management-Problem"><a class="header-anchor" href="#Data-Management-Problem">¶</a>Data Management Problem</h3>
+<p>Microservice has a problem of <strong>data management between services</strong></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208380.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Note:</p>
+<ol>
+<li>Each service has its own database (<strong>database per service)</strong></li>
+<li>Service will <strong>never</strong> reach into another service’s database
+<ol>
+<li><strong>good scale capability</strong></li>
+<li><strong>low coupling (less dependency, more reliability, no single point of failure)</strong></li>
+<li>optimize by choosing the best-fitted database</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>In monolithic design, adding new service is easy as it only access to a single DB</p>
+</blockquote>
+<p>In microservice, it is really hard!</p>
+<blockquote></blockquote>
+<h2 id="General-strategy-to-solve-data-communication-problem"><a class="header-anchor" href="#General-strategy-to-solve-data-communication-problem">¶</a>General strategy to solve data communication problem</h2>
+<ul>
+<li>Sync
+<ul>
+<li>direct requests between services</li>
+<li><strong>drawback</strong>:
+<ul>
+<li>dependency between services, forming <strong>net of dependency</strong></li>
+<li>single point of failure!</li>
+<li>slowest request is determinant</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Async
+<ul>
+<li>events driven
+<ul>
+<li>all services wire to Event Bus, let Event Bus handle what should each service do in response to event</li>
+<li><strong>drawback:</strong>
+<ul>
+<li>almost same as Sync service</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>let the additional service has its own database
+<ul>
+<li>other service can emit events to event bus so that other can listen to it and update DB accordingly.</li>
+<li><strong>Good:</strong>
+<ul>
+<li>No dependency</li>
+<li>Extremely fast</li>
+</ul>
+</li>
+<li>Drawback:
+<ul>
+<li>data duplication (extra storage, however, is relatively free nowadays)</li>
+<li>hard to understand</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="note note-info">
+            <p>接了一个 三小时多的 hands-on app <code>blog</code> 🥲 好长</p><p><a target="_blank" rel="noopener" href="https://github.com/q815101630/microservice-simple-blog">https://github.com/q815101630/microservice-simple-blog</a></p>
+          </div>
+<h2 id="Async-Event-Driven-Fetch-Posts-Comments"><a class="header-anchor" href="#Async-Event-Driven-Fetch-Posts-Comments">¶</a>Async Event Driven Fetch Posts+Comments</h2>
+<p>We see that to achieve the purpose of GET+POST, we need to do multiple requests to the same route, which is not efficient at all.</p>
+<p>We can introduce a Query Service that assembles all of the blogs + comments into an efficient data structure.</p>
+<p>When other services emit the event, Query service receives and does thing regarding it</p>
+<p>→ Send event</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208332.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>→ Create a post (in query service)</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208648.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>→ Send event</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208008.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>→ Create comments (in query service)</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208876.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>This type of solution</p>
+<ul>
+<li>Good: has no dependency</li>
+<li>Good: query service is very fast</li>
+<li>Bad: duplicate data</li>
+<li>Bad: hard to hard</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208916.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h1 id="Event-Bus"><a class="header-anchor" href="#Event-Bus">¶</a>Event Bus</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208063.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Event bus did what events should be emit to other services</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208969.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="Comment-Moderation"><a class="header-anchor" href="#Comment-Moderation">¶</a>Comment Moderation</h2>
+<p>In a comment moderation service, the best approach is to let moderation handled by the comment service and emits a generic event <code>CommentUpdated</code> . We do not want too many types that require each service to handle!</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201121208298.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Therefore, the overall data flows like:</p>
+<ol>
+<li>User submit comments</li>
+<li>Event <code>CommentCreated</code> event to Event Bus</li>
+<li>Moderation and Query service received this event</li>
+<li>Moderation Emit <code>CommentModerated</code> with a updated event</li>
+<li>Comments service received the event and change status to <code>Approved</code></li>
+<li>Emit <code>CommentUpdated</code> event to Event Bus</li>
+<li>Query Service update the comments based on event</li>
+</ol>
+<h2 id="Exceptions"><a class="header-anchor" href="#Exceptions">¶</a>Exceptions</h2>
+<p>If one of the service is lost, how do we handle it?</p>
+<ol>
+<li><strong>Sync Requests,</strong> fetching posts/comments from query service at all time and sync with its local DB</li>
+<li><strong>Direct DB Access,</strong> sync service’s local database with each other once a event is emitted.</li>
+<li><strong>Store Event</strong>, Store events in a Event Bus Data Store.</li>
+</ol>
+<p>See the third approach in the example code base!</p>
+<div class="note note-success">
+            <p>Thank you for reading along this article</p>
+          </div>
+<h2 id="Ref"><a class="header-anchor" href="#Ref">¶</a>Ref</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/q815101630/microservice-simple-blog">https://github.com/q815101630/microservice-simple-blog</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/backend/">backend</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
+                    
+                      <a class="hover-with-bg" href="/tags/microservice/">microservice</a>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/express-js/">express.js</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/13/microservice-kube/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Microservice - Deploy with K8s (2)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/09/wechat-message-vercel/">
+                        <span class="hidden-mobile">微信通知Twikoo新消息提醒（Vercel版本）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

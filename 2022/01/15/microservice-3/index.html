@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶Microservice (3)   Setup tsconfig with tsc —init index.ts Dockerfile Dockerignore auth-depl.yaml ingress-srv.yaml skaffold.yml skaffold dev  As we are using microservice architecture, we need to stan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microservice-Auth Service (3)">
+<meta property="og:url" content="http://example.com/2022/01/15/microservice-3/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶Microservice (3)   Setup tsconfig with tsc —init index.ts Dockerfile Dockerignore auth-depl.yaml ingress-srv.yaml skaffold.yml skaffold dev  As we are using microservice architecture, we need to stan">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/Microservices.png">
+<meta property="article:published_time" content="2022-01-16T01:09:48.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.336Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="microservice">
+<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="express.js">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/Microservices.png">
+  
+  
+  <title>Microservice-Auth Service (3) - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Microservice-Auth Service (3)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-15 17:09" pubdate>
+        January 15, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Microservice-Auth Service (3)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Microservice-3"><a class="header-anchor" href="#Microservice-3">¶</a>Microservice (3)</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151709190.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<ul>
+<li>Setup tsconfig with <code>tsc —init</code></li>
+<li><code>index.ts</code></li>
+<li><code>Dockerfile</code> <code>Dockerignore</code></li>
+<li><code>auth-depl.yaml</code></li>
+<li><code>ingress-srv.yaml</code></li>
+<li><code>skaffold.yml</code> <code>skaffold dev</code></li>
+</ul>
+<p>As we are using microservice architecture, we need to standardize the way of transmitting errors to clients.</p>
+<p>We can create a specific error handler (with four params) to handle all errors!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs tsx">import &#123; ValidationError &#125; from &quot;express-validator&quot;;<br><br>export class RequestValidationError extends Error &#123;<br>  constructor(public errors: ValidationError[]) &#123;<br>      super();<br>      <br><br>      &#x2F;&#x2F;Only because we are extending a built in class<br>      Object.setPrototypeOf(this, RequestValidationError.prototype);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151711817.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>We can use abstract class that force the custom error class to implement several functionalities</p>
+<div class="note note-warning">
+            <p>Check the code base for details</p>
+          </div>
+<h2 id="MongoDB"><a class="header-anchor" href="#MongoDB">¶</a>MongoDB</h2>
+<p>We will create <strong>One MongoDB for one service</strong></p>
+<div class="note note-warning">
+            <p>这里和microservice没太大关系， 具体看代码</p>
+          </div>
+<p>注意，我们需要用</p>
+<p><code>import &quot;express-async-errors&quot;;</code> 不然在express里的 <code>async</code>  函数无法<code>throw</code> error！</p>
+<h2 id="Authentication"><a class="header-anchor" href="#Authentication">¶</a>Authentication</h2>
+<p>How to authenticate can be a difficult problem in Microservices</p>
+<ol>
+<li>
+<p>Sync request (No Event Bus) with a centralized auth service:</p>
+<p><strong>BAD:</strong></p>
+<ol>
+<li><strong>coupling</strong></li>
+<li><strong>single break point of the whole system</strong></li>
+</ol>
+</li>
+<li>
+<p>Each service have its own JWT/Cookie to check</p>
+<p><strong>BAD:</strong></p>
+<ol>
+<li><strong>Hard to implement</strong></li>
+<li>cannot instantly reflect the current status of a user in all services as user has 100% control of the token!</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151711514.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Right now ,our strategy is as follow:</p>
+<ol>
+<li>user login through auth service, issued with a 15 mins of token</li>
+<li>if a admin user sends a request to ban a user, a <code>UserBanned</code> event is emitted to Event Bus</li>
+<li>all services will be listening to this event, and store the banned user into its own <code>redis</code> cache for 15 mins</li>
+<li>If a user reached a service, service can know if it is allowed through <code>redis</code> !</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151711808.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="JWT-Cookie"><a class="header-anchor" href="#JWT-Cookie">¶</a>JWT/Cookie</h2>
+<p>Cookie is sent through <code>Set-Cookie</code> and managed by the browser. Server side can normally be guaranteed requests will have to the access of the settled cookie</p>
+<p>JWT is handled by client code but not the browser. JWT token is sent through <code>header</code> every time of the request.</p>
+<p>Cookie’s expiration date can be ignored as it is handled by the browser.</p>
+<p>JWT is a more common and easy to handle technique as it is understood by other languages easily.</p>
+<div class="note note-warning">
+            <p>One important advantage to use microservice is that services can be implemented by different languages!</p>
+          </div>
+<p>Because of server side rendering, the first time a user request to a URL cannot attach any authentication information as normal SPA can do. Therefore, we must store the JWT in cookie! JWT itself is not secret. However, we can use Signing key to check if a JWT is verified or not.</p>
+<p>We need <code>cookie-session</code> to store session data in cookie! , JWT is naturally temper-resistant,</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151711782.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<div class="note note-warning">
+            <p>才发现，<code>_id</code> 会被 mongodb 自动转化为 property <code>id</code>of string type</p>
+          </div>
+<h2 id="Secrete-in-k8s"><a class="header-anchor" href="#Secrete-in-k8s">¶</a>Secrete in k8s</h2>
+<p>Secret object can be created and share through pods</p>
+<p>Secret object can then be treated as <code>env variable</code> for all pods.</p>
+<p>Imperative approach to create a secret object!</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">kubectl</span> <span class="hljs-string">create</span> <span class="hljs-string">secret</span> <span class="hljs-string">generic</span> <span class="hljs-string">jwt-secret</span> <span class="hljs-string">--from-literal=JWT_KEY=asdf</span><br></code></pre></td></tr></table></figure>
+<p>We then can put the secret into the container through the <code>Deployment</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spec:</span><br>      <span class="hljs-attr">containers:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">auth</span><br>          <span class="hljs-attr">image:</span> <span class="hljs-string">hughqing/auth</span><br>          <span class="hljs-attr">env:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">JWT_KEY</span><br>              <span class="hljs-attr">valueFROM:</span><br>                <span class="hljs-attr">secretKeyRef:</span><br>                  <span class="hljs-attr">name:</span> <span class="hljs-string">jwt-secret</span> <span class="hljs-comment"># the name of the secret</span><br>                  <span class="hljs-attr">key:</span> <span class="hljs-string">JWT_KEY</span><br></code></pre></td></tr></table></figure>
+<h2 id="id"><a class="header-anchor" href="#id">¶</a>_id</h2>
+<p><code>JSON.stringify()</code> can be overwritten by <code>toJSON()</code> function in the object</p>
+<h1 id="Testing"><a class="header-anchor" href="#Testing">¶</a>Testing</h1>
+<p>Main quesstion: What’s the scope of our tests?</p>
+<ul>
+<li>Single middleware → Unit test</li>
+<li>Single pipe</li>
+<li>The whole service</li>
+<li>different services?</li>
+</ul>
+<p>没写这，如果要用直接看视频吧</p>
+<p>We need to split the logic of <code>Express App</code> and <code>Start Up</code> into two files</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201151711194.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>See code for details please!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs tsx">it(&quot;returns a 400 with missing email or password&quot;, async () &#x3D;&gt; &#123;<br>  await request(app)<br>    .post(&quot;&#x2F;api&#x2F;users&#x2F;signup&quot;)<br>    .send(&#123;<br>      password: &quot;testple@ad.com&quot;,<br>    &#125;)<br>    .expect(400);<br><br>  return request(app)<br>    .post(&quot;&#x2F;api&#x2F;users&#x2F;signup&quot;)<br>    .send(&#123;<br>      email: &quot;testple@ad.com&quot;,<br>    &#125;)<br>    .expect(400);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<div class="note note-success">
+            <p>总结以下本小结：</p><ul><li><p>One MongoDB for each service!</p></li><li><p><code>import &quot;express-async-errors&quot;;</code> 不然在express里的 <code>async</code>  函数无法<code>throw</code> error！</p></li><li><p>Authentication can be difficult:</p><ul><li>Sync request (No Event Bus) with a centralized auth service:<ul><li><strong>coupling</strong></li><li><strong>single break point of the whole system</strong></li></ul></li><li>Each service have its own JWT/Cookie to check<ul><li><strong>Hard to implement</strong></li><li>cannot instantly reflect the current status of a user in all services as user has 100% control of the token</li></ul></li></ul></li><li><p>Our stategy:</p><p>Right now ,our strategy is as follow:</p><ol><li>user login through auth service, issued with a 15 mins of token</li><li>if a admin user sends a request to ban a user, a <code>UserBanned</code> event is emitted to Event Bus</li><li>all services will be listening to this event, and store the banned user into its own <code>redis</code> cache for 15 mins</li><li>If a user reached a service, service can know if it is allowed through <code>redis</code> !</li></ol></li><li><p><code>JSON.stringify()</code> can be overwritten by <code>toJSON()</code> function in the object</p></li><li><p>才发现，<code>_id</code> 会被 mongodb 自动转化为 property <code>id</code>of string type</p></li><li><p>Test 看代码</p></li></ul>
+          </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/backend/">backend</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/docker/">docker</a>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
+                    
+                      <a class="hover-with-bg" href="/tags/microservice/">microservice</a>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/express-js/">express.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/k8s/">k8s</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/20/how-to-write-good-tests/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">How to Write Good Tests?</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/13/microservice-kube/">
+                        <span class="hidden-mobile">Microservice - Deploy with K8s (2)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

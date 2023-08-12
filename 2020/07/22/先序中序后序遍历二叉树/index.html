@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="同じ人なんて いないから 孤独でも仕方ない でもね あぁ 聴きたい 歌や 声が あるから あぁ 泣いた 本や 映画が あるから あなたを導く夢はある 照らしてみせてよ Gifts  Gifts - Superfly ¶Pre,In,Post Traversal; Successor Node; Serialization; Origami 之前几周都比较水，算法课也没有怎么认真看，最近得慢慢补上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树相关问题">
+<meta property="og:url" content="http://example.com/2020/07/22/%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="同じ人なんて いないから 孤独でも仕方ない でもね あぁ 聴きたい 歌や 声が あるから あぁ 泣いた 本や 映画が あるから あなたを導く夢はある 照らしてみせてよ Gifts  Gifts - Superfly ¶Pre,In,Post Traversal; Successor Node; Serialization; Origami 之前几周都比较水，算法课也没有怎么认真看，最近得慢慢补上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-22T18:59:46.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.345Z">
+<meta property="article:author" content="Lucheng">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>二叉树相关问题 - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="二叉树相关问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-07-22 11:59" pubdate>
+        July 22, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      59 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">二叉树相关问题</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>同じ人なんて いないから<br>
+孤独でも仕方ない<br>
+でもね<br>
+あぁ 聴きたい 歌や 声が あるから<br>
+あぁ 泣いた 本や 映画が あるから<br>
+あなたを導く夢はある<br>
+照らしてみせてよ</p>
+<p>Gifts</p>
+</blockquote>
+<p><strong><em>Gifts - Superfly</em></strong></p>
+<h3 id="Pre-In-Post-Traversal-Successor-Node-Serialization-Origami"><a class="header-anchor" href="#Pre-In-Post-Traversal-Successor-Node-Serialization-Origami">¶</a><em>Pre,In,Post Traversal; Successor Node; Serialization; Origami</em></h3>
+<p>之前几周都比较水，算法课也没有怎么认真看，最近得慢慢补上来<br>
+不过算法还是需要慢慢消化，真正理解并且多复习，记忆才是最重要的</p>
+<h3 id="DFS"><a class="header-anchor" href="#DFS">¶</a><em>DFS</em></h3>
+<p>Pre, In, Post Order Traversal in Binary Tree</p>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, data</span>):</span><br>        self.value = data<br>        self.left = <span class="hljs-literal">None</span><br>        self.right = <span class="hljs-literal">None</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preOrderTraversal</span>(<span class="hljs-params">head</span>):</span><br>    <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    print(head.value + <span class="hljs-string">&#x27; &#x27;</span>)<br>    preOrderTraversal(head.left)<br>    preOrderTraversal(head.right)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inOrderTraversal</span>(<span class="hljs-params">head</span>):</span><br>    <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    inOrderTraversal(head.left)<br>    print(head.value + <span class="hljs-string">&#x27; &#x27;</span>)<br>    inOrderTraversal(head.right)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postOrderTraversal</span>(<span class="hljs-params">head</span>):</span><br>    <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    postOrderTraversal(head.left)<br>    postOrderTraversal(head.right)<br>    print(head.value + <span class="hljs-string">&#x27; &#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="Breadth-First-Search-BFS"><a class="header-anchor" href="#Breadth-First-Search-BFS">¶</a><em>Breadth First Search (BFS)</em></h3>
+<h4 id="这里是关于一道求树最大宽度的解，本质是用了BFS"><a class="header-anchor" href="#这里是关于一道求树最大宽度的解，本质是用了BFS">¶</a><em>这里是关于一道求树最大宽度的解，本质是用了BFS</em></h4>
+<p>这里最核心的BFS是用java写的</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">public</span> static <span class="hljs-literal">void</span> treeBFS(Node head) &#123;<br><span class="hljs-keyword">if</span> (head == <span class="hljs-built_in">null</span>) &#123;<br><span class="hljs-keyword">return</span>;<br>&#125;<br><span class="hljs-built_in">Queue</span>&lt;Node&gt; <span class="hljs-built_in">queue</span> = <span class="hljs-literal">new</span> LinkedList&lt;&gt;();<br><span class="hljs-built_in">queue</span>.add(head);<br><span class="hljs-keyword">while</span> (!<span class="hljs-built_in">queue</span>.isEmpty()) &#123;<br>Node cur = <span class="hljs-built_in">queue</span>.poll();<br>System.out.println(cur.value+<span class="hljs-string">&quot; &quot;</span>);<br><span class="hljs-keyword">if</span> (cur.left != <span class="hljs-built_in">null</span>) &#123;<br><span class="hljs-built_in">queue</span>.add(cur.left);<br>&#125;<br><span class="hljs-keyword">if</span> (cur.right != <span class="hljs-built_in">null</span>) &#123;<br><span class="hljs-built_in">queue</span>.add(cur.right);<br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>此题的python解以及测试：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs vim">from collections import deque<br><br>def breathFirstSearch(head):<br>    queue = deque()<br>    <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> None:<br>        <span class="hljs-keyword">return</span> None<br>    levelMap = &#123;&#125;<br>    levelMap[head] = <span class="hljs-number">1</span><br>    queue.<span class="hljs-keyword">append</span>(head)<br><br>    cLevel = <span class="hljs-number">1</span><br>    cNodes = <span class="hljs-number">0</span> # <span class="hljs-keyword">set</span> <span class="hljs-keyword">to</span> <span class="hljs-number">0</span> because we need <span class="hljs-keyword">to</span> use +=<span class="hljs-number">1</span> in <span class="hljs-keyword">while</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">make</span> loop run<br>    maxa = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> queue:<br>        cur = queue.popleft()<br>        level = levelMap.<span class="hljs-built_in">get</span>(cur)<br><br>        <span class="hljs-keyword">if</span> level == cLeve<span class="hljs-variable">l:</span><br>            cNodes += <span class="hljs-number">1</span> # nodes <span class="hljs-keyword">on</span> current level +=<span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;level: &#123;&#125;, nodes: &#123;&#125;&quot;</span>.format(cLevel, cNodes))<br>            <span class="hljs-keyword">if</span> cNodes &gt; <span class="hljs-built_in">max</span><span class="hljs-variable">a:</span><br>                maxa = cNodes<br>            cLevel += <span class="hljs-number">1</span><br>            cNodes = <span class="hljs-number">1</span> # cNodes <span class="hljs-keyword">is</span> the <span class="hljs-keyword">first</span> element of the level, (it <span class="hljs-built_in">has</span> been popped)<br><br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;Node: &#123;&#125;, level: &#123;&#125;&quot;</span>.format(cur.value, level))<br>        <span class="hljs-keyword">if</span> cur.<span class="hljs-keyword">left</span> <span class="hljs-keyword">is</span> not None:<br>            levelMap[cur.<span class="hljs-keyword">left</span>] = level + <span class="hljs-number">1</span><br>            queue.<span class="hljs-keyword">append</span>(cur.<span class="hljs-keyword">left</span>)<br>        <span class="hljs-keyword">if</span> cur.<span class="hljs-keyword">right</span> <span class="hljs-keyword">is</span> not None:<br>            levelMap[cur.<span class="hljs-keyword">right</span>] = level + <span class="hljs-number">1</span><br>            queue.<span class="hljs-keyword">append</span>(cur.<span class="hljs-keyword">right</span>)<br><br>    <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;level: &#123;&#125;, nodes: &#123;&#125;&quot;</span>.format(level, cNodes))<br><br>    <span class="hljs-string">&#x27;&#x27;</span><span class="hljs-string">&#x27;catch the max of the last level: it will not enter the while as all stuffs has been poped&#x27;</span><span class="hljs-string">&#x27;&#x27;</span><br><br>    <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;the max level is &#123;&#125;&quot;</span>.format(<span class="hljs-built_in">max</span>(maxa, cNodes)))<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    head = Node(<span class="hljs-number">1</span>)<br>    head.<span class="hljs-keyword">left</span> = Node(<span class="hljs-number">2</span>)<br>    head.<span class="hljs-keyword">right</span> = Node(<span class="hljs-number">3</span>)<br>    head.<span class="hljs-keyword">left</span>.<span class="hljs-keyword">left</span> = Node(<span class="hljs-number">4</span>)<br>    head.<span class="hljs-keyword">left</span>.<span class="hljs-keyword">right</span> = Node(<span class="hljs-number">5</span>)<br>    head.<span class="hljs-keyword">right</span>.<span class="hljs-keyword">left</span> = Node(<span class="hljs-number">6</span>)<br>    head.<span class="hljs-keyword">right</span>.<span class="hljs-keyword">right</span> = Node(<span class="hljs-number">7</span>)<br>    breathFirstSearch(head)<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="在中序遍历中后继节点与前驱节点的直接查找"><a class="header-anchor" href="#在中序遍历中后继节点与前驱节点的直接查找">¶</a><em>在中序遍历中后继节点与前驱节点的直接查找</em></h3>
+<h4 id="A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal"><a class="header-anchor" href="#A-direct-way-of-finding-the-successor-node-and-previous-node-in-the-in-order-traversal">¶</a><em>A direct way of finding the successor node and previous node in the in-order traversal</em></h4>
+<p><strong>S_uccessor:_</strong><br>
+<strong><em>Two situations:</em></strong></p>
+<ol>
+<li>the leftest child in the right tree of a node X is the next node in the traversal of node X.</li>
+<li>if the X does not have right tree, go to the parent node, and continue if the parent is always the right child of its parent, until it is the left child of the parent Y. this Y is the next node of X. However, there is no such y, means x does not have the next node.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27; to find the next node of a node in the in-order traversal&#x27;&#x27;&#x27;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, val</span>):</span><br>        self.value = val<br>        self.left = <span class="hljs-literal">None</span><br>        self.right = <span class="hljs-literal">None</span><br>        self.parent = <span class="hljs-literal">None</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">two situations:</span><br><span class="hljs-string">1. the leftest child in the right tree of a node X is the next node in the traversal of node X</span><br><span class="hljs-string">2. if the X does not have right tree, go to the parent node, and continue if the parent</span><br><span class="hljs-string">is always the right child of its parent, until it is the left child of the parent Y. this Y</span><br><span class="hljs-string">is the next node of X. However, there is no such y, means x does not have the next node.</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findSuccessor</span>(<span class="hljs-params">node</span>):</span><br>    <span class="hljs-keyword">if</span> node <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> node.right <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> getMostLeft(node.right)<br>    <span class="hljs-keyword">else</span>:<br>        parent = node.parent<br>        <span class="hljs-keyword">while</span> parent <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> node != parent.left:<br>            node = parent<br>            parent = node.parent<br>        <span class="hljs-keyword">return</span> parent<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getMostLeft</span>(<span class="hljs-params">node</span>):</span><br>    <span class="hljs-keyword">if</span> node <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">while</span> node.left <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        node = node.left<br>    <span class="hljs-keyword">return</span> node<br></code></pre></td></tr></table></figure>
+<p><strong><em>Previous Node:</em></strong><br>
+<strong><em>Two situations:</em></strong></p>
+<ol>
+<li>if the node has left child, the prev node is rightest of the left child.</li>
+<li>if the node X does not have left child, we keep going to its parent. if the parent is also the left child of its parent, keep going until it is the right child of a parent. the parent here is its previous node X.</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">def getPreviousNode(<span class="hljs-keyword">node</span><span class="hljs-title">):</span><br><span class="hljs-title">    if</span> <span class="hljs-keyword">node</span> <span class="hljs-title">is</span> None:<br>        return None<br>    elif node.left:<br>        return getMostRight(node.left)<br>    else:<br>        parent = node.parent<br>        while parent <span class="hljs-keyword">and</span> <span class="hljs-keyword">node</span> <span class="hljs-title">!= parent</span>.right:<br>            <span class="hljs-keyword">node</span> <span class="hljs-title">= parent</span><br>            parent = node.parent<br>        return parent<br><br>def getMostRight(<span class="hljs-keyword">node</span><span class="hljs-title">):</span><br><span class="hljs-title">    if</span> not <span class="hljs-keyword">node</span><span class="hljs-title">:</span><br><span class="hljs-title">        return</span> None<br>    while node.right:<br>        <span class="hljs-keyword">node</span> <span class="hljs-title">= node</span>.right<br>    return <span class="hljs-keyword">node</span><span class="hljs-title"></span><br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="Serialization-and-Deserialization"><a class="header-anchor" href="#Serialization-and-Deserialization">¶</a>_Serialization and Deserialization</h3>
+<p>序列化 和 反序列化_</p>
+<p>Serialization:<br>
+serialize the binary tree in the memory into string and<br>
+deserialize it from the string to memory.<br>
+Structure and Data should be preserved.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, val</span>):</span><br>        self.value = val<br>        self.left = <span class="hljs-literal">None</span><br>        self.right = <span class="hljs-literal">None</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Node &lt;&#123;&#125;&gt;&quot;</span>.<span class="hljs-built_in">format</span>(self.value)<br><br>    __str__ = __repr__<br><br><span class="hljs-string">&#x27;&#x27;&#x27;record a node by _ and do not ignore the None node&#x27;&#x27;&#x27;</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preOrderSerialize</span>(<span class="hljs-params">head</span>):</span><br>    <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;#_&#x27;</span><br>    output = <span class="hljs-built_in">str</span>(head.value) + <span class="hljs-string">&quot;_&quot;</span><br>    output += preOrderSerialize(head.left)  <span class="hljs-comment"># output is waiting for further recursion from the left</span><br>    output += preOrderSerialize(head.right)  <span class="hljs-comment"># waiting for the right</span><br>    <span class="hljs-keyword">return</span> output  <span class="hljs-comment"># return output itself to append to the output on the upper level</span><br><br><br><br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preOrderDeserialize_String</span>(<span class="hljs-params">string</span>):</span><br>    values = string.split(<span class="hljs-string">&#x27;_&#x27;</span>)<br>    queue = deque()<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> values:<br>        queue.append(i)<br>    <span class="hljs-keyword">return</span> preOrderDeserialize_Tree_subprocess(queue)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preOrderDeserialize_Tree_subprocess</span>(<span class="hljs-params">queue</span>):</span><br>    value = queue.popleft()<br>    <span class="hljs-keyword">if</span> value == <span class="hljs-string">&#x27;#&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    head = Node(<span class="hljs-built_in">int</span>(value))<br>    head.left = preOrderDeserialize_Tree_subprocess(queue)<br>    head.right = preOrderDeserialize_Tree_subprocess(queue)<br>    <span class="hljs-keyword">return</span> head<br></code></pre></td></tr></table></figure>
+<p>应用： 一个树是否是另外一个树的子树</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">application: is a tree t1 the subtree of another tree t2 ?</span><br><span class="hljs-string">answer: serialize both and check t1_string is part of t2_string</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isSubtreeOf</span>(<span class="hljs-params">t1, t2</span>):</span><br>    t1_string = preOrderSerialize(t1)<br>    t2_string = preOrderSerialize(t2)<br>    <span class="hljs-keyword">return</span> t1_string <span class="hljs-keyword">in</span> t2_string<br></code></pre></td></tr></table></figure>
+<p>Test:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">if __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    head = <span class="hljs-keyword">Node</span><span class="hljs-title">(1</span>)<br>    head.left = <span class="hljs-keyword">Node</span><span class="hljs-title">(2</span>)<br>    head.right = <span class="hljs-keyword">Node</span><span class="hljs-title">(3</span>)<br>    head.left.left = <span class="hljs-keyword">Node</span><span class="hljs-title">(4</span>)<br>    head.left.right = <span class="hljs-keyword">Node</span><span class="hljs-title">(5</span>)<br>    head.right.left = <span class="hljs-keyword">Node</span><span class="hljs-title">(6</span>)<br>    head.right.right = <span class="hljs-keyword">Node</span><span class="hljs-title">(7</span>)<br>    serial = preOrderSerialize(head)<br>    print(<span class="hljs-string">&quot;this is a serialized tree: \n&#123;&#125;&quot;</span>.format(serial))<br>    head = preOrderDeserialize_String(serial)<br>    print(<span class="hljs-string">&quot;Now the tree has be deserialized, start to check&quot;</span>)<br>    print(head, head.left, head.right, head.left.left, head.left.right, head.right.left, head.right.right)<br>    print(<span class="hljs-string">&quot;\nnow check if t2 is a subtree of t1:&quot;</span>)<br>    head_2 = <span class="hljs-keyword">Node</span><span class="hljs-title">(3</span>)<br>    head_2.left = <span class="hljs-keyword">Node</span><span class="hljs-title">(6</span>)<br>    head_2.right = <span class="hljs-keyword">Node</span><span class="hljs-title">(7</span>)<br>    print(isSubtreeOf(head_2, head))<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="Origami-折纸问题"><a class="header-anchor" href="#Origami-折纸问题">¶</a><em>Origami 折纸问题</em></h3>
+<p>这道题需要再实际折一下更好理解</p>
+<p>_Fold the paper inwards (always), everytime after the first inward folding, we will have two new fold mark (one inward mark upon and outward mark below every fold marks in current level<br>
+(current times of folding))</p>
+<p>Solution: the folding process is a tree with inward mark. all heads of left child is inward, and all head of right child is outward_</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printAllFolds</span>(<span class="hljs-params">N</span>):</span><br>    printProcess(<span class="hljs-number">1</span>, N, <span class="hljs-literal">True</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printProcess</span>(<span class="hljs-params">i, N, down</span>):</span>  <span class="hljs-comment"># args: (level, the total times of folding, inwards)</span><br>    <span class="hljs-keyword">if</span> i &gt; N:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    printProcess(i+<span class="hljs-number">1</span>, N, <span class="hljs-literal">True</span>)<br>    <span class="hljs-keyword">if</span> down:<br>        print(<span class="hljs-string">&#x27;inwards&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        print(<span class="hljs-string">&#x27;outwards&#x27;</span>)<br>    printProcess(i+<span class="hljs-number">1</span>, N, <span class="hljs-literal">False</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    printAllFolds(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/algo/">algo</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/29/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%995/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用Flask搭建一个简易的博客网站(5)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/11/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%994/">
+                        <span class="hidden-mobile">利用Flask搭建一个简易的博客网站(4)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

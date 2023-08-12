@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶What is LeetFlash🤔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetFlash Tutorial">
+<meta property="og:url" content="http://example.com/2022/05/12/tutorial-en/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶What is LeetFlash🤔">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241526827.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241535876.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241538652.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241543799.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241557581.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241613252.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241632839.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241636180.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241638274.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241615228.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202207122043892.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202207122047588.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204141458456.png">
+<meta property="article:published_time" content="2022-05-13T05:57:32.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.344Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="leetflash">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="nestjs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241526827.png">
+  
+  
+  <title>LeetFlash Tutorial - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/icon.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="LeetFlash Tutorial">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-12 22:57" pubdate>
+        May 12, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">LeetFlash Tutorial</h1>
+            
+            <div class="markdown-body">
+              <h2 id="What-is-LeetFlash🤔"><a class="header-anchor" href="#What-is-LeetFlash🤔">¶</a>What is LeetFlash🤔</h2>
+<span id="more"></span>
+<div class="note note-success">
+            <p>中文教程请<a target="_blank" rel="noopener" href="https://lucheng.xyz/2022/04/14/leetflash">点击这里</a></p>
+          </div>
+<p>Last Update： 2022/7/12  2.1.1 version</p>
+<div class="note note-warning">
+            <p><strong>Old Users： Please enter Extension Dashboard and update the LeetFlash！</strong></p>
+          </div>
+<p>LeetFlash is a website based on the idea of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Spaced_repetition">Spaced repetition</a> to efficiently review LeetCode algorithm problems. After downloading and linking the Chrome plug-in, <strong>LeetFlash will automatically record your question activities and provide fully automatic review time suggestions</strong>. Inspired by Anki, this app is very suitable for those who have just started to prepare for algorithm questions but are troubled by often forgetting their thought process. In order to facilitate the use of both LeetCode and LeetCode-CN users, LeetFlash supports both sites.</p>
+<p>The core purpose of LeetFlash is to use a scientific interval review time to improve your mastery of algorithm knowledge points. <strong>Please note, LeetFlash does not advocate rote memorization of topics.</strong></p>
+<h2 id="How-to-use-LeetFlash-😎"><a class="header-anchor" href="#How-to-use-LeetFlash-😎">¶</a>How to use LeetFlash 😎</h2>
+<h3 id="How-to-download-⬇️"><a class="header-anchor" href="#How-to-download-⬇️">¶</a>How to download ⬇️</h3>
+<ol>
+<li>
+<p>Go to <a target="_blank" rel="noopener" href="https://leetFlash.com">https://leetflash.com</a> to register an account</p>
+<p>Now it supports two login methods: Google and email registration.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241526827.png" srcset="/img/loading.gif" lazyload alt="Registration Page"></p>
+</li>
+<li>
+<p>Open the settings page and copy the API Token.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241535876.gif" srcset="/img/loading.gif" lazyload alt="Copy Token"></p>
+</li>
+<li>
+<p>Enter the Chrome Extension Store to download the LeetFlash plug-in:</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241538652.gif" srcset="/img/loading.gif" lazyload alt="Adding Extension"></p>
+</li>
+<li>
+<p>Paste the copied API Token on the pop-up options page and click save. After receiving the following two notifications, linking is successful.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241543799.png" srcset="/img/loading.gif" lazyload alt="Linking Success"></p>
+</li>
+<li>
+<p>You can now start coding and submissions will be synced at LeetFlash.</p>
+</li>
+</ol>
+<h3 id="How-to-use-🧐"><a class="header-anchor" href="#How-to-use-🧐">¶</a>How to use 🧐</h3>
+<h3 id="Workflow"><a class="header-anchor" href="#Workflow">¶</a>Workflow</h3>
+<ol>
+<li>
+<p>Every time you submit a question successfully, you will receive a LeetFlash sync notification.</p>
+<p>**If you don’t want to review the current question (for example, this question is too easy for you!), after version 2.1.0, you can choose to archive the current question directly in the Chrome notification in the lower right corner. Archiving means that the question will not appear in your Daily Review list. **</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241557581.gif" srcset="/img/loading.gif" lazyload alt="Sync Question"></p>
+</li>
+<li>
+<p><s>If you open the webpage (<a target="_blank" rel="noopener" href="https://leetflash.com">https://leetflash.com</a>) while submitting the question, you will receive one of the following three popup windows: New, Review, and Early Review. Please see the <strong>Popup window</strong> section below.</s> **To simplify workflow, this feature is temporarily disabled. That is, after each question is submitted, the next review time will be automatically updated. **</p>
+</li>
+<li>
+<p>When <strong>a next repetition date comes</strong>, you can view the details through <strong>Daily Review</strong> (Note: Daily Review will only display the questions due today or before).</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241613252.gif" srcset="/img/loading.gif" lazyload alt="Daily Review"></p>
+</li>
+<li>
+<p>You can sync notes from LeetCode as well.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241632839.gif" srcset="/img/loading.gif" lazyload alt="Sync Notes"></p>
+</li>
+<li>
+<p><s>After submitting the question, you can manually select the next review date or select the time through the pop-up window</s></p>
+<p>**To simplify workflow, this feature is temporarily disabled. That is, after each question is submitted, the next review time will be automatically updated. **</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241636180.gif" srcset="/img/loading.gif" lazyload alt="Review-Pop-up"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241638274.gif" srcset="/img/loading.gif" lazyload alt="Review-Manual"></p>
+<p>The only difference between the two is that the pop-up window needs to be triggered by successfully submitting a question, and there is no trigger requirement for manual selection.</p>
+<p>After completing all daily review questions, you can refresh the page, and you will be prompted that all the reviews have been completed today, good job! (●’◡’●)</p>
+</li>
+<li>
+<p>You can switch to open either LeetCode or LeetCode CN and switch the question language.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204241615228.gif" srcset="/img/loading.gif" lazyload alt="Swtich Language"></p>
+</li>
+</ol>
+<h3 id="More-Info"><a class="header-anchor" href="#More-Info">¶</a>More Info</h3>
+<h4 id="1️⃣Popup"><a class="header-anchor" href="#1️⃣Popup">¶</a>1️⃣Popup</h4>
+<p><s>When you successfully log in, any page of the website will <strong>sync</strong> your practice activities, and a successful submission will pop up a window and ask your next review time.</s></p>
+<p><s>Now the popup page of the website only allows <strong>one page</strong> (the lat	est opened) of the same account to be synchronized.。</s></p>
+<p>~~What each button represents:</p>
+<ol>
+<li><s>After the question is successfully submitted and passed, the website will record the current submission activity and set the next review date.</s></li>
+<li><s><strong>(Early Review)</strong> If the next review time for the topic is in the future, the new submission will allow you to go directly to the next stage, and the default stage will not change.</s></li>
+<li><s><strong>(Overdue review)</strong> If the next review time for the topic has passed, you can choose to review it tomorrow or three days later, and the default stage will not change.</s></li>
+<li><s><strong>(Review in time)</strong> If the next review time for the topic is <strong>today</strong>, you can choose to review it tomorrow or go directly to the next stage. The default stage will not change.</s></li>
+</ol>
+<p><strong>Disabled from version 2.1.0</strong></p>
+<h4 id="2️⃣Daily-Review"><a class="header-anchor" href="#2️⃣Daily-Review">¶</a>2️⃣Daily Review</h4>
+<p>Under the Daily Review tab, you can browse the questions and notes with due dates on or before today. Here you can manually select:</p>
+<ol>
+<li>Review again tomorrow, staying at the current stage.</li>
+<li>Go to the next stage.</li>
+</ol>
+<p>In this way, you can consider whether you need to consolidate your memory according to your understanding of each question.</p>
+<p><s><strong>Notes</strong> are the notes you take using the notebook function in LeetCode. Taking into account some factors, now only the latest notes of a specific question (without distinguishing between CN and EN sites) will be synchronized.</s></p>
+<h4 id="3️⃣DashBoard"><a class="header-anchor" href="#3️⃣DashBoard">¶</a>3️⃣DashBoard</h4>
+<p>On this page you can see all the recorded questions, <strong>Version 2.1.1, you can click this icon to operate the question</strong></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202207122043892.png" srcset="/img/loading.gif" lazyload alt="image-20220712204352777"></p>
+<ol>
+<li><strong>Only show questions that have not been archived</strong></li>
+<li><strong>Archive multiple questions at once</strong></li>
+<li><strong>Activate (re-enable) multiple issues at once</strong></li>
+<li><strong>Reset multiple questions at once (re-enable and set question stage to initial value 1)</strong></li>
+<li><strong>Delete multiple questions at once (delete all records for this question)</strong></li>
+</ol>
+<p>After selecting the operation you want, check the question, and the dashboard will be automatically updated after confirming</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202207122047588.png" srcset="/img/loading.gif" lazyload alt="image-20220712204745515"></p>
+<p>Features under development are:</p>
+<ol>
+<li>Allow filtering based on <code>Archive</code> and <code>Topic Tags</code>.</li>
+<li>More and more are under discussion</li>
+</ol>
+<h1 id="About-LeetFlash😊"><a class="header-anchor" href="#About-LeetFlash😊">¶</a>About LeetFlash😊</h1>
+<p>Domain：<a target="_blank" rel="noopener" href="https://LeetFlash.com">https://LeetFlash.com</a></p>
+<p>LeetFlash is a free and open source website based on <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/quick-guide-gplv3.html">GPLv3</a>. The core purpose is to help you review the questions more conveniently, efficiently.</p>
+<p>If you are interested in development, welcome to pr! Source code warehouse address: <a target="_blank" rel="noopener" href="https://github.com/q815101630/LeetFlash">GitHub</a></p>
+<p>If you think LeetFlash is not bad, your donation is a huge encouragement to me, and it will also help the normal operation of the website~</p>
+<img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202204141458456.png" srcset="/img/loading.gif" lazyload alt="" style="zoom: 50%;" />
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/fullstack/">fullstack</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetflash/">leetflash</a>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
+                    
+                      <a class="hover-with-bg" href="/tags/nestjs/">nestjs</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/12/Git-Review-Basic/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git Review Basics</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/14/leetflash/">
+                        <span class="hidden-mobile">LeetFlash 上线啦</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

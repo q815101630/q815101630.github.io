@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Nest.js Course">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NestJs-Notes">
+<meta property="og:url" content="http://example.com/2021/12/16/NestJs-Notes/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="Nest.js Course">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/nest.png">
+<meta property="article:published_time" content="2021-12-16T19:33:00.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.328Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="nestJs">
+<meta property="article:tag" content="TS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/nest.png">
+  
+  
+  <title>NestJs-Notes - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="NestJs-Notes">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-16 11:33" pubdate>
+        December 16, 2021 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      23k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      195 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">NestJs-Notes</h1>
+            
+            <div class="markdown-body">
+              <p>Nest.js Course</p>
+<span id="more"></span>
+<h1 id="Nest-js-Course"><a class="header-anchor" href="#Nest-js-Course">¶</a>Nest.js Course</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/Untitasdled.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161129474.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>NestJs provides special tools to control the flow.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130316.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="NestJs-decorators"><a class="header-anchor" href="#NestJs-decorators">¶</a>NestJs decorators</h2>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130694.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="Validate-data"><a class="header-anchor" href="#Validate-data">¶</a>Validate data</h2>
+<p>ValidationPipe</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs tsx">import &#123; NestFactory &#125; from &#39;@nestjs&#x2F;core&#39;;<br>import &#123; MessagesModule &#125; from &#39;.&#x2F;messages&#x2F;messages.module&#39;;<br><br>import &#123; ValidationPipe &#125; from &#39;@nestjs&#x2F;common&#39;;<br><br>async function bootstrap() &#123;<br>  const app &#x3D; await NestFactory.create(MessagesModule);<br><br>  app.useGlobalPipes(new ValidationPipe());<br><br>  await app.listen(3000);<br>&#125;<br>bootstrap();<br></code></pre></td></tr></table></figure>
+<p><strong>Validation workflow</strong></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130307.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="Service-↔-Repository"><a class="header-anchor" href="#Service-↔-Repository">¶</a>Service ↔ Repository</h2>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130133.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>One services may include multiple repositories.</p>
+<h1 id="Dependency-Injection"><a class="header-anchor" href="#Dependency-Injection">¶</a>Dependency Injection</h1>
+<blockquote>
+<p>making use of inversion of control with minimal number of instance</p>
+</blockquote>
+<p>Motivation:</p>
+<p>→ : dependent on</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130861.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Pipe → MessagesController → Messages Service → Messages Repository</p>
+<p>如果我们在 <code>Service constructor</code> 里面 instantiate the <code>repository</code></p>
+<p>那么我们就违反了 inversion of control principle</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130365.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>在Briefly 2.0里， 犯了这个错误，所以导致每个类都基于 一个 machine learning model</p>
+<p>In this example, we define an <code>interface</code> , in which the interface defines a list of methods that can be performed.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130792.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130578.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>To make a controller with inversion of control, we need:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tsx">const repo &#x3D; new Messages Repository();<br>const service &#x3D; new MessagesService(repo);<br>const controller &#x3D; new MessagesController(service);<br><br>const controller &#x3D; new MessagesController();<br></code></pre></td></tr></table></figure>
+<p>With dependency injection, we can minimize the amount of code</p>
+<h2 id="DI-Container-Injectors"><a class="header-anchor" href="#DI-Container-Injectors">¶</a>DI Container/Injectors</h2>
+<p>A place to store all classes and their dependencies AND instances that I have created</p>
+<p>Internally, when we feed our controller to Nest, it will look over the <code>constructor</code> of the controller and register all dependencies into the DI container. Then it will create such dependency instance so a controller can be created.</p>
+<p><strong>The benefit of doing this is that we only create one copy of dependency and share it through controllers (i.e. services, repository)!</strong></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130660.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130869.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><code>Injectable</code> marks a class to register in container</p>
+<p>add these classes into <code>module decorator providers</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs tsx"> export class MessagesService &#123;<br>	messagesRepo: MessagesRepository;<br>	constructor(messagesRepo: MessagesRepository)&#123;<br>		this.messagesRepo &#x3D; messagesRepo;<br>	&#125;<br>&#125;<br>&#x2F;&#x2F;Same as <br>export class MessagesService &#123;<br>	constructor(public messagesRepo: MessagesRepository)&#123;&#125;<br>&#125;<br><br>export class MessagesService &#123;<br>	constructor(private messagesRepo: MessagesRepository)&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="DI-inside-a-module"><a class="header-anchor" href="#DI-inside-a-module">¶</a>DI inside a module</h3>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130949.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h3 id="DI-between-modules"><a class="header-anchor" href="#DI-between-modules">¶</a>DI between modules</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F; power.modules.ts<br>import &#123; Module &#125; from &quot;@nestjs&#x2F;common&quot;;<br>import &#123; PowerService &#125; from &quot;.&#x2F;power.service;<br><br>@Module(&#123;<br>	providers: [PowerService],<br>	exports: [PowerService]<br>&#125;)<br>export class PowerModule&#123;&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130581.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h1 id="About-Typeorm"><a class="header-anchor" href="#About-Typeorm">¶</a>About Typeorm</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130705.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>To create a entity:</p>
+<ol>
+<li>Connect with db at <code>app.module</code></li>
+<li>Create <code>User</code> entity</li>
+<li>import <code>TypeOrmModule.forFeature([User])</code> at <code>User.module</code></li>
+<li>import <code>User</code> at <code>app.module</code></li>
+</ol>
+<h2 id="Connection-with-SQLite"><a class="header-anchor" href="#Connection-with-SQLite">¶</a>Connection with SQLite</h2>
+<p><code>forRoot</code> means the connection is shared through all modules!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs tsx">@Module(&#123;<br>  imports: [<br>    TypeOrmModule.forRoot(&#123;<br>      type: &#39;sqlite&#39;,<br>      database: &#39;db.sqlite&#39;,<br>      entities: [],      &#x2F;&#x2F;at last, add User into this list<br>      synchronize: true, &#x2F;&#x2F; only in dev: automatically update SQL table<br>    &#125;),<br>    UsersModule,<br>    ReportsModule,<br>  ],<br>  controllers: [AppController],<br>  providers: [AppService],<br>&#125;)<br>export class AppModule &#123;&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Auto-create-repository-for-user"><a class="header-anchor" href="#Auto-create-repository-for-user">¶</a>Auto create repository for user</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs tsx">import &#123; Module &#125; from &#39;@nestjs&#x2F;common&#39;;<br>import &#123; TypeOrmModule &#125; from &#39;@nestjs&#x2F;typeorm&#39;;<br>import &#123; UsersController &#125; from &#39;.&#x2F;users.controller&#39;;<br>import &#123; UsersService &#125; from &#39;.&#x2F;users.service&#39;;<br><br>import &#123; User &#125; from &#39;.&#x2F;user.entity&#39;;<br>@Module(&#123;<br>  imports: [TypeOrmModule.forFeature([User])], &#x2F;&#x2F;auto-create repo<br>  controllers: [UsersController],<br>  providers: [UsersService],<br>&#125;)<br>export class UsersModule &#123;&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130038.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="validation-pipe"><a class="header-anchor" href="#validation-pipe">¶</a>validation pipe</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tsx">async function bootstrap() &#123;<br>  const app &#x3D; await NestFactory.create(AppModule);<br>  app.useGlobalPipes(<br>    new ValidationPipe(&#123;<br>      whitelist: true, &#x2F;&#x2F; means: only allow those I defined in DTO to be validate<br>    &#125;),<br>  );<br>  await app.listen(3000);<br>&#125;<br>bootstrap();<br></code></pre></td></tr></table></figure>
+<h2 id="Inject-Repo-into-Service"><a class="header-anchor" href="#Inject-Repo-into-Service">¶</a>Inject Repo into Service</h2>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; Injectable &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; Repository &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;typeorm&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; InjectRepository &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/typeorm&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; User &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./user.entity&#x27;</span>;<br><br>@Injectable()<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsersService</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">@InjectRepository(User) private repo: Repository&lt;User&gt;</span>)</span> &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>the decorator <code>InjectRepository(User)</code> is needed for the generic type <code>&lt;User&gt;</code></p>
+<p><code>this.repo.create(&#123;email, password&#125;);</code> creates an entity.</p>
+<p><code>this.repo.save(user);</code> persists the data into DB.</p>
+<p>Why we need to split them into two is that: if validation is set on the entity directly, we can validate them between <code>create</code> and <code>save</code>.</p>
+<h2 id="Hooks"><a class="header-anchor" href="#Hooks">¶</a>Hooks</h2>
+<p>Hooks are basically the <code>Trigger</code> in SQL</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">//user.entity.ts</span><br><span class="hljs-keyword">import</span> &#123;<br>  AfterInsert,<br>  AfterRemove,<br>  AfterUpdate,<br>  Entity,<br>  Column,<br>  PrimaryGeneratedColumn,<br>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;typeorm&#x27;</span>;<br><br>@Entity()<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>  @PrimaryGeneratedColumn()<br>  id: number;<br><br>  @Column()<br>  email: string;<br><br>  @Column()<br>  password: string;<br><br>  @AfterInsert()<br>  <span class="hljs-function"><span class="hljs-title">logInsert</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Inserted User: &#x27;</span>, <span class="hljs-built_in">this</span>.id);<br>  &#125;<br><br>  @AfterUpdate()<br>  <span class="hljs-function"><span class="hljs-title">logUpdate</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Updated User: &#x27;</span>, <span class="hljs-built_in">this</span>.id);<br>  &#125;<br><br>  @AfterRemove()<br>  <span class="hljs-function"><span class="hljs-title">logRemove</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Removed User: &#x27;</span>, <span class="hljs-built_in">this</span>.id);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Saving User entity (by create - save) instance will trigger <code>Hook</code>, directly saving  (only by save) will not trigger hook.</p>
+<p>Similar with <code>save()</code> with <code>insert()</code> <code>update()</code></p>
+<p><code>save()</code> is called with a user entity object, <code>insert()</code> <code>update()</code> is called with a SQL record</p>
+<p>Similar to <code>remove()</code> with <code>delete()</code> .</p>
+<h2 id="Update-Partial"><a class="header-anchor" href="#Update-Partial">¶</a>Update / Partial</h2>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params">id: number, attrs: Partial&lt;User&gt;</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.findOne(id);<br>    <span class="hljs-keyword">if</span> (!user) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;User not found&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">Object</span>.assign(user, attrs);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.repo.save(user);<br>  &#125;<br></code></pre></td></tr></table></figure>
+<p>if we want to use <code>entity</code> , we need to first fetch the entity from DB and then update the entity. <code>Object.assign</code> allows attrs to be expanded and overwrites/add all attributes of <code>user</code> object. Then we call <code>save(user)</code></p>
+<h2 id="controller-CRUD-parseInt"><a class="header-anchor" href="#controller-CRUD-parseInt">¶</a>controller CRUD / parseInt</h2>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx">@Get(<span class="hljs-string">&#x27;/:id&#x27;</span>)<br>  <span class="hljs-function"><span class="hljs-title">findUser</span>(<span class="hljs-params">@Param(<span class="hljs-string">&#x27;id&#x27;</span>) id: string</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.usersService.findOne(<span class="hljs-built_in">parseInt</span>(id));<br>  &#125;<br><br>@Get(<span class="hljs-string">&#x27;/&#x27;</span>)<br>  <span class="hljs-function"><span class="hljs-title">findAllusers</span>(<span class="hljs-params">@Query(<span class="hljs-string">&#x27;email&#x27;</span>) email: string</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.usersService.find(email);<br>  &#125;<br><span class="hljs-comment">//... and more, check out code base</span><br></code></pre></td></tr></table></figure>
+<h2 id="Error-handling"><a class="header-anchor" href="#Error-handling">¶</a>Error handling</h2>
+<p>We cannot handle <code>NotFoundException</code> at the service level because other transmitting protocol such as <code>WebSocket</code> does not support suck error handling.  But in our case, we can do so as we do not aim to utilize this service in other protocols at this time.</p>
+<h2 id="Exclude-attrs-from-an-entity"><a class="header-anchor" href="#Exclude-attrs-from-an-entity">¶</a>Exclude attrs from an entity</h2>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130426.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">//user.entity.ts</span><br>...<br>  @Exclude()<br>  @Column()<br>  password: string;<br>...<br></code></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">//users.controller.ts</span><br>  @UseInterceptors(ClassSerializerInterceptor)<br>  @Get(<span class="hljs-string">&#x27;/:id&#x27;</span>)<br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">findUser</span>(<span class="hljs-params">@Param(<span class="hljs-string">&#x27;id&#x27;</span>) id: string</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.usersService.findOne(<span class="hljs-built_in">parseInt</span>(id));<br>    <span class="hljs-keyword">if</span> (!user) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotFoundException(<span class="hljs-string">&#x27;User not found&#x27;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> user;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<p>This approach is not the best because it is not customizable.</p>
+<h2 id="A-new-approach-custom-interceptor"><a class="header-anchor" href="#A-new-approach-custom-interceptor">¶</a><strong>A new approach: custom interceptor</strong></h2>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130513.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>We can apply our custom interceptor on all routes, controllers, global levels!</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161130519.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131762.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// interceptors/serialize.interceptor.ts</span><br><span class="hljs-keyword">import</span> &#123; NestInterceptor, ExecutionContext, CallHandler, UseInterceptors &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; Observable &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; map &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; plainToClass &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;class-transformer&#x27;</span>;<br><br><span class="hljs-comment">// check it must be a class</span><br>interface ClassConstructor &#123;<br>  <span class="hljs-keyword">new</span> (...args: any[]): &#123;&#125;;<br>&#125;<br><br><span class="hljs-comment">//wrap a decorator around a class</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Serialize</span>(<span class="hljs-params">dto: ClassConstructor </span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> UseInterceptors(<span class="hljs-keyword">new</span> SerializeInterceptor(dto));<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SerializeInterceptor</span> <span class="hljs-title">implements</span> <span class="hljs-title">NestInterceptor</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">private dto: ClassConstructor </span>)</span> &#123;&#125;<br><br>  intercept(context: ExecutionContext, <span class="hljs-attr">next</span>: CallHandler): Observable&lt;any&gt; &#123;<br>    <span class="hljs-comment">//Here runs before the handler</span><br>    <span class="hljs-comment">// console.log(&#x27;Before...&#x27;);</span><br><br>    <span class="hljs-comment">//Here runs after the handler but before the response is sent</span><br>    <span class="hljs-keyword">return</span> next.handle().pipe(<br>      map(<span class="hljs-function">(<span class="hljs-params">data: any</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> plainToClass(<span class="hljs-built_in">this</span>.dto, data, &#123;<br>          excludeExtraneousValues: <span class="hljs-literal">true</span>,<br>        &#125;);<br>      &#125;),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// users.controller.ts</span><br><br><span class="hljs-comment">//@UseInterceptors(new SerializeInterceptor(UserDto));</span><br>  @Serialize(UserDto)<br>  @Get(<span class="hljs-string">&#x27;/:id&#x27;</span>)<br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">findUser</span>(<span class="hljs-params">@Param(<span class="hljs-string">&#x27;id&#x27;</span>) id: string</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.usersService.findOne(<span class="hljs-built_in">parseInt</span>(id));<br>    <span class="hljs-keyword">if</span> (!user) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotFoundException(<span class="hljs-string">&#x27;User not found&#x27;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> user;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<p>Or we can apply to the whole controller</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsx">@Controller(<span class="hljs-string">&#x27;auth&#x27;</span>)<br>@Serialize(UserDto)<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsersController</span> </span>&#123;...&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="Authentication"><a class="header-anchor" href="#Authentication">¶</a>Authentication</h1>
+<p>Create a new Auth service is very scalable if we have more auth feature in the future!</p>
+<h2 id="Session"><a class="header-anchor" href="#Session">¶</a>Session</h2>
+<p>To use session</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsx">npm install @type/cookie-session cookie-session<br></code></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">//main.ts</span><br><span class="hljs-keyword">import</span> &#123; NestFactory &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/core&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; AppModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./app.module&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; ValidationPipe &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><span class="hljs-keyword">const</span> cookieSession = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cookie-session&#x27;</span>);<br><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootstrap</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">await</span> NestFactory.create(AppModule);<br>  app.use(<br>    cookieSession(&#123;<br>      keys: [<span class="hljs-string">&#x27;asdasd&#x27;</span>], <span class="hljs-comment">//for encryption purpose</span><br>    &#125;),<br>  );<br>  app.useGlobalPipes(<br>    <span class="hljs-keyword">new</span> ValidationPipe(&#123;<br>      whitelist: <span class="hljs-literal">true</span>, <span class="hljs-comment">// means: only allow those I defined in DTO to be validate</span><br>    &#125;),<br>  );<br>  <span class="hljs-keyword">await</span> app.listen(<span class="hljs-number">3000</span>);<br>&#125;<br>bootstrap();<br></code></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx">@Post(<span class="hljs-string">&#x27;/signin&#x27;</span>)<br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">signinUser</span>(<span class="hljs-params">@Body() body: CreateUserDto, @Session() session</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.authService.signin(body.email, body.password);<br>    session.userId = user.id;<br>    <span class="hljs-keyword">return</span> user;<br>  &#125;<br><br>@Post(<span class="hljs-string">&#x27;/signout&#x27;</span>)<br>  <span class="hljs-function"><span class="hljs-title">signOut</span>(<span class="hljs-params">@Session() session</span>)</span> &#123;<br>    session.userId = <span class="hljs-literal">null</span>;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<p>This directly store session userId</p>
+<h2 id="Custom-decorator"><a class="header-anchor" href="#Custom-decorator">¶</a>Custom decorator</h2>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; ExecutionContext, createParamDecorator &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CurrentUser = createParamDecorator(<br>  (data: never, <span class="hljs-attr">context</span>: ExecutionContext) =&gt; &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;hi!&#x27;</span>;<br>  &#125;,<br>);<br></code></pre></td></tr></table></figure>
+<p><code>data</code> is the params passed to the decorator!</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">//current-user.decorator.ts</span><br><span class="hljs-keyword">import</span> &#123; ExecutionContext, createParamDecorator &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CurrentUser = createParamDecorator(<br>  (data: never, <span class="hljs-attr">context</span>: ExecutionContext) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> request = context.switchToHttp().getRequest();<br>    <span class="hljs-keyword">return</span> request.currentUser;<br>  &#125;,<br>);<br><br><span class="hljs-comment">//current-user.interceptor.ts</span><br><span class="hljs-keyword">import</span> &#123;<br>  NestInterceptor,<br>  ExecutionContext,<br>  CallHandler,<br>  Injectable,<br>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><br><span class="hljs-keyword">import</span> &#123; UsersService &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../users.service&#x27;</span>;<br><br>@Injectable()<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CurrentUserInterceptor</span> <span class="hljs-title">implements</span> <span class="hljs-title">NestInterceptor</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">private usersService: UsersService</span>)</span> &#123;&#125;<br><br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">intercept</span>(<span class="hljs-params">context: ExecutionContext, handler: CallHandler</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> request = context.switchToHttp().getRequest();<br>    <span class="hljs-keyword">const</span> &#123; userId &#125; = request.session || &#123;&#125;;<br><br>    <span class="hljs-keyword">if</span> (userId) &#123;<br>      <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.usersService.findOne(userId);<br>      request.currentUser = user;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> handler.handle();<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>Since the decorator is not part of the dependency injection system, we need to use an interceptor to access <code>UsersService</code> to retrieve the current user based on the stored session <code>userId</code></p>
+<p>If we do not use the <code>decorator</code> we then need to pass <code>@Request() request: Request</code> in the controller method.</p>
+<p>Don’t forget to add <code>CurrentUserInterceptor</code> into <code>provider</code> of <code>users. module.ts</code></p>
+<p>We need to apply <code>CurrentUserInterceptor</code> to the controller to make <code>CurrentUser</code> decorator into effect</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsx">@Controller(<span class="hljs-string">&#x27;auth&#x27;</span>)<br>@Serialize(UserDto)<br>@UseInterceptors(CurrentUserInterceptor)<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsersController</span> </span>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<p>Or, we can apply <code>interceptors</code> globally!</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jsx">@Module(&#123;<br>  imports: [TypeOrmModule.forFeature([User])],<br>  controllers: [UsersController],<br>  providers: [<br>    UsersService,<br>    AuthService,<br>    &#123;<br>      provide: APP_INTERCEPTOR,<br>      useClass: CurrentUserInterceptor,<br>    &#125;,<br>  ],<br>&#125;)<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsersModule</span> </span>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<p>This allows <code>CurrentUserInterceptor</code> to be globally applied</p>
+<p><code>Handler</code> is same as <code>controller method</code></p>
+<h2 id="Guard"><a class="header-anchor" href="#Guard">¶</a>Guard</h2>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; CanActivate, ExecutionContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@nestjs/common&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthGuard</span> <span class="hljs-title">implements</span> <span class="hljs-title">CanActivate</span> </span>&#123;<br>  canActivate(context: ExecutionContext): boolean &#123;<br>    <span class="hljs-keyword">const</span> request = context.switchToHttp().getRequest();<br>    <span class="hljs-keyword">return</span> request.session.userId;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Q: why we need <code>ExecutionContext</code> there?</p>
+<p>A: We need to make sure what kind of protocol we are using!</p>
+<h1 id="Test"><a class="header-anchor" href="#Test">¶</a>Test</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131857.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><code>providers</code> array is a list of injectables we want to register in our testing DI container!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs tsx">providers: [<br>      AuthService,<br>      &#123;<br>        provide: UsersService,<br>        useValue: fakeUsersService,<br>      &#125;,<br>    ],<br></code></pre></td></tr></table></figure>
+<p><code>AuthService</code> will be registered as normally, when it is initialized in the DI container, the container will look over all its dependencies and try to create the instance.</p>
+<p>The point comes: the second object means if any injectables or controller need to initialize a service <code>UsersService</code>, then DI container will use <code>fakeUsersService</code>!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;Create a fake copy of the usersService<br>  const fakeUsersService &#x3D; &#123;<br>    find: () &#x3D;&gt; Promise.resolve([]),<br>    create: (email: string, password: string) &#x3D;&gt;<br>      Promise.resolve(&#123; id: 1, email, password &#125;),<br>  &#125;;<br></code></pre></td></tr></table></figure>
+<p>This <code>fakeUsersService</code> object implements several methods that are needed for initializing <code>AuthService</code>!</p>
+<p><code>find()</code> and <code>create()</code> are all async, we need to return <code>Promise</code></p>
+<p><code>Promise. resolve()</code>immediately return a resolved promise with the given value.</p>
+<p>To help TypeScript to infer the needed methods for <code>fakeUsersService</code></p>
+<p>We can use <code>Partial&lt;UsersService&gt;</code> on <code>fakeUsersService</code></p>
+<p>since <code>create()</code> expects to return a user entity, the fake user entity is an object without method such as <code>logRemove</code> etc… Therefore, we can enforce it to <code>User</code> entity type.</p>
+<p>The full code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs tsx">import &#123; Test &#125; from &#39;@nestjs&#x2F;testing&#39;;<br>import &#123; AuthService &#125; from &#39;.&#x2F;auth.service&#39;;<br>import &#123; User &#125; from &#39;.&#x2F;user.entity&#39;;<br>import &#123; UsersService &#125; from &#39;.&#x2F;users.service&#39;;<br><br>describe(&#39;AuthService&#39;, () &#x3D;&gt; &#123;<br>  let service: AuthService;<br><br>  &#x2F;&#x2F; For every single test, gets a new AuthService<br>  beforeEach(async () &#x3D;&gt; &#123;<br>    &#x2F;&#x2F;Create a fake copy of the usersService<br>    const fakeUsersService: Partial&lt;UsersService&gt; &#x3D; &#123;<br>      find: () &#x3D;&gt; Promise.resolve([]),<br>      create: (email: string, password: string) &#x3D;&gt;<br>        Promise.resolve(&#123; id: 1, email, password &#125; as User),<br>    &#125;;<br><br>    &#x2F;&#x2F; this is a DI container<br>    const module &#x3D; await Test.createTestingModule(&#123;<br>      providers: [<br>        AuthService,<br>        &#123;<br>          provide: UsersService,<br>          useValue: fakeUsersService,<br>        &#125;,<br>      ],<br>    &#125;).compile();<br>    &#x2F;&#x2F; Create a test Service<br>    service &#x3D; module.get(AuthService);<br>  &#125;);<br><br>  it(&#39;can create an instance of auth service&#39;, async () &#x3D;&gt; &#123;<br>    expect(service).toBeDefined();<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&quot;test:watch&quot;: &quot;jest --watch --maxWorkers&#x3D;1&quot;<br></code></pre></td></tr></table></figure>
+<p>Speed up testing</p>
+<h2 id="More-test"><a class="header-anchor" href="#More-test">¶</a>More test</h2>
+<p>If two tests require two different methods implementation,</p>
+<p>we need to set the <code>fakeUsersService</code> to global scope and tweek the implementation of <code>find()</code>  in the respective test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs tsx">it(&#39;throws an error if user signs up with email that is in use.&#39;, async () &#x3D;&gt; &#123;<br>    fakeUsersService.find &#x3D; () &#x3D;&gt;<br>      Promise.resolve([<br>        &#123; id: 1, email: &#39;abc@abc.com&#39;, password: &#39;qwe&#39; &#125; as User,<br>      ]);<br>    expect.assertions(2);<br>    &#x2F;&#x2F; We expect it to fail in try, and catch allows test to be done<br>    &#x2F;&#x2F; Jest will assume test is fail if it does not finish in 5 seconds<br>    try &#123;<br>      await service.signup(&#39;qwe@qwe.com&#39;, &#39;qwe&#39;);<br>    &#125; catch (error) &#123;<br>      expect(error).toBeInstanceOf(BadRequestException);<br>      expect(error.message).toEqual(&#39;User already exists&#39;);<br>    &#125;<br>  &#125;);<br><br>it(&#39;throws an error if user signs in with unused email&#39;, async () &#x3D;&gt; &#123;<br>    expect.assertions(2);<br>    try &#123;<br>      await service.signin(&#39;asdasdasdqw@asdasda.com&#39;, &#39;qwe&#39;);<br>    &#125; catch (error) &#123;<br>      expect(error).toBeInstanceOf(BadRequestException);<br>      expect(error.message).toEqual(&quot;User doesn&#39;t exist&quot;);<br>    &#125;<br>  &#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="Password-comparison"><a class="header-anchor" href="#Password-comparison">¶</a>Password comparison</h2>
+<p>Please refer to the github codebase</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/q815101630/nestJs_mycv/blob/main/src/users/auth.service.spec.ts">https://github.com/q815101630/nestJs_mycv/blob/main/src/users/auth.service.spec.ts</a></p>
+<h2 id="Controller-testing"><a class="header-anchor" href="#Controller-testing">¶</a>Controller testing</h2>
+<p>Refers to test</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/q815101630/nestJs_mycv/blob/main/src/users/users.controller.spec.ts">https://github.com/q815101630/nestJs_mycv/blob/main/src/users/users.controller.spec.ts</a></p>
+<h1 id="End-To-End-Test"><a class="header-anchor" href="#End-To-End-Test">¶</a>End-To-End Test</h1>
+<h2 id="problem"><a class="header-anchor" href="#problem">¶</a>problem</h2>
+<p>A brand new server is created for each test</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131111.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>E2E Test skips main.ts, which means there are no pipes, and session</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131425.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Two way to solve this, first is easy, but not nest-way.</p>
+<p>Second way is that , we can apply a global <code>pipe</code> and <code>middleware</code> in <code>App Module</code>!</p>
+<p>original main.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tsx">import &#123; NestFactory &#125; from &#39;@nestjs&#x2F;core&#39;;<br>import &#123; AppModule &#125; from &#39;.&#x2F;app.module&#39;;<br>import &#123; ValidationPipe &#125; from &#39;@nestjs&#x2F;common&#39;;<br>const cookieSession &#x3D; require(&#39;cookie-session&#39;);<br><br>async function bootstrap() &#123;<br>  const app &#x3D; await NestFactory.create(AppModule);<br>  app.use(<br>    cookieSession(&#123;<br>      keys: [&#39;super&#39;], &#x2F;&#x2F;for encryption purpose<br>    &#125;),<br>  );<br>  app.useGlobalPipes(<br>    new ValidationPipe(&#123;<br>      whitelist: true, &#x2F;&#x2F; means: only allow those I defined in DTO to be validate<br>    &#125;),<br>  );<br>  await app.listen(3000);<br>&#125;<br>bootstrap();<br></code></pre></td></tr></table></figure>
+<p>original <code>app.module.ts</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs tsx">import &#123; Module &#125; from &#39;@nestjs&#x2F;common&#39;;<br>import &#123; AppController &#125; from &#39;.&#x2F;app.controller&#39;;<br>import &#123; AppService &#125; from &#39;.&#x2F;app.service&#39;;<br>import &#123; UsersModule &#125; from &#39;.&#x2F;users&#x2F;users.module&#39;;<br>import &#123; ReportsModule &#125; from &#39;.&#x2F;reports&#x2F;reports.module&#39;;<br><br>import &#123; TypeOrmModule &#125; from &#39;@nestjs&#x2F;typeorm&#39;;<br>import &#123; User &#125; from &#39;.&#x2F;users&#x2F;user.entity&#39;;<br>import &#123; Report &#125; from &#39;.&#x2F;reports&#x2F;report.entity&#39;;<br>@Module(&#123;<br>  imports: [<br>    TypeOrmModule.forRoot(&#123;<br>      type: &#39;sqlite&#39;,<br>      database: &#39;db.sqlite&#39;,<br>      entities: [User, Report],<br>      synchronize: true,<br>    &#125;),<br>    UsersModule,<br>    ReportsModule,<br>  ],<br>  controllers: [AppController],<br>  providers: [AppService],<br>&#125;)<br>export class AppModule &#123;&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="pipe-in-module"><a class="header-anchor" href="#pipe-in-module">¶</a>pipe in module</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs tsx">@Module(&#123;<br>  imports: [<br>    TypeOrmModule.forRoot(&#123;<br>      type: &#39;sqlite&#39;,<br>      database: &#39;db.sqlite&#39;,<br>      entities: [User, Report],<br>      synchronize: true,<br>    &#125;),<br>    UsersModule,<br>    ReportsModule,<br>  ],<br>  controllers: [AppController],<br>  providers: [<br>    AppService,<br>    &#123;<br>      provide: APP_PIPE,<br>      useValue: new ValidationPipe(&#123;<br>        whitelist: true,<br>      &#125;),<br>    &#125;,<br>  ],<br>&#125;)<br>export class AppModule &#123;&#125;<br></code></pre></td></tr></table></figure>
+<p>This means, if the app module needs <code>APP_PIPE</code> (which automatically runs through each request) ,then use the <code>validation pipe</code></p>
+<h2 id="middleware-cookie-session-in-module"><a class="header-anchor" href="#middleware-cookie-session-in-module">¶</a>middleware (cookie-session) in module</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;app.module.ts<br><br>...<br>export class AppModule &#123;<br>  configure(consumer: MiddlewareConsumer) &#123;<br>    consumer<br>      .apply(<br>        cookieSession(&#123;<br>          keys: [&#39;super&#39;], &#x2F;&#x2F;for encryption purpose<br>        &#125;),<br>      )<br>      .forRoutes(&#39;*&#39;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Downside of doing all this is that we migrate our pipe, middleware setting into <code>app.module</code> which is not very clear what we are doing with pipe and middleware</p>
+<p><em>I would prefer the first simple method…then. For detail ,seeing the video</em></p>
+<h2 id="repeat-test-problem"><a class="header-anchor" href="#repeat-test-problem">¶</a>repeat test problem</h2>
+<p>We need two DB, one for development, one for testing.</p>
+<p>To achieve this, we need environment variable</p>
+<h1 id="Environment-Variable"><a class="header-anchor" href="#Environment-Variable">¶</a>Environment Variable</h1>
+<p>Nest environement variable is incredibly complicated, but we shall still use it in this case of learning purpose.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;app.module.ts<br>const cookieSession &#x3D; require(&#39;cookie-session&#39;);<br><br>@Module(&#123;<br>  imports: [<br>    ConfigModule.forRoot(&#123;<br>      isGlobal: true,<br>      envFilePath: &#96;.env.$&#123;process.env.NODE_ENV&#125;&#96;,<br>    &#125;),<br>    TypeOrmModule.forRootAsync(&#123;<br>      inject: [ConfigService],<br>      useFactory: (config: ConfigService) &#x3D;&gt; &#123;<br>        return &#123;<br>          type: &#39;sqlite&#39;,<br>          database: config.get&lt;string&gt;(&#39;DB_NAME&#39;),<br>          synchronize: true,<br>          entities: [User, Report],<br>        &#125;;<br>      &#125;,<br>    &#125;),<br>    &#x2F;&#x2F; TypeOrmModule.forRoot(&#123;<br>    &#x2F;&#x2F;   type: &#39;sqlite&#39;,<br>    &#x2F;&#x2F;   database: &#39;db.sqlite&#39;,<br>    &#x2F;&#x2F;   entities: [User, Report],<br>    &#x2F;&#x2F;   synchronize: true,<br>    &#x2F;&#x2F; &#125;),<br>    UsersModule,<br>    ReportsModule,<br>  ],<br>  controllers: [AppController],<br>  providers: [<br>    AppService,<br>    &#123;<br>      provide: APP_PIPE,<br>      useValue: new ValidationPipe(&#123;<br>        whitelist: true,<br>      &#125;),<br>    &#125;,<br>  ],<br>&#125;)<br>export class AppModule &#123;<br>  configure(consumer: MiddlewareConsumer) &#123;<br>    consumer<br>      .apply(<br>        cookieSession(&#123;<br>          keys: [&#39;super&#39;], &#x2F;&#x2F;for encryption purpose<br>        &#125;),<br>      )<br>      .forRoutes(&#39;*&#39;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Now we have two seperate database for <code>development</code> and <code>test</code></p>
+<p>We can delete the test database for each test suit!</p>
+<p>To seperate each test, we need also to close their connection!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;test&#x2F;jest-e2e.json<br>&#123;<br>  &quot;moduleFileExtensions&quot;: [&quot;js&quot;, &quot;json&quot;, &quot;ts&quot;],<br>  &quot;rootDir&quot;: &quot;.&quot;,<br>  &quot;testEnvironment&quot;: &quot;node&quot;,<br>  &quot;testRegex&quot;: &quot;.e2e-spec.ts$&quot;,<br>  &quot;transform&quot;: &#123;<br>    &quot;^.+\\.(t|j)s$&quot;: &quot;ts-jest&quot;<br>  &#125;,<br>  &quot;setupFilesAfterEnv&quot;:[&quot;&lt;rootDir&gt;&#x2F;setup.ts&quot;]<br>&#125;<br><br>&#x2F;&#x2F;test&#x2F;setup.ts<br>import &#123; rm &#125; from &#39;fs&#x2F;promises&#39;;<br>import &#123; join &#125; from &#39;path&#39;;<br>import &#123; getConnection &#125; from &#39;typeorm&#39;;<br><br>global.beforeEach(async () &#x3D;&gt; &#123;<br>  try &#123;<br>    await rm(join(__dirname, &#39;..&#39;, &#39;test.sqlite&#39;));<br>  &#125; catch (e) &#123;&#125;<br>&#125;);<br><br>global.afterEach(async () &#x3D;&gt; &#123;<br>  try &#123;<br>    await getConnection().close();<br>  &#125; catch (e) &#123;&#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>More e2e test:</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/q815101630/nestJs_mycv/blob/main/test/auth.e2e-spec.ts">https://github.com/q815101630/nestJs_mycv/blob/main/test/auth.e2e-spec.ts</a></p>
+<h1 id="Association"><a class="header-anchor" href="#Association">¶</a>Association</h1>
+<ul>
+<li>Many to One</li>
+<li>One to Many</li>
+<li>Many to Many</li>
+<li>One to One</li>
+</ul>
+<p>Many to One will cause the change</p>
+<ul>
+<li>First argument is to wrap a class with a function so that circular dependency can be solved.</li>
+<li>Second argument is a issue of TypeORM: we need to state how the instance can go from the associated object back to itself.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;user.entity<br>@OneToMany(()&#x3D;&gt; Report, (report)&#x3D;&gt; report.user)<br>  reports: Report[];<br><br>&#x2F;&#x2F;report.entity<br>@ManyToOne(() &#x3D;&gt; User, (user) &#x3D;&gt; user.reports)<br>  user: User;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131220.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>fetching a user <strong>will not</strong> automatically fetch the reports</p>
+<p>fetching a report <strong>will not</strong> automatically fetch the user.</p>
+<h1 id="Authorization-Middleware"><a class="header-anchor" href="#Authorization-Middleware">¶</a>Authorization/ Middleware</h1>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202112161131544.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p>Interceptor is special because it can perform before and after the handler.</p>
+<p>However, if we use something defined in interceptor stage in guard stage, we will have an issue .</p>
+<p>Therefore, we need to turn the <code>currentUser</code> interceptor into a <code>middleware</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs tsx">declare global &#123;<br>  namespace Express &#123;<br>    interface Request &#123;<br>      currentUser?: User;<br>    &#125;<br>  &#125;<br>&#125;<br><br>@Injectable()<br>export class CurrentUserMiddleware implements NestMiddleware &#123;<br>  constructor(private usersService: UsersService) &#123;&#125;<br><br>  async use(req: Request, res: Response, next: NextFunction) &#123;<br>    const &#123; userId &#125; &#x3D; req.session || &#123;&#125;;<br>    if (userId) &#123;<br>      const user &#x3D; await this.usersService.findOne(userId);<br>      req.currentUser &#x3D; user;<br>    &#125;<br>    next();<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&#x2F;&#x2F;users.module.ts<br>export class UsersModule &#123;<br>  configure(consumer: MiddlewareConsumer) &#123;<br>    consumer.apply(CurrentUserMiddleware).forRoutes(&#39;*&#39;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>We then need to apply into into user module</p>
+<p>Besides, since in our query or param <code>@Param(&quot;xxx&quot;)</code> and <code>@Query()</code> in either Patch, put, get, it will parse all either string or number into string. therefore, we need to transform them in dto</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tsx">@Get()<br>  getEstimate(@Query() query: GetEstimateDto) &#123;<br>    console.log(query);<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs tsx">export class GetEstimateDto &#123;<br>  @IsString()<br>  make: string;<br><br>  @IsString()<br>  model: string;<br><br>  @Transform((&#123; value &#125;) &#x3D;&gt; parseInt(value))<br>  @IsNumber()<br>  @Min(1900)<br>  @Max(2050)<br>  year: number;<br><br>  @Transform((&#123; value &#125;) &#x3D;&gt; parseInt(value))<br>  @Min(0)<br>  mileage: number;<br><br>  @Transform((&#123; value &#125;) &#x3D;&gt; parseFloat(value))<br>  @IsLongitude()<br>  lng: number;<br><br>  @Transform((&#123; value &#125;) &#x3D;&gt; parseFloat(value))<br>  @IsLatitude()<br>  lat: number;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="createQueryBuilder"><a class="header-anchor" href="#createQueryBuilder">¶</a>createQueryBuilder</h1>
+<p>This is just another way of building SQL, I am thinking to use another ORM though.</p>
+<h1 id="To-Production"><a class="header-anchor" href="#To-Production">¶</a>To Production</h1>
+<p>Several things we need to take care on the path to production</p>
+<h2 id="Environment-variable"><a class="header-anchor" href="#Environment-variable">¶</a>Environment variable</h2>
+<p>Take advantage of <code>ConfigService</code>, we can inject <code>ConfigService</code> in anywhere we need and call <code>this.configService.get(&quot;xxx&quot;)</code></p>
+<h2 id="Synchronize"><a class="header-anchor" href="#Synchronize">¶</a>Synchronize</h2>
+<p>Type-orm synchronize with the database regarding entities. It may cause losing data during production.</p>
+<p>Therefore, we shall use <code>Migration File</code> to explicitly dictate what we want to do with DB change.</p>
+<h2 id="Migration"><a class="header-anchor" href="#Migration">¶</a>Migration</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/backend/">backend</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/nestJs/">nestJs</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TS/">TS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/09/wechat-message-vercel/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">微信通知Twikoo新消息提醒（Vercel版本）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/14/Docker-Review/">
+                        <span class="hidden-mobile">Docker Review</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

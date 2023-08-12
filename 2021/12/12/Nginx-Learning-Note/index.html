@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Nginx Learning Note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx Learning Note">
+<meta property="og:url" content="http://example.com/2021/12/12/Nginx-Learning-Note/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="Nginx Learning Note">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/nginx.png">
+<meta property="article:published_time" content="2021-12-13T05:24:00.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.329Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="nginx">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/nginx.png">
+  
+  
+  <title>Nginx Learning Note - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Nginx Learning Note">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-12 21:24" pubdate>
+        December 12, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      18k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      153 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Nginx Learning Note</h1>
+            
+            <div class="markdown-body">
+              <p>Nginx Learning Note</p>
+<span id="more"></span>
+<h1 id="Nginx-Learning-Note"><a class="header-anchor" href="#Nginx-Learning-Note">¶</a>Nginx Learning Note</h1>
+<p>Nginx VS Apache</p>
+<ul>
+<li>Apache: prefork: each process handle one request at a time</li>
+<li>Nginx: asynchronous design: dynamic content is handled by another process separately
+<ul>
+<li>Faster static resources</li>
+<li>High concurrency</li>
+<li>thousands of requests per process</li>
+<li>Load balancer</li>
+<li>Mail server</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⭐ Nginx interprets incoming requests as URI locations, Apache prefers to interpret requests as filesystem locations.</p>
+</blockquote>
+<p>Nginx Features:</p>
+<ol>
+<li>High performance</li>
+<li>High Concurrency</li>
+<li>Low Resource Usage</li>
+</ol>
+<h1 id="Installation"><a class="header-anchor" href="#Installation">¶</a>Installation</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#ubuntu</span><br>apt-get update<br>apt-get install nginx<br>ps aux | grep nginx<br>ifconfig  <span class="hljs-comment">#we can see the link to nginx server after installing/autorun it </span><br><span class="hljs-comment">#centos</span><br><br><span class="hljs-comment"># Remove host history</span><br>ssh-keygen -R 111.11.11.11<br><br>yum install epel-release<br>yum install nginx<br><span class="hljs-comment"># not auto-run</span><br>systemctl start nginx.service<br>ps aux | grep nginx<br></code></pre></td></tr></table></figure>
+<h2 id="Another-way-to-install"><a class="header-anchor" href="#Another-way-to-install">¶</a>Another way to install</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get update<br>wget https://nginx.org/download/nginx-1.21.4.tar.gz<br>ls -l<br>&gt; nginx-1.21.4.tar.gz<br>tar -zxvf nginx-1.21.4.tar.gz<br><span class="hljs-built_in">cd</span> ./nginx-1.21.4<br>apt-get build-essential<br>./configure  <span class="hljs-comment"># install prerequsites</span><br>&gt; ...<br>apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev<br>./configure<br></code></pre></td></tr></table></figure>
+<h2 id="configure"><a class="header-anchor" href="#configure">¶</a>./configure</h2>
+<p>Then, we can configure our Nginx server</p>
+<p><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/configure.html">https://nginx.org/en/docs/configure.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/<span class="hljs-built_in">log</span>/nginx/error.log --http-log-path=/var/<span class="hljs-built_in">log</span>/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module<br><span class="hljs-comment"># To compile</span><br>make <br>make install<br>ls -l /etc/nginx/<br>nginx -V <span class="hljs-comment"># show version and configuration we installed</span><br>&gt; nginx version: nginx/1.xx.xx<br>ps aux | grep nginx<br></code></pre></td></tr></table></figure>
+<p><strong>Two types of modules:</strong></p>
+<ol>
+<li>Nginx 3rd party modules</li>
+<li>Bundle modules  —with</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/">https://nginx.org/en/docs/</a> Modules reference</p>
+<h2 id="Systemd-Add-Service-Command"><a class="header-anchor" href="#Systemd-Add-Service-Command">¶</a>Systemd: Add Service/ Command</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -h<br>nginx -s stop<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.nginx.com/resources/wiki/start/topics/examples/systemd/">https://www.nginx.com/resources/wiki/start/topics/examples/systemd/</a></p>
+<blockquote>
+<p>Save this file as <code>/lib/systemd/system/nginx.service</code></p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><span class="hljs-attr">Description</span>=The NGINX HTTP and reverse proxy server<br><span class="hljs-attr">After</span>=syslog.target network-<span class="hljs-literal">on</span>line.target remote-fs.target nss-lookup.target<br><span class="hljs-attr">Wants</span>=network-<span class="hljs-literal">on</span>line.target<br><br><span class="hljs-section">[Service]</span><span class="hljs-attr">Type</span>=forking<br><span class="hljs-attr">PIDFile</span>=/var/run/nginx.pid            <span class="hljs-comment"># changed</span><br><span class="hljs-attr">ExecStartPre</span>=/usr/bin/nginx -t        <span class="hljs-comment"># changed </span><br><span class="hljs-attr">ExecStart</span>=/usr/bin/nginx<br><span class="hljs-attr">ExecReload</span>=/usr/bin/nginx -s reload<br><span class="hljs-attr">ExecStop</span>=/bin/kill -s QUIT <span class="hljs-variable">$MAINPID</span><br><span class="hljs-attr">PrivateTmp</span>=<span class="hljs-literal">true</span><br><br><span class="hljs-section">[Install]</span><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+<p>Use <code>systemd</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl start nginx<br>systemctl status nginx<br>systemctl stop nginx<br>systemctl <span class="hljs-built_in">enable</span> nginx <span class="hljs-comment"># allows auto-run when machine reboot!</span><br></code></pre></td></tr></table></figure>
+<h2 id="Nginx-Windows-Limits"><a class="header-anchor" href="#Nginx-Windows-Limits">¶</a>Nginx Windows Limits</h2>
+<ul>
+<li>Poor performance</li>
+<li>Single worker process</li>
+<li>Unsupported modules</li>
+</ul>
+<h1 id="Configuration-⚙️"><a class="header-anchor" href="#Configuration-⚙️">¶</a>Configuration ⚙️</h1>
+<p><code>nginx.conf</code></p>
+<p>Directive: <code>server_name mydomain.com</code></p>
+<p>Context: essentially the scope: <code>http &#123;...&#125;</code></p>
+<p>The conf file itself is included in a global context</p>
+<p>The important context:</p>
+<ul>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>…</li>
+</ul>
+<h2 id="Create-a-virtual-host"><a class="header-anchor" href="#Create-a-virtual-host">¶</a>Create a virtual host</h2>
+<p>a virtual host is a <strong>server context</strong></p>
+<p>port : 80 for http, 443 for https</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ls -l /etc/nginx/<br>&gt; nginx.conf<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		<span class="hljs-comment"># root directive</span><br>		<span class="hljs-comment"># if http url requests mach with a filename on the directory</span><br>		root /sites/demo;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -t <span class="hljs-comment"># syntax check</span><br>systemctl reload nginx <span class="hljs-comment"># never stop | no down time</span><br>systemctl restart nginx <span class="hljs-comment"># if error happens, do not auto start</span><br></code></pre></td></tr></table></figure>
+<p>Right now <code>nginx</code> is not sending the correct <code>Content-Type</code> as <code>text/plain</code> not stylesheets</p>
+<p>To change this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	types &#123;<br>		text/html html;<br>		text/css css;<br>	&#125;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		<span class="hljs-comment"># root directive</span><br>		<span class="hljs-comment"># if http url requests mach with a filename on the directory</span><br>		root /sites/demo;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>/etc/nginx/mime.types</code> has already set all common types we need, so we only need:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types; <span class="hljs-comment"># same directory at /etc/nginx as a global value</span><br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		<span class="hljs-comment"># root directive</span><br>		<span class="hljs-comment"># if http url requests mach with a filename on the directory</span><br>		root /sites/demo;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong><code>types</code></strong>: This context is again used for mapping. This context is used to map MIME types to the file extensions that should be associated with them. This is usually provided with Nginx through a file that is sourced into the main <code>nginx.conf</code> config file.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts">https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts</a></p>
+<p>Match and intercept an incoming request URI and override the server context’s configuration inside the location context</p>
+<h2 id="location"><a class="header-anchor" href="#location">¶</a>location</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types; <br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br>		<br>		<span class="hljs-comment">#prefix match: anything starting from /greet</span><br>		location /greet &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&#x27;Hello from /greet location&#x27;</span>;<br>		&#125;<br><br>		<span class="hljs-comment">#exact match</span><br>		location = /greet &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&#x27;Hello from /greet location - EXACT MATCH&#x27;</span>;<br>		&#125;<br><br>		<span class="hljs-comment">#REGEX match - case sensitive</span><br>		location ~ /greet[0 -9] &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&#x27;Hello from /greet location - REGEX MATCH&#x27;</span>;<br>		&#125;<br><br>		<span class="hljs-comment">#REGEX match - case insensitive</span><br>		location ~* /greet[0 -9] &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&#x27;Hello from /greet location - REGEX MATCH INSENSITIVE&#x27;</span>;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>REGEX match has higher priority than the prefix match</p>
+<p>This overwrites the priority for the prefix match</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#preferential prefix match</span><br>location ^~ /greet &#123;<br>	<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&#x27;Hello from /greet location&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Priority-order"><a class="header-anchor" href="#Priority-order">¶</a>Priority order</h2>
+<ol>
+<li>Exact Match</li>
+<li>Preferential Prefix Match</li>
+<li>REGEX Match</li>
+<li>Prefix Match</li>
+</ol>
+<h2 id="Variables"><a class="header-anchor" href="#Variables">¶</a>Variables</h2>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/varindex.html">http://nginx.org/en/docs/varindex.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br><br>		location /inspect &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;<span class="hljs-variable">$host</span>\n<span class="hljs-variable">$uri</span>\n<span class="hljs-variable">$args</span>&quot;</span>;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Then when we go to the web <code>167.99.xx.xx/inspect?name=ray</code></p>
+<p>we will have</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">167.88.xx.xx<br>/inspect<br>name=ray<br></code></pre></td></tr></table></figure>
+<p>We can output the exact arg to query</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br><br>		<span class="hljs-comment"># Check static API key</span><br>		<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$arg_apikey</span> != 1234 ) &#123;<br>			<span class="hljs-built_in">return</span> 401 <span class="hljs-string">&quot;incorrect api key&quot;</span><br>		&#125;<br><br>		<span class="hljs-built_in">set</span> <span class="hljs-variable">$weekend</span> <span class="hljs-string">&#x27;No&#x27;</span>;<br>		<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$date_local</span> ~ <span class="hljs-string">&#x27;Saturday|Sunday&#x27;</span> ) &#123;<br>			<span class="hljs-built_in">set</span> <span class="hljs-variable">$weekend</span> <span class="hljs-string">&#x27;Yes&#x27;</span>;<br>		&#125;<br><br>		location /inspect &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Name: <span class="hljs-variable">$arg_name</span>&quot;</span>;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Rewrite-Redirect-🍥"><a class="header-anchor" href="#Rewrite-Redirect-🍥">¶</a>Rewrite/ Redirect 🍥</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br>		<br>		location /logo &#123;<br>			<span class="hljs-built_in">return</span> 307 /thumb.png;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>/logo</code> is redirect to <code>/thumb.png</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br>		<br>		<span class="hljs-comment">#url is re-evaluated internally in Nginx</span><br>		<span class="hljs-comment">#rewrite ^/user/(\w+) /greet/$1 last; # ensures it is the last rewrite</span><br>		rewrite ^/user/(\w+) /greet/<span class="hljs-variable">$1</span>;<br>		rewrite ^/greet/john /thumb.png;<br><br>		location /greet &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Hello user rewrite&quot;</span>;<br>		&#125;<br><br>		location = /greet/john &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Hello John&quot;</span>;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="try-files-📁"><a class="header-anchor" href="#try-files-📁">¶</a>try_files 📁</h2>
+<p>check if current URL exsits, if not try if  <code>/sites/demo/thumb.png</code>exitst, show it, if not try next one</p>
+<p><strong>Only last one</strong> would be seen as internal rewrite; meaning others refer to files URI, last one refers to address URL;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br><br>		<span class="hljs-comment"># all relative to root</span><br>		try_files <span class="hljs-variable">$uri</span> /thumb.png /greet /friendly_404;<br>		<br>		location /friendly_404 &#123;<br>			<span class="hljs-built_in">return</span> 404 <span class="hljs-string">&quot;not found&quot;</span><br>		&#125;<br><br>		location /greet &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Hello user rewrite&quot;</span>;<br>		&#125;<br><br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="Named-location-📛"><a class="header-anchor" href="#Named-location-📛">¶</a>Named location 📛</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br><br>		<span class="hljs-comment"># all relative to root</span><br>		try_files <span class="hljs-variable">$uri</span> /thumb.png /greet @friendly_404;<br>		<br>		location @friendly_404 &#123;<br>			<span class="hljs-built_in">return</span> 404 <span class="hljs-string">&quot;not found&quot;</span><br>		&#125;<br><br>		location /greet &#123;<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Hello user rewrite&quot;</span>;<br>		&#125;<br><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Logging-💬"><a class="header-anchor" href="#Logging-💬">¶</a>Logging 💬</h2>
+<p>We have set the logging location when we are configuring Nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ls -l /var/<span class="hljs-built_in">log</span>/nginx/<br><br></code></pre></td></tr></table></figure>
+<p>Create log for a certain location</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># nginx.conf</span><br>events &#123;&#125;<br><br>http &#123;<br>	<br>	include mime.types;<br><br>	server&#123;<br>		listen 80;<br>		server_name 167.99.xx.xx;<br>		<br>		root /sites/demo;<br><br>		location /greet &#123;<br>			<span class="hljs-comment"># this shut down the logging for this location</span><br>			<span class="hljs-comment">#access_log off</span><br>			<br>			access_log /var/<span class="hljs-built_in">log</span>/nginx/secure.access.log<br>			<span class="hljs-built_in">return</span> 200 <span class="hljs-string">&quot;Hello user rewrite&quot;</span>;<br>		&#125;<br><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Inheritance-⭐"><a class="header-anchor" href="#Inheritance-⭐">¶</a>Inheritance ⭐</h2>
+<ol>
+<li>Array directive: inherit straight down recursively in the scope (multiple allows)</li>
+<li>Standard directive: inherit straight down recursively in the scope</li>
+<li>Action directive: just there ~ perform some action</li>
+</ol>
+<p>http → server → location</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs bash">events &#123;&#125;<br><br><span class="hljs-comment">######################</span><br><span class="hljs-comment"># (1) Array Directive</span><br><span class="hljs-comment">######################</span><br><span class="hljs-comment"># Can be specified multiple times without overriding a previous setting</span><br><span class="hljs-comment"># Gets inherited by all child contexts</span><br><span class="hljs-comment"># Child context can override inheritance by re-declaring directive</span><br>access_log /var/<span class="hljs-built_in">log</span>/nginx/access.log;<br>access_log /var/<span class="hljs-built_in">log</span>/nginx/custom.log.gz custom_format;<br><br>http &#123;<br><br>  <span class="hljs-comment"># Include statement - non directive</span><br>  include mime.types;<br><br>  server &#123;<br>    listen 80;<br>    server_name site1.com;<br><br>    <span class="hljs-comment"># Inherits access_log from parent context (1)</span><br>  &#125;<br><br>  server &#123;<br>    listen 80;<br>    server_name site2.com;<br><br>    <span class="hljs-comment">#########################</span><br>    <span class="hljs-comment"># (2) Standard Directive</span><br>    <span class="hljs-comment">#########################</span><br>    <span class="hljs-comment"># Can only be declared once. A second declaration overrides the first</span><br>    <span class="hljs-comment"># Gets inherited by all child contexts</span><br>    <span class="hljs-comment"># Child context can override inheritance by re-declaring directive</span><br>    root /sites/site2;<br><br>    <span class="hljs-comment"># Completely overrides inheritance from (1)</span><br>    access_log off;<br><br>    location /images &#123;<br><br>      <span class="hljs-comment"># Uses root directive inherited from (2)</span><br>      try_files <span class="hljs-variable">$uri</span> /stock.png;<br>    &#125;<br><br>    location /secret &#123;<br>      <span class="hljs-comment">#######################</span><br>      <span class="hljs-comment"># (3) Action Directive</span><br>      <span class="hljs-comment">#######################</span><br>      <span class="hljs-comment"># Invokes an action such as a rewrite or redirect</span><br>      <span class="hljs-comment"># Inheritance does not apply as the request is either stopped (redirect/response) or re-evaluated (rewrite)</span><br>      <span class="hljs-built_in">return</span> 403 <span class="hljs-string">&quot;You do not have permission to view this.&quot;</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Worker-process"><a class="header-anchor" href="#Worker-process">¶</a>Worker process</h2>
+<p>nginx worker is asynchronous, it will handle as much requests as possible as long as hardware is capable of.</p>
+<p><strong>number of process ←→ number of cores</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl status nginx<br>nproc<br>&gt; 1<br>lscpu<br>&gt; ... cpu info<br><span class="hljs-built_in">ulimit</span> -n<br>&gt; 1024 ...number of files reading at once<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;   <span class="hljs-comment">#important!</span><br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>max connections = worker_processes * worker_connections</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ls -l /var/run/nginx.pid<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># change pid directive</span><br>pid /var/run/new_nginx.pid;<br></code></pre></td></tr></table></figure>
+<h2 id="Buffers"><a class="header-anchor" href="#Buffers">¶</a>Buffers</h2>
+<ul>
+<li>Nginx worker recieves request from a TCP port 80</li>
+<li>Nginx worker writes the data to memory RAM (Buffering)
+<ul>
+<li>If overflow writes into Disk</li>
+</ul>
+</li>
+<li>Nginx worker reads data from disk to memory (Buffering)
+<ul>
+<li>sends to client from memory</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  <span class="hljs-comment"># Buffer size for POST submissions</span><br>  client_body_buffer_size 10K;<br>  client_max_body_size 8m;<br><br>  <span class="hljs-comment"># Buffer size for Headers</span><br>  client_header_buffer_size 1k;<br><br>  <span class="hljs-comment"># Max time to receive client headers/body</span><br>  client_body_timeout 12;<br>  client_header_timeout 12;<br><br>  <span class="hljs-comment"># Max time to keep a connection open for</span><br>  keepalive_timeout 15;<br><br>  <span class="hljs-comment"># Max time for the client accept/receive a response</span><br>  send_timeout 10;<br><br>  <span class="hljs-comment"># Skip buffering for static files | could be very helpful to send static files</span><br>  sendfile on;<br><br>  <span class="hljs-comment"># Optimise sendfile packets | could be very helpful to send static files</span><br>  tcp_nopush on;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/syntax.html">http://nginx.org/en/docs/syntax.html</a></p>
+<h2 id="Adding-new-modules-🆕"><a class="header-anchor" href="#Adding-new-modules-🆕">¶</a>Adding new modules 🆕</h2>
+<p>New modules require to build Nginx from the source</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -V<br>&gt; ./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/<span class="hljs-built_in">log</span>/nginx/error.log --http-log-path=/var/<span class="hljs-built_in">log</span>/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module<br><br>./configure --<span class="hljs-built_in">help</span><br>&gt; ...all <span class="hljs-built_in">help</span> config<br>./configure -- <span class="hljs-built_in">help</span> | grep dynamic<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/<span class="hljs-built_in">log</span>/nginx/error.log --http-log-path=/var/<span class="hljs-built_in">log</span>/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module --with-http_image_filter_module=dynamic<br><br></code></pre></td></tr></table></figure>
+<p>we need to append <code>--modules-path=/etc/nginx/modules</code></p>
+<p>to make dynamic modules to be loaded to the corresponding module</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get install libgd-dev<br>./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/<span class="hljs-built_in">log</span>/nginx/error.log --http-log-path=/var/<span class="hljs-built_in">log</span>/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module --with-http_image_filter_module=dynamic<br>make<br>make install<br>nginx -V<br>systemctl reload nginx<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_image_filter_module.html">http://nginx.org/en/docs/http/ngx_http_image_filter_module.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>load_module modules/ngx_http_image_filter_module.so;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  <span class="hljs-comment"># Buffer size for POST submissions</span><br>  client_body_buffer_size 10K;<br>  client_max_body_size 8m;<br><br>  <span class="hljs-comment"># Buffer size for Headers</span><br>  client_header_buffer_size 1k;<br><br>  <span class="hljs-comment"># Max time to receive client headers/body</span><br>  client_body_timeout 12;<br>  client_header_timeout 12;<br><br>  <span class="hljs-comment"># Max time to keep a connection open for</span><br>  keepalive_timeout 15;<br><br>  <span class="hljs-comment"># Max time for the client accept/receive a response</span><br>  send_timeout 10;<br><br>  <span class="hljs-comment"># Skip buffering for static files</span><br>  sendfile on;<br><br>  <span class="hljs-comment"># Optimise sendfile packets</span><br>  tcp_nopush on;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br><br>    location = /thumb.png &#123;<br>      image_filter rotate 180;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="Performance"><a class="header-anchor" href="#Performance">¶</a>Performance</h1>
+<h2 id="Headers-Expires"><a class="header-anchor" href="#Headers-Expires">¶</a>Headers &amp; Expires</h2>
+<p>Defines the duration of how long a static file a browser should cache</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br>		<br>		<span class="hljs-comment">#location = /thumb.png &#123;</span><br>			<span class="hljs-comment">#add_header Cache-Control public;</span><br>			<span class="hljs-comment">#add_header Pragma public;</span><br>			<span class="hljs-comment">#add_header Vary Accept-Encoding;</span><br>			<span class="hljs-comment">#expires 60m;</span><br>		<span class="hljs-comment">#&#125;</span><br><br>    location ~* \.(css|js|jpg|png)$ &#123;<br>      access_log off;<br>      add_header Cache-Control public;<br>      add_header Pragma public;<br>      add_header Vary Accept-Encoding;<br>      expires 1M;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="gzip"><a class="header-anchor" href="#gzip">¶</a>gzip</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  gzip on;<br>  gzip_comp_level 3;<br><br>  gzip_types text/css;<br>  gzip_types text/javascript;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br><br>    location ~* \.(css|js|jpg|png)$ &#123;<br>      access_log off;<br>      add_header Cache-Control public;<br>      add_header Pragma public;<br>      add_header Vary Accept-Encoding;<br>      expires 1M;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="FastCGI-Cache"><a class="header-anchor" href="#FastCGI-Cache">¶</a>FastCGI Cache</h1>
+<p>cache between Nginx and backend-server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  <span class="hljs-comment"># Configure microcache (fastcgi)</span><br>  fastcgi_cache_path /tmp/nginx_cache levels=1:2 keys_zone=ZONE_1:100m inactive=60m;<br>  fastcgi_cache_key <span class="hljs-string">&quot;$scheme$request_method$host<span class="hljs-variable">$request_uri</span>&quot;</span>;<br>  add_header X-Cache <span class="hljs-variable">$upstream_cache_status</span>;<br><br>  server &#123;<br><br>    listen 80;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.php index.html;<br><br>    <span class="hljs-comment"># Cache by default</span><br>    <span class="hljs-built_in">set</span> <span class="hljs-variable">$no_cache</span> 0;<br><br>    <span class="hljs-comment"># Check for cache bypass</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$arg_skipcache</span> = 1) &#123;<br>      <span class="hljs-built_in">set</span> <span class="hljs-variable">$no_cache</span> 1;<br>    &#125;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br><br>      <span class="hljs-comment"># Enable cache</span><br>      fastcgi_cache ZONE_1;<br>      fastcgi_cache_valid 200 60m;<br>      fastcgi_cache_bypass <span class="hljs-variable">$no_cache</span>;<br>      fastcgi_no_cache <span class="hljs-variable">$no_cache</span>;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="Security"><a class="header-anchor" href="#Security">¶</a>Security</h1>
+<h2 id="HTTPS"><a class="header-anchor" href="#HTTPS">¶</a>HTTPS</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs bash">user www-data;<br><br>worker_processes auto;<br><br>events &#123;<br>  worker_connections 1024;<br>&#125;<br><br>http &#123;<br><br>  include mime.types;<br><br>  <span class="hljs-comment"># Redirect all traffic to HTTPS</span><br>  server &#123;<br>    listen 80;<br>    server_name 167.99.93.26;<br>    <span class="hljs-built_in">return</span> 301 https://$host<span class="hljs-variable">$request_uri</span>;<br>  &#125;<br><br>  server &#123;<br><br>    listen 443 ssl http2;<br>    server_name 167.99.93.26;<br><br>    root /sites/demo;<br><br>    index index.html;<br><br>    ssl_certificate /etc/nginx/ssl/self.crt;<br>    ssl_certificate_key /etc/nginx/ssl/self.key;<br><br>    <span class="hljs-comment"># Disable SSL</span><br>    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br><br>    <span class="hljs-comment"># Optimise cipher suits</span><br>    ssl_prefer_server_ciphers on;<br>    ssl_ciphers ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5;<br><br>    <span class="hljs-comment"># Enable DH Params</span><br>    ssl_dhparam /etc/nginx/ssl/dhparam.pem;<br><br>    <span class="hljs-comment"># Enable HSTS</span><br>    add_header Strict-Transport-Security <span class="hljs-string">&quot;max-age=31536000&quot;</span> always;<br><br>    <span class="hljs-comment"># SSL sessions</span><br>    ssl_session_cache shared:SSL:40m;<br>    ssl_session_timeout 4h;<br>    ssl_session_tickets on;<br><br>    location / &#123;<br>      try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =404;<br>    &#125;<br><br>    location ~\.php$ &#123;<br>      <span class="hljs-comment"># Pass php requests to the php-fpm service (fastcgi)</span><br>      include fastcgi.conf;<br>      fastcgi_pass unix:/run/php/php7.1-fpm.sock;<br>    &#125;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Rate-Limiting"><a class="header-anchor" href="#Rate-Limiting">¶</a>Rate Limiting</h2>
+<ul>
+<li>Security - Brute Force Protection</li>
+<li>Reliability - Prevent Traffic Spikes</li>
+<li>Shaping - Service Priority</li>
+</ul>
+<p>。。。要用到再看吧<a target="_blank" rel="noopener" href="https://www.udemy.com/course/nginx-fundamentals/learn/lecture/10617504#questions">https://www.udemy.com/course/nginx-fundamentals/learn/lecture/10617504#questions</a></p>
+<h1 id="Reverse-Proxy"><a class="header-anchor" href="#Reverse-Proxy">¶</a>Reverse Proxy</h1>
+<p>The proxy allows users to be anonymous to the server.</p>
+<p>The reverse proxy allows the server to be anonymous to users</p>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffers">http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffers</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/</a></p>
+<h2 id="Load-balancer"><a class="header-anchor" href="#Load-balancer">¶</a>Load balancer</h2>
+<ol>
+<li>Distribute requests to multiple servers</li>
+<li>Provide redundancy (if one fails, Nginx can redirect to another server)</li>
+</ol>
+<p><code>upstream</code> is the key. Round-Robben: We then distribute requests to all upstream servers equally!!</p>
+<p>See docs for detail</p>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html">http://nginx.org/en/docs/http/ngx_http_upstream_module.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/">https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/</a></p>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/load_balancing.html">http://nginx.org/en/docs/http/load_balancing.html</a></p>
+<p>If one server is down, Nginx will automatically redirect requests to the available server! So cool!</p>
+<h2 id="Other-load-balance-option"><a class="header-anchor" href="#Other-load-balance-option">¶</a>Other load balance option</h2>
+<ol>
+<li>Sticky Session:  <code>ip_hash;</code>  (for example: session state )</li>
+<li>Avoid heavy connections on a server: <code>least_conn</code></li>
+<li></li>
+</ol>
+<p>Some docs:</p>
+<p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/search?q=nginx">https://www.digitalocean.com/community/search?q=nginx</a></p>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/">http://nginx.org/en/docs/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/">https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/</a></p>
+<h1 id="Other-Adds-on-My-Notes-📒"><a class="header-anchor" href="#Other-Adds-on-My-Notes-📒">¶</a>Other Adds -on | My Notes 📒</h1>
+<p>http:// 80</p>
+<p>https:// 443</p>
+<h2 id="Benefits-of-proxy"><a class="header-anchor" href="#Benefits-of-proxy">¶</a>Benefits of proxy</h2>
+<ol>
+<li>Anonymity</li>
+<li>Caching</li>
+<li>Blocking unwanted sites</li>
+<li>GeoFencing</li>
+</ol>
+<h2 id="Benefits-of-reverse-proxy"><a class="header-anchor" href="#Benefits-of-reverse-proxy">¶</a>Benefits of reverse proxy</h2>
+<ol>
+<li>Load balancing</li>
+<li>Caching</li>
+<li>Isolating internal traffic</li>
+<li>Canary Deployment</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/backend/">backend</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/nginx/">nginx</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/14/Docker-Review/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker Review</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/22/react_notes_6/">
+                        <span class="hidden-mobile">My React Learning Note (6)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,1028 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶简单入门 jQuery （2） 小伙伴一起做project， 自学jQuery 跟上进度 第二部分 我跳过了三个不是太重要的章节，可以去实验楼看哦，链接在里面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery(2)">
+<meta property="og:url" content="http://example.com/2021/03/18/jQuery_2/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶简单入门 jQuery （2） 小伙伴一起做project， 自学jQuery 跟上进度 第二部分 我跳过了三个不是太重要的章节，可以去实验楼看哦，链接在里面">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554967438062.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973461328.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973617931.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973962583.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554974979373.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555039666845.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555061984913.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062428371.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062497856.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062888673.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062949580.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555063004720.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077410132">
+<meta property="og:image" content="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077495738">
+<meta property="og:image" content="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077514606">
+<meta property="article:published_time" content="2021-03-19T02:52:52.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.335Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="jQuery">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554967438062.png">
+  
+  
+  <title>jQuery(2) - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="jQuery(2)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-18 19:52" pubdate>
+        March 18, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      28k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      233 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">jQuery(2)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="简单入门-jQuery-（2）"><a class="header-anchor" href="#简单入门-jQuery-（2）">¶</a>简单入门 jQuery （2）</h1>
+<p>小伙伴一起做project， 自学jQuery 跟上进度</p>
+<p>第二部分</p>
+<p>我跳过了三个不是太重要的章节，可以去实验楼看哦，链接在里面</p>
+<span id="more"></span>
+<p>以下内容全部来源：</p>
+<p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/22/">https://www.lanqiao.cn/courses/22/</a></p>
+<p>[TOC]</p>
+<h1 id="DOM-操作"><a class="header-anchor" href="#DOM-操作">¶</a>DOM 操作</h1>
+<p>使用 jQuery 在文档树上查找节点非常容易，我们可以通过第二个实验所学的 jQuery 选择器来完成。</p>
+<h2 id="（1）查找元素节点"><a class="header-anchor" href="#（1）查找元素节点">¶</a>（1）查找元素节点</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;ol li:eq(0)&#x27;</span>); <span class="hljs-comment">//获取&lt;ol&gt;里第一个&lt;li&gt;节点</span><br><span class="hljs-keyword">var</span> li_txt = $li.text(); <span class="hljs-comment">//获取第一个&lt;li&gt;元素节点的文本内容</span><br>alert(li_txt); <span class="hljs-comment">//打印文本内容</span><br></code></pre></td></tr></table></figure>
+<h2 id="（2）查找属性节点"><a class="header-anchor" href="#（2）查找属性节点">¶</a>（2）查找属性节点</h2>
+<p>利用 jQuery 选择器查找到需要的元素之后，就可以使用 <code>attr()</code> 方法来获取它的各种属性的值。attr() 方法的参数可以是一个，也可以是两个。当参数是一个时，则是要查询的属性的名字，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $para = $(<span class="hljs-string">&#x27;p&#x27;</span>); <span class="hljs-comment">//获取&lt;p&gt;节点</span><br><span class="hljs-keyword">var</span> p_txt = $para.attr(<span class="hljs-string">&#x27;title&#x27;</span>); <span class="hljs-comment">//获取&lt;p&gt;元素节点属性title</span><br>alert(p_txt); <span class="hljs-comment">//打印title属性值</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<h2 id="（1）创建元素节点"><a class="header-anchor" href="#（1）创建元素节点">¶</a>（1）创建元素节点</h2>
+<p>创建元素节点可以用 <code>$(html)</code> 函数。$(html) 方法会根据传入的 HTML 标记字符串，创建一个 DOM 对象，并将这个 DOM 对象包装成一个 jQuery 对象后返回。首先创建一个 li 元素如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;&lt;li&gt;&lt;/li&gt;&#x27;</span>); <span class="hljs-comment">//创建一个&lt;li&gt;元素</span><br></code></pre></td></tr></table></figure>
+<p>当然上面只是创建出来了，要使用的话，还需要使用 <code>append()</code> 等方法将该元素插入文档中（下面会讲插入节点）。</p>
+<h2 id="（2）创建文本节点"><a class="header-anchor" href="#（2）创建文本节点">¶</a>（2）创建文本节点</h2>
+<p>创建文本节点就是在创建元素节点时直接把文本内容写出来，然后使用 <code>append()</code> 等方法将它们添加到文档中就可以了，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;&lt;li&gt;syl&lt;/li&gt;&#x27;</span>); <span class="hljs-comment">//创建一个&lt;li&gt;元素,包括元素节点和文本节点，“syl”就是创建的文本节点</span><br></code></pre></td></tr></table></figure>
+<h2 id="（3）创建属性节点"><a class="header-anchor" href="#（3）创建属性节点">¶</a>（3）创建属性节点</h2>
+<p>创建属性节点和创建文本节点类似，也是直接在创建元素节点时一起创建，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&quot;&lt;li title=&#x27;syl&#x27;&gt;syl&lt;/li&gt;&quot;</span>); <span class="hljs-comment">//创建一个&lt;li&gt;元素,包括元素节点和文本节点和属性节点，“syl”就是创建的文本节点,title=&#x27;syl&#x27; 就是创建的属性节点</span><br></code></pre></td></tr></table></figure>
+<p>示例：将新建的 li 元素插入到 ul 中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> li_obj = $(<span class="hljs-string">&#x27;&lt;li&gt;黄色&lt;/li&gt;&#x27;</span>);</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;ul&#x27;</span>).append(li_obj);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="1-DOM-插入现有元素内"><a class="header-anchor" href="#1-DOM-插入现有元素内">¶</a>(1) DOM 插入现有元素内:</h2>
+<ul>
+<li><code>.append()</code> 在每个匹配元素里面的末尾处插入参数内容。</li>
+<li><code>.appendTo()</code> 将匹配的元素插入到目标元素的最后面。</li>
+<li><code>.html()</code> 获取集合中第一个匹配元素的 HTML 内容 设置每一个匹配元素的 html 内容。</li>
+<li><code>.prepend()</code> 将参数内容插入到每个匹配元素的前面（元素内部）。</li>
+<li><code>.prependTo()</code> 将所有元素插入到目标前面（元素内）。</li>
+<li><code>.text()</code> 得到匹配元素集合中每个元素的合并文本，包括他们的后代设置匹配元素集合中每个元素的文本内容为指定的文本内容。</li>
+</ul>
+<h2 id="2-DOM-插入现有元素外"><a class="header-anchor" href="#2-DOM-插入现有元素外">¶</a>(2) DOM 插入现有元素外:</h2>
+<ul>
+<li><code>.after()</code> 在匹配元素集合中的每个元素后面插入参数所指定的内容，作为其兄弟节点。</li>
+<li><code>.before()</code> 根据参数设定，在匹配元素的前面插入内容。</li>
+<li><code>.insertAfter()</code> 在目标元素后面插入集合中每个匹配的元素(注：插入的元素作为目标元素的兄弟元素)。</li>
+<li><code>.insertBefore()</code> 在目标元素前面插入集合中每个匹配的元素(注：插入的元素作为目标元素的兄弟元素)。</li>
+</ul>
+<p>注：这些插入节点的方法不仅能将新创建的 DOM 元素插入到文档中，也能对原有的 DOM 元素进行移动。</p>
+<p>插入节点示例：将新建的 li 元素插入到 ul 中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;&lt;li&gt;yellow&lt;/li&gt;&#x27;</span>).appendTo(<span class="hljs-string">&#x27;ul&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="移动节点"><a class="header-anchor" href="#移动节点">¶</a>移动节点</h2>
+<p>示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>I like<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;ul li:eq(1)&#x27;</span>); <span class="hljs-comment">//获取&lt;ul&gt;节点中的第2个&lt;li&gt;元素节点</span></span><br><span class="javascript">        <span class="hljs-keyword">var</span> $h1 = $(<span class="hljs-string">&#x27;h1&#x27;</span>); <span class="hljs-comment">//获取&lt;h1&gt;节点</span></span><br><span class="javascript">        $h1.insertBefore($li); <span class="hljs-comment">//移动节点</span></span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554967438062.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述" style="zoom: 67%;" />
+<h2 id="删除节点"><a class="header-anchor" href="#删除节点">¶</a>删除节点</h2>
+<h3 id="detach-方法"><a class="header-anchor" href="#detach-方法">¶</a><code>detach()</code> 方法</h3>
+<p>从 DOM 中去掉所有匹配的元素。<code>.detach()</code> 方法和 <code>.remove()</code> 一样, 除了 <code>.detach()</code> 保存所有 jQuery 数据而且和被移走的元素相关联。当需要移走一个元素，不久又将该元素插入 DOM 时，这种方法很有用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;syl&quot;</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;ul li&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          alert($(<span class="hljs-built_in">this</span>).html());</span><br>        &#125;);<br><span class="javascript">        <span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;ul li:eq(1)&#x27;</span>).detach(); <span class="hljs-comment">//删除元素</span></span><br><span class="javascript">        $li.appendTo(<span class="hljs-string">&#x27;ul&#x27;</span>); <span class="hljs-comment">//重新追加此元素,发现它之前绑定的事件还在,如果使用remove()方法删除元素的话,那么它之前绑定的事件将失效</span></span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="empty-方法"><a class="header-anchor" href="#empty-方法">¶</a>empty() 方法</h3>
+<p>从 DOM 中移除集合中匹配元素的所有子节点。这个方法不接受任何参数。这个方法不仅移除子元素（和其他后代元素），同样移除元素里的文本。因为，根据说明，元素里任何文本字符串都被看做是该元素的子节点。</p>
+<h2 id="remove-方法"><a class="header-anchor" href="#remove-方法">¶</a>remove() 方法</h2>
+<p>请看Doc</p>
+<p><a target="_blank" rel="noopener" href="https://www.jquery123.com/category/manipulation/dom-removal/">jQuery 中文官网 DOM 移除</a></p>
+<h2 id="复制节点"><a class="header-anchor" href="#复制节点">¶</a>复制节点</h2>
+<h3 id="Clone"><a class="header-anchor" href="#Clone">¶</a>Clone()</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;syl&quot;</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;ul li&#x27;</span>).on(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          $(<span class="hljs-built_in">this</span>).clone().appendTo(<span class="hljs-string">&#x27;ul&#x27;</span>);</span><br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="替换节点"><a class="header-anchor" href="#替换节点">¶</a>替换节点</h2>
+<ul>
+<li><code>.replaceAll()</code> 用集合的匹配元素替换每个目标元素。</li>
+<li><code>.replaceWith()</code> 用提供的内容替换集合中所有匹配的元素并且返回被删除元素的集合。</li>
+</ul>
+<p>注：<code>.replaceAll()</code> 和 <code>.replaceWith()</code> 功能一样，但是目标和源相反。</p>
+<p>示例：替换 p 元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;p&#x27;</span>).replaceWith(<span class="hljs-string">&#x27;&lt;p&gt;SHIYANLOU&lt;/p&gt;&#x27;</span>);</span><br><span class="javascript">        <span class="hljs-comment">//注释代码与上面的代码作用一样</span></span><br><span class="handlebars"><span class="xml">        // $(&quot;<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>SHIYANLOU<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>&quot;).replaceAll(&quot;p&quot;);</span></span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="Wrap-包裹节点"><a class="header-anchor" href="#Wrap-包裹节点">¶</a>Wrap() 包裹节点</h2>
+<blockquote>
+<p>每个匹配的元素外层包上一个 html 元素。<code>.wrap()</code> 函数可以接受任何字符串或对象，可以传递给 $() 工厂函数来指定一个 DOM 结构。这种结构可以嵌套了好几层深，但应该只包含一个核心的元素。每个匹配的元素都会被这种结构包裹。该方法返回原始的元素集，以便之后使用链式方法</p>
+</blockquote>
+<p>例子：</p>
+<p>用一个有边框的 DIV 将 P 元素包裹起来</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;p&#x27;</span>).wrap(<span class="hljs-string">&quot;&lt;div style=&#x27;border:1px red solid;&#x27;&gt;&lt;/div&gt;&quot;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973461328.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>（2）<code>wrapAll()</code> 方法</p>
+<p>在所有匹配元素外面包一层 HTML 结构。<code>.wrapAll()</code> 函数可以接受任何字符串或对象，可以传递给 <code>\$()</code> 工厂函数来指定一个 DOM 结构。这种结构可以嵌套多层，但是最内层只能有一个元素。所有匹配元素将会被当作是一个整体，在这个整体的外部用指定的 HTML 结构进行包裹。</p>
+<p>注：该元素会将所有匹配的元素用一个元素来包裹，它不同于 <code>wrap()</code> 方法，<code>wrap()</code> 方法是将所有的元素进行单独的包裹。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;p&#x27;</span>).wrapAll(<span class="hljs-string">&quot;&lt;div style=&#x27;border:1px red solid;&#x27;&gt;&lt;/div&gt;&quot;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973617931.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>（3）<code>wrapInner()</code> 方法</p>
+<p>在匹配元素里的内容外包一层结构。<code>.wrapInner()</code> 函数可以接受任何字符串或对象，可以传递给 <code>$()</code> 工厂函数来指定一个 DOM 结构。这种结构可以嵌套多层，但是最内层只能有一个元素。每个匹配元素的内容都会被这种结构包裹。<code>wrapInner()</code> 方法将每一个匹配的元素的子内容（包括文本节点）用其他结构化的标记包裹起来。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;p&#x27;</span>).wrapInner(<span class="hljs-string">&quot;&lt;div style=&#x27;border:1px red solid;&#x27;&gt;&lt;/div&gt;&quot;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554973962583.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>详情看 官网哈</p>
+<h2 id="属性操作"><a class="header-anchor" href="#属性操作">¶</a>属性操作</h2>
+<p>示例：获取 P 元素的 class 属性值，并追加到 div 中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shiyanlou-class&quot;</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> p_class = $(<span class="hljs-string">&#x27;p&#x27;</span>).attr(<span class="hljs-string">&#x27;class&#x27;</span>);</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;div&#x27;</span>).append(p_class);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1554974979373.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<h3 id="（2）设置元素属性"><a class="header-anchor" href="#（2）设置元素属性">¶</a>（2）设置元素属性</h3>
+<p>如果需要设置元素的属性值，也可以使用 <code>attr()</code> 方法，不同的是，需要传递两个参数即属性名称和对应的值。</p>
+<p>示例：设置 div 的 class 值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .demo &#123;<br><span class="css">        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;class&#x27;</span>, <span class="hljs-string">&#x27;demo&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="（3）删除元素属性"><a class="header-anchor" href="#（3）删除元素属性">¶</a>（3）删除元素属性</h3>
+<p>用 <code>removeAttr()</code> 方法来实现删除元素属性。<code>.removeAttr()</code> 方法使用原生的 JavaScript removeAttribute() 函数,但是它的优点是可以直接在一个 jQuery 对象上调用该方法，并且它解决了跨浏览器的属性名不同的问题。</p>
+<p>示例：删除 div 的 class</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .demo &#123;<br><span class="css">        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo&quot;</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;div&#x27;</span>).removeAttr(<span class="hljs-string">&#x27;class&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="样式操作-Class"><a class="header-anchor" href="#样式操作-Class">¶</a>样式操作 Class</h2>
+<h3 id="attr"><a class="header-anchor" href="#attr">¶</a>attr()</h3>
+<p>HTML 代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;syl&quot;</span>&gt;</span>实验楼<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>其中 class 也是 p 标签的属性，因此获取 class 和 设置 class 都可以使用我们前面所学的 <code>attr()</code> 方法。比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>            .syl &#123;<br><span class="css">                <span class="hljs-attribute">background-color</span>: red;</span><br>            &#125;<br>            .SYL &#123;<br><span class="css">                <span class="hljs-attribute">background-color</span>: yellow;</span><br>            &#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;syl&quot;</span>&gt;</span>实验楼<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">            $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">                    <span class="hljs-keyword">var</span>  p_class = $(<span class="hljs-string">&quot;p&quot;</span>).attr(<span class="hljs-string">&quot;class&quot;</span>);<span class="hljs-comment">//获取&lt;p&gt;元素的class</span></span><br><span class="javascript">                    <span class="hljs-built_in">console</span>.log(p_class);<span class="hljs-comment">//打印值为syl</span></span><br><span class="javascript">                    $(<span class="hljs-string">&quot;p&quot;</span>).attr(<span class="hljs-string">&quot;class&quot;</span>,<span class="hljs-string">&quot;SYL&quot;</span>);<span class="hljs-comment">//替换class样式，如果想要添加可以使用addClass()方法</span></span><br>            &#125;);<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="（2）追加样式"><a class="header-anchor" href="#（2）追加样式">¶</a>（2）追加样式</h3>
+<p><code>.addClass()</code> 方法为每个匹配的元素添加指定的样式类名，值得注意的是这个方法不会替换一个样式类名。它只是简单的添加一个样式类名到元素上。</p>
+<p>示例：为 div 追加一个新样式 another</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .demo &#123;<br><span class="css">        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br>      &#125;<br><br>      .another &#123;<br><span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo&quot;</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;div&#x27;</span>).addClass(<span class="hljs-string">&#x27;another&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>注：上例中 div 元素同时拥有两个 class 值，即 “demo” 和 “another” ，在 css 中有以下两条规定：</p>
+<ul>
+<li>如果给一个元素添加了多个 class 值，那么就相当于合并了它们的样式。</li>
+<li>如果有不同的 class 设定了同一样式属性，则后者覆盖前者。</li>
+</ul>
+<p>（3）移除样式</p>
+<p><code>.removeClass()</code> 方法移除集合中每个匹配元素上一个，多个或全部样式。如果一个样式类名作为一个参数,只有这样式类会被从匹配的元素集合中删除 。如果没有样式名作为参数，那么所有的样式类将被移除。</p>
+<p>示例：移除 div 的 another 样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .demo &#123;<br><span class="css">        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br>      &#125;<br><br>      .another &#123;<br><span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo another&quot;</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;div&#x27;</span>).removeClass(<span class="hljs-string">&#x27;another&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>注：如果要删除多个 class 值，我们可以以空格的方式删除多个 class 名，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;div&#x27;</span>).removeClass(<span class="hljs-string">&#x27;another demo&#x27;</span>); <span class="hljs-comment">//删除 another 类和 demo 类</span><br></code></pre></td></tr></table></figure>
+<p>如果 <code>removeClass()</code> 方法不带参数，就会将 class 的值全部删除，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;div&#x27;</span>).removeClass(); <span class="hljs-comment">//删除&lt;div&gt;元素的所有class</span><br></code></pre></td></tr></table></figure>
+<h4 id="（4）切换样式"><a class="header-anchor" href="#（4）切换样式">¶</a>（4）切换样式</h4>
+<p><code>.toggleClass()</code> 在匹配的元素集合中的每个元素上添加或删除一个或多个样式类,取决于这个样式类是否存在或值切换属性。即：如果存在（不存在）就删除（添加）一个类。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .main &#123;<br><span class="css">        <span class="hljs-attribute">color</span>: red;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>实验楼<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn1&quot;</span>&gt;</span>切换段落的 &quot;main&quot; 类<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;button&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          $(<span class="hljs-string">&#x27;p&#x27;</span>).toggleClass(<span class="hljs-string">&#x27;main&#x27;</span>);</span><br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555039666845.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<h4 id="（5）判断是否含有某个样式"><a class="header-anchor" href="#（5）判断是否含有某个样式">¶</a>（5）判断是否含有某个样式</h4>
+<p><code>.hasClass()</code> 可以用来判断元素中是否含有某个 class，如果有则返回 true，否则返回 false。比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;p&#x27;</span>).hasClass(<span class="hljs-string">&#x27;another&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="获取-HTML，-文本和值"><a class="header-anchor" href="#获取-HTML，-文本和值">¶</a>获取 HTML， 文本和值</h2>
+<h3 id="（1）-html-方法"><a class="header-anchor" href="#（1）-html-方法">¶</a>（1）<code>.html()</code> 方法</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">     $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">       <span class="hljs-keyword">var</span> div_html = $(<span class="hljs-string">&#x27;div&#x27;</span>).html(); <span class="hljs-comment">//获取&lt;div&gt;元素的HTML代码</span></span><br><span class="javascript">       alert(div_html); <span class="hljs-comment">//打印&lt;div&gt;元素的HTML代码</span></span><br>     &#125;);<br>   <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555061984913.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>设置 div 中的 HTML 内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">     $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">       $(<span class="hljs-string">&#x27;div&#x27;</span>).html(<span class="hljs-string">&#x27;&lt;span&gt;shiyanlou&lt;/span&gt;&#x27;</span>);</span><br>     &#125;);<br>   <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="（2）-text-方法"><a class="header-anchor" href="#（2）-text-方法">¶</a>（2）<code>.text()</code> 方法</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>       <span class="hljs-keyword">var</span> p_text = $(<span class="hljs-string">&#x27;div&#x27;</span>).text();<br>       alert(p_text);<br>     &#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        $(<span class="hljs-string">&#x27;div&#x27;</span>).text(<span class="hljs-string">&#x27;shiyanlou&#x27;</span>);<br>      &#125;); <span class="hljs-comment">//设置 值</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-val-方法"><a class="header-anchor" href="#3-val-方法">¶</a>(3) .val() 方法</h3>
+<p>例如：设置文本框的值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;input&#x27;</span>).val(<span class="hljs-string">&#x27;shiyanlou&#x27;</span>);</span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062428371.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<h2 id="遍历节点"><a class="header-anchor" href="#遍历节点">¶</a>遍历节点</h2>
+<h3 id="（1）-children-方法"><a class="header-anchor" href="#（1）-children-方法">¶</a>（1）<code>.children()</code> 方法</h3>
+<p>获得匹配元素集合中每个元素的子元素，选择器选择性筛选。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>white<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> ul_chlildList = $(<span class="hljs-string">&#x27;ul&#x27;</span>).children();</span><br><span class="javascript">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = ul_chlildList.length; i &lt; len; i++) &#123;</span><br>          alert(ul_chlildList[i].innerHTML);<br>        &#125;<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062497856.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<h3 id="（2）-next-方法"><a class="header-anchor" href="#（2）-next-方法">¶</a>（2）<code>.next()</code> 方法</h3>
+<p>不说了</p>
+<h3 id="（3）-prev"><a class="header-anchor" href="#（3）-prev">¶</a>（3）<code>.prev()</code></h3>
+<h3 id="（4）-siblings-方法"><a class="header-anchor" href="#（4）-siblings-方法">¶</a>（4）<code>.siblings()</code> 方法</h3>
+<h3 id="（5）-parent-方法"><a class="header-anchor" href="#（5）-parent-方法">¶</a>（5）<code>.parent()</code> 方法</h3>
+<p>细节看 实验楼</p>
+<h2 id="CSS-DOM"><a class="header-anchor" href="#CSS-DOM">¶</a>CSS DOM</h2>
+<p>CSS-DOM 技术简单来说就是读取和设置 style 对象的各种属性。</p>
+<h3 id="（1）-css"><a class="header-anchor" href="#（1）-css">¶</a>（1）<code>.css()</code></h3>
+<p>示例：获取 div 的背景颜色</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br><span class="css">      <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="css">        <span class="hljs-attribute">background-color</span>: red;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      alert($(<span class="hljs-string">&#x27;div&#x27;</span>).css(<span class="hljs-string">&#x27;background-color&#x27;</span>));</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062888673.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>示例：为 div 设置边框和高度属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-string">&#x27;div&#x27;</span>).css(&#123; <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;1px solid red&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-string">&#x27;100px&#x27;</span> &#125;);</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555062949580.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p>对于透明度的设置，可以直接使用 opacity 属性，jQuery 已经处理好了兼容性的问题，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;p&#x27;</span>).css(<span class="hljs-string">&#x27;opacity&#x27;</span>, <span class="hljs-string">&#x27;0.5&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>（2）<code>.height()</code>、<code>.width()</code></p>
+<ul>
+<li><code>.height()</code> 获取匹配元素集合中的第一个元素的当前计算高度值 或 设置每一个匹配元素的高度值。</li>
+<li><code>.width()</code> 为匹配的元素集合中获取第一个元素的当前计算宽度值 或 给每个匹配的元素设置宽度。</li>
+</ul>
+<p>示例：获取 div 的高度和宽度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>      .demo &#123;<br><span class="css">        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br>      &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo&quot;</span>&gt;</span>shiyanlou<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">      alert($(<span class="hljs-string">&#x27;div&#x27;</span>).height() + <span class="hljs-string">&#x27; &amp;&amp; &#x27;</span> + $(<span class="hljs-string">&#x27;div&#x27;</span>).width());</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>运行效果为：</p>
+<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1555063004720.png" srcset="/img/loading.gif" lazyload alt="此处输入图片的描述"></p>
+<p><code>height()</code> 方法也能用来设置元素的高度，如果传递的是一个数字，则默认单位是 px，如果要用其他单位，则必须传递一个字符串，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;p&quot;</span>).height(<span class="hljs-number">520</span>);<span class="hljs-comment">//设置&lt;p&gt;元素的高度值为520px</span><br>$(<span class="hljs-string">&quot;p&quot;</span>).height(10rem);<span class="hljs-comment">//设置&lt;p&gt;元素的高度值为10rem</span><br></code></pre></td></tr></table></figure>
+<p>还可以通过 css 方法来获取高度值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(element).css(<span class="hljs-string">&#x27;height&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>两者的区别是：<code>css()</code> 方法获取的高度值与样式的设置有关，可能会得到 “auto” ，也可能得到 “10px” 之类的字符串，而 <code>height()</code> 方法获取的高度值则是元素在页面中的实际高度，与样式的设置无关，而且不带单位。</p>
+<p>同样的 width 方法也是相类似的，这里就不再重复的讲解了，大家可以自行尝试使用看看效果。</p>
+<p>（3）元素定位</p>
+<ul>
+<li><code>offset()</code> 方法，在匹配的元素集合中，获取的第一个元素的当前坐标，或设置每一个元素的坐标，坐标相对于文档。这个方法不接受任何参数。<code>.offset()</code> 方法允许我们检索一个元素相对于文档（document）的当前位置。和 <code>.position()</code> 的差别在于：<code>.position()</code> 是相对于相对于父级元素的位移。当通过全局操作（特别是通过拖拽操作）将一个新的元素放置到另一个已经存在的元素的上面时，若要取得这个新的元素的位置，那么使用 <code>.offset()</code> 更合适。<code>.offset()</code> 返回一个包含 top 和 left 属性的对象 。比如：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> p_offset = $(<span class="hljs-string">&#x27;p&#x27;</span>).offset(); <span class="hljs-comment">//获取&lt;p&gt;元素的offset()</span><br><span class="hljs-keyword">var</span> p_offsetLeft = p_offset.left; <span class="hljs-comment">//获取左偏移</span><br><span class="hljs-keyword">var</span> p_offsetTop = p_offset.top; <span class="hljs-comment">//获取右偏移</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>position()</code> 方法，获取匹配元素中第一个元素的当前坐标，相对于 offset parent 的坐标。(offset parent 指离该元素最近的而且被定位过的祖先元素 ) <code>.position()</code> 方法可以取得元素相对于父元素的偏移位置。与 <code>.offset()</code> 不同, <code>.offset()</code> 是获得该元素相对于 documet 的当前坐标 当把一个新元素放在同一个容器里面另一个元素附近时，用 <code>.position()</code> 更好用。<code>.position()</code>返回一个包含 top 和 left 属性的对象。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> position = $(<span class="hljs-string">&#x27;p&#x27;</span>).position(); <span class="hljs-comment">//获取&lt;p&gt;元素的position()</span><br><span class="hljs-keyword">var</span> left = position.left; <span class="hljs-comment">//获取左偏移</span><br><span class="hljs-keyword">var</span> top = position.top; <span class="hljs-comment">//获取右偏移</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>scrollTop()</code> 方法和 <code>scrollLeft()</code> 方法，这两个方法的作用是分别获取元素的滚动条距顶端的距离和距左侧的距离。另外可以为这两个方法指定一个参数，控制元素的滚动条滚动到指定位置。比如：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> $p = $(<span class="hljs-string">&#x27;p&#x27;</span>);<br><span class="hljs-keyword">var</span> scrollTop = $p.scrollTop(); <span class="hljs-comment">//获取元素的滚动条距顶端的距离</span><br><span class="hljs-keyword">var</span> scrollLeft = $p.scrollLeft(); <span class="hljs-comment">//获取元素的滚动条距左侧的距离</span><br>$(<span class="hljs-string">&#x27;textarea&#x27;</span>).scrollTop(<span class="hljs-number">300</span>); <span class="hljs-comment">//元素的垂直滚动条滚动到指定的位置</span><br>$(<span class="hljs-string">&#x27;textarea&#x27;</span>).scrollLeft(<span class="hljs-number">300</span>); <span class="hljs-comment">//元素的横向滚动条滚动到指定的位置</span><br></code></pre></td></tr></table></figure>
+<p>想要了解更多关于 css 属性的操作可以访问 <a target="_blank" rel="noopener" href="https://www.jquery123.com/category/manipulation/style-properties/">jQuery 中文官网 CSS 属性</a>。</p>
+<h1 id="Event-and-Animation"><a class="header-anchor" href="#Event-and-Animation">¶</a>Event and Animation</h1>
+<h1 id="Form"><a class="header-anchor" href="#Form">¶</a>Form</h1>
+<h1 id="AJAX"><a class="header-anchor" href="#AJAX">¶</a>AJAX</h1>
+<p>创建 XMLHttpRequest 对象的语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
+<p>我们会使用 XMLHttpRequest 对象的 open() 和 send() 方法来将请求发送到服务器。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open(method,url,async)</td>
+<td>规定请求的类型、URL 以及是否异步处理请求。 method: 请求的类型，http 的请求类型，如 GET、POST。 url: 请求的服务端路径 async: Boolean 类型，true (异步处理)，false(同步处理)</td>
+</tr>
+<tr>
+<td>send(string)</td>
+<td>将请求发送到服务端。 string：仅用于 post 请求。</td>
+</tr>
+</tbody>
+</table>
+<p>我们先来看一个简单的 GET 请求:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;index.html&#x27;</span>, <span class="hljs-literal">true</span>);<br>xhr.send();<br></code></pre></td></tr></table></figure>
+<p>xhr 是我们之前创建的 XMLHttpRequest 对象的实例，通过调用 XMLHttpRequest 对象的 open 和 send 方法，就实现了一个简单的向路径 <code>index.html</code> 发起的 GET 请求，异步处理。因为 GET 请求的 header 中是没有参数的，所以 send() 里的值为 null。如果想要加上参数则需要在请求的 url 后添加，如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;http://helloworld.com?id=1&#x27;</span>, <span class="hljs-string">&#x27;true&#x27;</span>);<br>xhr.send();<br></code></pre></td></tr></table></figure>
+<p>我们再来看一个 post 请求：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open(<span class="hljs-string">&#x27;POST&#x27;</span>, <span class="hljs-string">&#x27;index.php&#x27;</span>, <span class="hljs-literal">true</span>);<br>xhr.setRequestHeader(<span class="hljs-string">&#x27;Content-type&#x27;</span>, <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>);<br>xhr.send(<span class="hljs-string">&#x27;name=syl&amp;id=2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>如果我们想像 HTML 表单那样 POST 数据，则需要使用 setRequestHeader() 来添加 HTTP 头，然后在 send 中规定要发送的数据。</p>
+<p>在上面的两个例子中，async 我们都是用了 true，使用 true 和 false 有什么区别呢？</p>
+<p>我们现在只是发送了请求，一个完整的 AJAX 过程还要包括服务端返回信息，这个过程的时间就是我们无法估计的了，谁都没法确定服务端会什么时候返回信息，所以如果 async 设为 true，当发送了 AJAX 请求后，js 无需等待服务端的响应，而是会去处理其它的脚本，等到服务端响应就绪的时候，js 会返回对 AJAX 中的剩余部分作相应处理，这个相应处理需要通过 <code>onreadystatechange</code> 来实现，我们会在下一部分中介绍。如果 async 设为 false，当然，一般不推荐使用 async = false，如果你这么使用了，那么请不要编写 <code>onreadystatechange</code> 函数，否则 js 会挂起在这个函数的地方，等待服务端响应，如果服务端瘫痪了，那么你的脚本就会无法运行。所以如果使用了 async = false，把处理代码放到 send() 后面即可。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.open(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;index.text&#x27;</span>, <span class="hljs-literal">false</span>);<br>xhr.send();<br><span class="hljs-built_in">console</span>.log(xhr.responseText);<br></code></pre></td></tr></table></figure>
+<h2 id="服务器响应"><a class="header-anchor" href="#服务器响应">¶</a>服务器响应</h2>
+<p>一般情况下，我们需要处理的就是 <code>readyState == 4 &amp;&amp; status == 200</code> 的情况，所以 onreadystatechange ，用于处理服务端响应的方法一般写法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-comment">//code 前端处理代码</span><br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="jQuery-封装-AJAX"><a class="header-anchor" href="#jQuery-封装-AJAX">¶</a>jQuery 封装 AJAX</h2>
+<h2 id="3-1-1-load"><a class="header-anchor" href="#3-1-1-load">¶</a>3.1.1 load()</h2>
+<p>load() 是 jQuery 中最简单和常用的 AJAX 方法，语法为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">load(url, [data], [callback]);<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>请求的 url 地址</td>
+</tr>
+<tr>
+<td>data(可选)</td>
+<td>Object</td>
+<td>发送到服务器的数据</td>
+</tr>
+<tr>
+<td>callback(可选)</td>
+<td>Function</td>
+<td>请求完成时的回调函数，无论成功失败  function 有三个额外参数  response 包含来自请求的结果数据 status 包含请求的状态 xhr 包含 XMLHttpRequest 对象</td>
+</tr>
+</tbody>
+</table>
+<p>下面这个示例加载了一个 html 文件到页面中来</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;#result&#x27;</span>).load(<span class="hljs-string">&#x27;https://042bc5dd9bf0.simplelab.cn/load.html&#x27;</span>);</span><br><span class="javascript">        <span class="hljs-comment">//上面是在实验楼环境里运行过的 url，你需要根据注意里的步骤，将后端运行起来后，把web 服务页面中的 url 替换到对应位置，下面一行注释给出了需要替换的位置。</span></span><br><span class="javascript">        <span class="hljs-comment">//$(&quot;#result&quot;).load(&quot;需要将 web 服务中 url 粘贴到这里/load.html&quot;);</span></span><br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-1-2-get"><a class="header-anchor" href="#3-1-2-get">¶</a>3.1.2 $.get()</h2>
+<p>get() 通过远程 HTTP GET 请求载入信息。语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(selector).get(url, data, success(response, status, xhr), dataType);<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>必须，请求的 url</td>
+</tr>
+<tr>
+<td>data</td>
+<td>可选，发送到服务器的数据</td>
+</tr>
+<tr>
+<td>success(response,status,xhr)</td>
+<td>可选，当请求成功时运行该方法 response-包含来自请求的结果数据 status-包含请求的状态 xhr-XMLHttpRequest 对象</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>可选，规定预计接收服务端的响应的数据，可能的类型有 xml、html、text、script、json</td>
+</tr>
+</tbody>
+</table>
+<p>get() 方法是 ajax 方法的简写形式，我们还没有介绍 ajax 方法，但是这里我们给出 get 等价的 ajax 形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">$.ajax(&#123;<br>  type: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>  url: url,<br>  data: data,<br>  success: success,<br>  dataType: dataType,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="3-1-3-post"><a class="header-anchor" href="#3-1-3-post">¶</a>3.1.3 $.post()</h2>
+<p>post() 方法通过 HTTP POST 请求从服务器载入数据，post 方法和 get 方法比较类似。但还是存在一些区别：</p>
+<ul>
+<li>get 请求会将参数跟在 url 后面进行传递，而 post 请求的参数则是作为 HTTP 的消息的实体内容，在 AJAX 请求中，这种区别对用户是不可见的。</li>
+<li>get 请求对传输的数据有大小限制，一般是小于 2KB 的，而 post 理论上没有限制。</li>
+<li>get 请求的数据会被浏览器缓存起来，一些敏感数据同样会被缓存，而 post 则可以避免这个问题。</li>
+</ul>
+<p>语法:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">jQuery.post(url, data, success(data, textStatus, jqXHR), dataType);<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>必须，请求的 url</td>
+</tr>
+<tr>
+<td>data</td>
+<td>可选，发送到服务器的数据</td>
+</tr>
+<tr>
+<td>success(data,textStatus,jqXHR)</td>
+<td>可选，当请求成功时运行该方法 data-包含来自请求的结果数据 textStatus-包含请求的状态 jqXHR-XMLHttpRequest 对象</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>可选，规定预计接收服务端的响应的数据，可能的类型有 xml、html、text、script、json</td>
+</tr>
+</tbody>
+</table>
+<p>post() 方法是 ajax 方法的简写形式，我们还没有介绍 ajax 方法，但是这里我们给出 post 等价的 ajax 形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">$.ajax(&#123;<br>  type: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>  url: url,<br>  data: data,<br>  success: success,<br>  dataType: dataType,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">      <span class="hljs-keyword">var</span> data = &#123;</span><br><span class="javascript">        name: <span class="hljs-string">&#x27;syl&#x27;</span>,</span><br>        id: 1,<br>      &#125;;<br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          <span class="hljs-comment">//下面是在实验楼环境里运行过的 url，你需要根据注意里的步骤，将后端运行起来后，把web 服务页面中的 url 替换到对应位置，下面一行注释给出了需要替换的位置。</span></span><br><span class="javascript">          <span class="hljs-comment">//&quot;需要将 web 服务中 url 粘贴到这里/posttest&quot;</span></span><br><span class="javascript">          $.post(<span class="hljs-string">&#x27;https://042bc5dd9bf0.simplelab.cn/posttest&#x27;</span>, data, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span></span></span><br>            result<br>          ) &#123;<br>            alert(result);<br>          &#125;);<br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>post 和 get 方法只存在方法名的区别。另外，当 load() 方法带有参数传递的时候，会使用 POST 方式发送请求，因此，上述代码我们可以使用 load 来改写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">      <span class="hljs-keyword">var</span> data = &#123;</span><br><span class="javascript">        name: <span class="hljs-string">&#x27;syl&#x27;</span>,</span><br>        id: 1,<br>      &#125;;<br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          <span class="hljs-comment">//下面是在实验楼环境里运行过的 url，你需要根据注意里的步骤，将后端运行起来后，把web 服务页面中的 url 替换到对应位置，下面一行注释给出了需要替换的位置。</span></span><br><span class="javascript">          <span class="hljs-comment">//&quot;需要将 web 服务中 url 粘贴到这里/posttest&quot;</span></span><br><span class="javascript">          $(<span class="hljs-string">&#x27;#result&#x27;</span>).load(</span><br><span class="javascript">            <span class="hljs-string">&#x27;https://042bc5dd9bf0.simplelab.cn/posttest&#x27;</span>,</span><br>            data,<br><span class="javascript">            <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>&#123;</span><br>              alert(result);<br>            &#125;<br>          );<br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077410132" srcset="/img/loading.gif" lazyload alt="图片描述"></p>
+<h2 id="getScript"><a class="header-anchor" href="#getScript">¶</a>$.getScript()</h2>
+<p>jQuery 提供了 $.getScript() 方法来直接加载 js 文件，加载的 js 文件会自动执行。getScript 通过 HTTP GET 请求载入并执行 JavaScript 文件，语法：</p>
+<p><code>jQuery.getScript(url, success(response, status));</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>请求的 url 地址</td>
+</tr>
+<tr>
+<td>success(response,status)</td>
+<td>可选，请求成功后执行的回调函数。  response-包含来自请求的结果数据 status-包含请求的状态</td>
+</tr>
+</tbody>
+</table>
+<p>这个函数同样是简写的 ajax 函数，等价于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$.ajax(&#123;<br>  type: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>  url: url,<br>  dataType: <span class="hljs-string">&#x27;script&#x27;</span>,<br>  success: success,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="getJSON"><a class="header-anchor" href="#getJSON">¶</a>$.getJSON()</h2>
+<p>.getJson() 用于加载 JSON 文件，与.getJson()用于加载JSON文件，与.getScript() 的用法相同。语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">jQuery.getJSON(url, data, success(data, status, xhr));<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>请求的 url 地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>可选，发送到服务端的数据</td>
+</tr>
+<tr>
+<td>success(data,status,xhr)</td>
+<td>可选，请求成功后执行的回调函数。  data-包含来自请求的结果数据 status-包含请求的状态 xhr-XMLHttpRequest 对象</td>
+</tr>
+</tbody>
+</table>
+<p>该函数还是简写的 Ajax 函数，等价于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">$.ajax(&#123;<br>  type: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>  url: url,<br>  data: data,<br>  success: callback,<br>  dataType: json,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>发送到服务器的数据 data 可作为查询字符串附加到 URL 之后。传递给 success 的返回数据 data 可以是 js 对象，也可以是 json 结构的数组，需要使用 $.parseJSON() 进行解析。</p>
+<p>下面给出一个简单的示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          <span class="hljs-comment">//下面是在实验楼环境里运行过的 url，你需要根据注意里的步骤，将后端运行起来后，把web 服务页面中的 url 替换到对应位置，下面一行注释给出了需要替换的位置。</span></span><br><span class="javascript">          <span class="hljs-comment">//&quot;需要将 web 服务中 url 粘贴到这里/getjsontest&quot;</span></span><br><span class="javascript">          $.getJSON(<span class="hljs-string">&#x27;https://042bc5dd9bf0.simplelab.cn/getjsontest&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span></span></span><br>            data<br>          ) &#123;<br>            alert(<br><span class="javascript">              <span class="hljs-keyword">typeof</span> data +</span><br><span class="javascript">                <span class="hljs-string">&#x27;\n&#x27;</span> +</span><br>                data[0].id +<br><span class="javascript">                <span class="hljs-string">&#x27; &#x27;</span> +</span><br>                data[0].name +<br><span class="javascript">                <span class="hljs-string">&#x27;\n&#x27;</span> +</span><br>                data[1].id +<br><span class="javascript">                <span class="hljs-string">&#x27; &#x27;</span> +</span><br>                data[1].name +<br><span class="javascript">                <span class="hljs-string">&#x27;\n&#x27;</span> +</span><br>                data[2].id +<br><span class="javascript">                <span class="hljs-string">&#x27; &#x27;</span> +</span><br>                data[2].name +<br><span class="javascript">                <span class="hljs-string">&#x27;\n&#x27;</span></span><br>            );<br>          &#125;);<br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="ajax-options"><a class="header-anchor" href="#ajax-options">¶</a>$.ajax(options);</h2>
+<p>最基本语法</p>
+<p>例子：</p>
+<p>下面给出一个 ajax 方法的示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;jquery-3.3.1.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Game<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>猜数字<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>答案是0-100之间的整数<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;content&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>guess<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">          <span class="hljs-comment">//下面面是在实验楼环境里运行过的 url，你需要根据注意里的步骤，将后端运行起来后，把web 服务页面中的 url 替换到对应位置，下面一行注释给出了需要替换的位置。</span></span><br><span class="javascript">          <span class="hljs-comment">//&quot;需要将 web 服务中 url 粘贴到这里/ajaxtest&quot;</span></span><br><span class="javascript">          $.ajax(&#123;</span><br><span class="javascript">            type: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="javascript">            url: <span class="hljs-string">&#x27;https://042bc5dd9bf0.simplelab.cn/ajaxtest&#x27;</span>,</span><br>            data: &#123;<br><span class="javascript">              value: $(<span class="hljs-string">&#x27;#content&#x27;</span>).val(),</span><br>            &#125;,<br><span class="javascript">            dataType: <span class="hljs-string">&#x27;text&#x27;</span>,</span><br><span class="javascript">            beforeSend: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;</span><br><span class="javascript">              <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^((?!0)\d&#123;1,2&#125;|100)$/</span>;</span><br><span class="javascript">              <span class="hljs-keyword">if</span> (!reg.test(<span class="hljs-built_in">parseInt</span>($(<span class="hljs-string">&#x27;#content&#x27;</span>).val()))) &#123;</span><br>                xhr.abort();<br><span class="javascript">                alert(<span class="hljs-string">&#x27;请输入 0 - 100 的正整数！&#x27;</span>);</span><br>              &#125;<br>            &#125;,<br><span class="javascript">            success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>&#123;</span><br>              alert(result);<br>            &#125;,<br><span class="javascript">            error: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr, e</span>) </span>&#123;</span><br><span class="javascript">              <span class="hljs-built_in">console</span>.log(e);</span><br>            &#125;,<br>          &#125;);<br>        &#125;);<br>      &#125;);<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>这是一个猜数字游戏，在输入框中输入数字，点击按钮，发送 ajax 请求，由后端处理后返回结果，下面给出后端处理部分的逻辑代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">router.post(<span class="hljs-string">&#x27;/ajaxtest&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (req.body.value == <span class="hljs-number">23</span>) res.send(<span class="hljs-string">&#x27;恭喜你，猜对了！&#x27;</span>);<br>  <span class="hljs-keyword">else</span> res.send(<span class="hljs-string">&#x27;不是 &#x27;</span> + req.body.value + <span class="hljs-string">&#x27; 哦，别灰心，再接再厉！&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>我们在 beforeSend 参数中设置了一个正则判断，需要满足输入的数字为 0-100 的整数才会发送 ajax 请求，否则会调用 abort() 取消这次 ajax 请求。</p>
+<p><img src="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077495738" srcset="/img/loading.gif" lazyload alt="图片描述"></p>
+<p><img src="https://doc.shiyanlou.com/courses/uid920932-20190517-1558077514606" srcset="/img/loading.gif" lazyload alt="图片描述"></p>
+<h2 id="全局-AJAX-事件-重要！"><a class="header-anchor" href="#全局-AJAX-事件-重要！">¶</a>全局 AJAX 事件 重要！</h2>
+<p>想象这样一个应用场景，用户点击了一个按钮，而这个请求需要相当长的时间才能返回，如果页面上没有提示信息，用户很容易就失去耐心，所以我们需要对 ajax 请求有一个全局的监控。jQuery 中 AJAX 的全局事件有：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ajaxStart(callback)</td>
+<td>Ajax 请求开始时执行的函数</td>
+</tr>
+<tr>
+<td>ajaxComplete(callback)</td>
+<td>Ajax 请求完成时执行的函数</td>
+</tr>
+<tr>
+<td>ajaxError(callback)</td>
+<td>Ajax 请求发生错误时执行的函数，捕捉到的错误可以作为最后一个参数传递</td>
+</tr>
+<tr>
+<td>ajaxSend(callback)</td>
+<td>Ajax 请求发送前执行的函数</td>
+</tr>
+<tr>
+<td>ajaxSuccess(callback)</td>
+<td>Ajax 请求成功时执行的函数</td>
+</tr>
+<tr>
+<td>ajaxStop(callback)</td>
+<td>Ajax 请求结束时执行的函数</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;$test&#x27;</span>).ajaxStart(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  $(<span class="hljs-built_in">this</span>).show();<br>&#125;);<br>$(<span class="hljs-string">&#x27;$test&#x27;</span>).ajaxStop(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  $(<span class="hljs-built_in">this</span>).hide();<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>如果想要某个 ajax 请求不受全局事件监听影响，那么可以在使用 $.ajax 时，把参数中的 global 设置为 false。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JS/">JS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JS/">JS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/jQuery/">jQuery</a>
+                    
+                      <a class="hover-with-bg" href="/tags/front-end/">front-end</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/18/jQuery_1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jQuery(1)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/02/JsHandsOn/">
+                        <span class="hidden-mobile">JavaScript Hands On Notes</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

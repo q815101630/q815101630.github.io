@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶配置映射类和数据库  直接贴一个实验楼的图来更好阐述整个流程。 图片版权为实验楼所有 我们之前说到了MVT model， 即整个服务的基本架构是由 model，view，template来实现的。那我们就开始model部分的回顾吧！ 如图所示，M模型的功能是映射类（ORM），即对数据库（我们使用的是MySQL)进行交互。为了更加便捷得能够与数据库进行交互，避免直接使用SQL语句查询，我们可以利用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Flask搭建一个简易的博客网站(4)">
+<meta property="og:url" content="http://example.com/2020/07/11/%E5%88%A9%E7%94%A8flask%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%994/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶配置映射类和数据库  直接贴一个实验楼的图来更好阐述整个流程。 图片版权为实验楼所有 我们之前说到了MVT model， 即整个服务的基本架构是由 model，view，template来实现的。那我们就开始model部分的回顾吧！ 如图所示，M模型的功能是映射类（ORM），即对数据库（我们使用的是MySQL)进行交互。为了更加便捷得能够与数据库进行交互，避免直接使用SQL语句查询，我们可以利用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://azumeow.com/wp-content/uploads/2020/08/wm-1024x415.gif">
+<meta property="article:published_time" content="2020-07-12T04:34:55.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.349Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="flask">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://azumeow.com/wp-content/uploads/2020/08/wm-1024x415.gif">
+  
+  
+  <title>利用Flask搭建一个简易的博客网站(4) - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="利用Flask搭建一个简易的博客网站(4)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-07-11 21:34" pubdate>
+        July 11, 2020 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">利用Flask搭建一个简易的博客网站(4)</h1>
+            
+            <div class="markdown-body">
+              <h2 id="配置映射类和数据库"><a class="header-anchor" href="#配置映射类和数据库">¶</a>配置映射类和数据库</h2>
+<p><img src="https://azumeow.com/wp-content/uploads/2020/08/wm-1024x415.gif" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>直接贴一个实验楼的图来更好阐述整个流程。<br>
+图片版权为实验楼所有</p>
+<p>我们之前说到了MVT model， 即整个服务的基本架构是由 model，view，template来实现的。那我们就开始model部分的回顾吧！</p>
+<p>如图所示，M模型的功能是映射类（ORM），即对数据库（我们使用的是MySQL)进行交互。为了更加便捷得能够与数据库进行交互，避免直接使用SQL语句查询，我们可以利用 flask-sqlalchemy插件来进行ORM的部署，它是专门为flask提供支持的sqlalchemy拓展。简单来说，如果不使用它，我们就必须自己搭建ORM，这就涉及到python的元组（metaclass）和动态创建类的内容了 （我这里当时自学时没有懂 = =）</p>
+<p>既然有现成的工具，我们就需要好好利用它（为自己的笨找到了看似合理的借口 😃 ）。</p>
+<p><code>pip install flask-sqlalchemy   pip install flask-moment</code></p>
+<p>首先安装相关的插件，<a target="_blank" rel="noopener" href="http://xn--model-ep5hjj3315b.py">再进入model.py</a> 中import这些插件，并添加如下的代码。<br>
+可以先忽略具体的表中 某些Column的内容</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">from</span> flask_sqlalchemy <span class="hljs-keyword">import</span> SQLAlchemy<br>db = SQLAlchemy()<br><span class="hljs-keyword">class</span> <span class="hljs-keyword">Role</span>(db.Model):<br>    id = db.<span class="hljs-keyword">Column</span>(db.Integer, primary_key=<span class="hljs-keyword">True</span>)<br>    <span class="hljs-type">name</span> = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">64</span>), <span class="hljs-keyword">unique</span>=<span class="hljs-keyword">True</span>)<br>    default = db.<span class="hljs-keyword">Column</span>(db.Boolean, default=<span class="hljs-keyword">False</span>, <span class="hljs-keyword">index</span>=<span class="hljs-keyword">True</span>)<br>    permissions = db.<span class="hljs-keyword">Column</span>(db.Integer)<br><br>    def __repr__(self):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Role: &#123;&#125;&gt;&#x27;</span>.format(self.name)<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">class</span> <span class="hljs-keyword">User</span>(db.Model, UserMixin):<br>    def __init__(self, **kw):<br>        <span class="hljs-string">&#x27;&#x27;&#x27;default role&#x27;&#x27;&#x27;</span><br>        # <span class="hljs-keyword">inherit</span> the core <span class="hljs-keyword">of</span> ORM<br>        super().__init__(**kw)<br>        self.<span class="hljs-keyword">role</span> = <span class="hljs-keyword">Role</span>.query.filter_by(default=<span class="hljs-keyword">True</span>).first()<br><br>    # necessary<br>    id = db.<span class="hljs-keyword">Column</span>(db.Integer, primary_key=<span class="hljs-keyword">True</span>)<br>    <span class="hljs-type">name</span> = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">64</span>), <span class="hljs-keyword">unique</span>=<span class="hljs-keyword">True</span>, <span class="hljs-keyword">index</span>=<span class="hljs-keyword">True</span>)<br>    email = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">64</span>), <span class="hljs-keyword">unique</span>=<span class="hljs-keyword">True</span>, <span class="hljs-keyword">index</span>=<span class="hljs-keyword">True</span>)  # <span class="hljs-keyword">index</span> helps <span class="hljs-keyword">to</span> <span class="hljs-keyword">do</span> query <span class="hljs-keyword">in</span> front<br><br>    # <span class="hljs-keyword">info</span> related<br>    _password = db.<span class="hljs-keyword">Column</span>(<span class="hljs-string">&#x27;password&#x27;</span>, db.String(<span class="hljs-number">128</span>))<br>    confirmed = db.<span class="hljs-keyword">Column</span>(db.Boolean, default=<span class="hljs-keyword">False</span>)<br>    role_id = db.<span class="hljs-keyword">Column</span>(db.Integer, db.ForeignKey(<span class="hljs-string">&#x27;role.id&#x27;</span>))<br>    <span class="hljs-keyword">role</span> = db.relationship(<span class="hljs-string">&#x27;Role&#x27;</span>, backref=db.backref(<span class="hljs-string">&#x27;users&#x27;</span>, lazy=<span class="hljs-string">&#x27;dynamic&#x27;</span>))<br><br>    # personalize<br>    age = db.<span class="hljs-keyword">Column</span>(db.Integer)<br>    gender = db.<span class="hljs-keyword">Column</span>(db.Enum(Gender))<br>    phone_num = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">32</span>), <span class="hljs-keyword">unique</span>=<span class="hljs-keyword">True</span>)<br>    <span class="hljs-keyword">location</span> = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">64</span>))<br>    about_me = db.<span class="hljs-keyword">Column</span>(db.Text())<br>    avatar_hash = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">128</span>))<br>    small_avatar_hash = db.<span class="hljs-keyword">Column</span>(db.String(<span class="hljs-number">128</span>))<br><br>    # other<br>    create_at = db.<span class="hljs-keyword">Column</span>(db.DateTime, default=datetime.utcnow())<br>    last_seen = db.<span class="hljs-keyword">Column</span>(db.DateTime, default=datetime.utcnow())<br><br>    # getter<br>    @property<br>    def <span class="hljs-keyword">password</span>(self):<br>        <span class="hljs-keyword">return</span> self._password<br></code></pre></td></tr></table></figure>
+<p>关于最后这两个方法，一个是password的getter， 一个是 password的setter</p>
+<p>这User类便是一个经典的ORM映射关系的实现，即一个类映射到数据库的一个表。</p>
+<p>Role表名默认为类名，这个表内有这几个Column：id, name, default, permissions。 __repr__是用来显示这个类的实例，即表的某个row（在这里是具体的某个权限）。我们显示 &lt;Role: <a target="_blank" rel="noopener" href="http://self.name">self.name</a>&gt; 来代表这个权限。</p>
+<p>相应的， user类代表的是user表，某个row代表的是具体的用户，每个row都需要有对用的id, name, email, password信息。db.Column()第一个参数是这个column的类型或者是名字，具体的信息可以查阅官方文档：</p>
+<p><a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/">https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/</a></p>
+<p>这样，基础的映射类就创建好了，我们现在需要创建相对于的数据库（表）</p>
+<p>进入mysql command line, 登录， 并且输入<code>CREATE SCHEMA flaska CHARSET = UTF8</code> , 通过mysql语句创建新的数据库。再进入flask shell，</p>
+<p><code>from models import db   db.create_all()</code></p>
+<p>这样再查询mysql 中的表，就会出现 Role 和 User。这就说明我们的数据库基本地就配置好了</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Flask/">Flask</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/flask/">flask</a>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/22/%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">二叉树相关问题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/01/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88%E5%A4%8D%E4%B9%A0/">
+                        <span class="hidden-mobile">基础算法总览复习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

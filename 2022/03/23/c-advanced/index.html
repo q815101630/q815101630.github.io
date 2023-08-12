@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Some C++ Advanced Usage Example Notes 一些个人C++的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Advance Notes">
+<meta property="og:url" content="http://example.com/2022/03/23/c-advanced/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="Some C++ Advanced Usage Example Notes 一些个人C++的学习笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-24T04:09:58.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.331Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>C++ Advance Notes - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/backgrounds/nature/yaHa.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="C++ Advance Notes">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-23 21:09" pubdate>
+        March 23, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      56 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C++ Advance Notes</h1>
+            
+            <div class="markdown-body">
+              <p>Some C++ Advanced Usage Example Notes</p>
+<p>一些个人C++的学习笔记</p>
+<span id="more"></span>
+<p>这篇post主要记录在写CS126代码时候，遇到的一些c++问题，留以记录。</p>
+<p>首先强推这个Youtuber C++系列，非常直观+很有帮助：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw">https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw</a></p>
+<p>这篇post主要围绕CS126 HW9 的一系列小问题展开</p>
+<h1 id="Pointers-and-References"><a class="header-anchor" href="#Pointers-and-References">¶</a>Pointers and References</h1>
+<blockquote>
+<p>You need to write a function swap two <code>int</code>s. You remember there are three ways to do it but unfortunately you can’t remember what the best way is. Why not try all three ways, then?</p>
+<p>If a function is impossible to implement, return <code>false</code>. Otherwise, swap the numbers and return <code>true</code>.</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">SwapByValue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">SwapByPointer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *a, <span class="hljs-keyword">int</span> *b)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> temp =  *a;<br>    *a = *b;<br>    *b = temp;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">SwapByReference</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a, <span class="hljs-keyword">int</span> &amp;b)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> temp = a;<br>    a = b;<br>    b = temp;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Explanation:</strong></p>
+<ol>
+<li>Swap by Value 是无效的，因为两个参数都只是两份copy，原变量无任何变化。</li>
+<li>Swap by Pointer 原变量被两个指针指向并且传入参数，那么只需要Dereference后得到Alias，交换值后两个变量内存地址上的值就会被交换.</li>
+<li>Swap by Reference： Reference就是变量的Alias，改变直接反应到变量的内存地址上。</li>
+</ol>
+<h1 id="Iterators"><a class="header-anchor" href="#Iterators">¶</a>Iterators</h1>
+<blockquote>
+<p>You realize that Git uses linked lists internally, so you decide to implement your own version control system! This should be easy, right? Start by implementing the following iterator functions, so you can iterate over a list of commits.</p>
+<p>When you’re done, your iterator should be able to be used in the following <code>for</code> loop:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++">CommitHistory history;<br>history.Push(<span class="hljs-string">&quot;First commit&quot;</span>);<br>history.Push(<span class="hljs-string">&quot;Second commit&quot;</span>);<br><span class="hljs-comment">// ...</span><br><br><span class="hljs-keyword">for</span> (CommitHistory::Iterator it = history.begin(); it != history.end(); ++it) &#123;<br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> message = *it;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>For reference, the header file is included below:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CommitHistory</span> &#123;</span><br>  <span class="hljs-keyword">public</span>:<br>    CommitHistory();<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Push</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> message)</span></span>;<br><br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Iterator</span> &#123;</span><br>      <span class="hljs-keyword">public</span>:<br>        Iterator(Commit *curr);<br><br>        Iterator&amp; <span class="hljs-keyword">operator</span>++();<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; <span class="hljs-keyword">operator</span>*() <span class="hljs-keyword">const</span>;<br>        <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>!=(<span class="hljs-keyword">const</span> Iterator&amp; other) <span class="hljs-keyword">const</span>;<br><br>      <span class="hljs-keyword">private</span>:<br>        Commit *curr_;<br>    &#125;;<br><br>    <span class="hljs-function">Iterator <span class="hljs-title">begin</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function">Iterator <span class="hljs-title">end</span><span class="hljs-params">()</span></span>;<br><br>  <span class="hljs-keyword">private</span>:<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Commit</span> &#123;</span><br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> message_;<br>        Commit *next_;<br>    &#125;;<br><br>    Commit *head_;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>Hint: Each function should be roughly one line of code.</p>
+</blockquote>
+<p>**Answer: **</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;commit_history.h&quot;</span></span><br><br><br>CommitHistory::CommitHistory() &#123;<br>    head_ = <span class="hljs-literal">nullptr</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CommitHistory::Push</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> message)</span> </span>&#123;<br>    Commit *commit = <span class="hljs-keyword">new</span> Commit();<br>    commit-&gt;message_ = message;<br>    commit-&gt;next_ = head_;<br><br>    head_ = commit;<br>&#125;<br><br>CommitHistory::Iterator::Iterator(Commit *curr) &#123;<br>    curr_ = curr;<br>&#125;<br><br><span class="hljs-keyword">bool</span> CommitHistory::Iterator::<span class="hljs-keyword">operator</span>!=(<span class="hljs-keyword">const</span> Iterator&amp; other) <span class="hljs-keyword">const</span> &#123;<br>    <span class="hljs-keyword">return</span> curr_ != other.curr_;<br>&#125;<br><br>CommitHistory::Iterator&amp; CommitHistory::Iterator::<span class="hljs-keyword">operator</span>++() &#123;<br>    curr_ = curr_-&gt;next_;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; CommitHistory::Iterator::<span class="hljs-keyword">operator</span>*() <span class="hljs-keyword">const</span> &#123;<br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; message = curr_-&gt;message_;<br>    <span class="hljs-keyword">return</span> message;<br>&#125;<br><br><span class="hljs-function">CommitHistory::Iterator <span class="hljs-title">CommitHistory::begin</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> CommitHistory::Iterator(head_);<br>&#125;<br><br><span class="hljs-function">CommitHistory::Iterator <span class="hljs-title">CommitHistory::end</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> CommitHistory::Iterator(<span class="hljs-literal">nullptr</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里迭代器主要实现了6个method，分别是：</p>
+<ol>
+<li>Constructor <code> CommitHistory::Iterator::Iterator(Commit *curr)</code></li>
+<li>operator!=    <code>bool CommitHistory::Iterator::operator!=(const Iterator&amp; other) const</code></li>
+<li>operator++   <code>CommitHistory::Iterator&amp; CommitHistory::Iterator::operator++()</code></li>
+<li>dereference operator   <code>std::string&amp; CommitHistory::Iterator::operator*() const</code></li>
+<li>begin()       <code>CommitHistory::Iterator CommitHistory::begin() </code></li>
+<li>end()          <code>CommitHistory::Iterator CommitHistory::end()</code></li>
+</ol>
+<h1 id="Templating"><a class="header-anchor" href="#Templating">¶</a>Templating</h1>
+<blockquote>
+<p>You’re writing a general-purpose geometry library, but… it’s not general enough! Use templating to add support for <code>float</code>s, <code>long</code>s, and other numeric types in the <code>Rectangle</code> class.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> &#123;</span><br>  <span class="hljs-keyword">public</span>:<br>    Rectangle(T w, T h);<br>    <span class="hljs-function">T <span class="hljs-title">CalculateArea</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function">T <span class="hljs-title">CalculatePerimeter</span><span class="hljs-params">()</span></span>;<br><br>  <span class="hljs-keyword">private</span>:<br>    T w_;<br>    T h_;<br>&#125;;<br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br>Rectangle&lt;T&gt;::Rectangle(T w, T h) &#123;<br>    w_ = w;<br>    h_ = h;<br>&#125;<br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br>T Rectangle&lt;T&gt;::CalculateArea() &#123;<br>    <span class="hljs-keyword">return</span> w_ * h_;<br>&#125;<br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br>T Rectangle&lt;T&gt;::CalculatePerimeter() &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * w_ + <span class="hljs-number">2</span> * h_;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Templating 的重点在于：在实现每个method 时候，不仅仅需要用上<code>template</code>， 同时需要放入对应的signature当中。</p>
+<h1 id="The-Big-5"><a class="header-anchor" href="#The-Big-5">¶</a>The Big 5</h1>
+<blockquote>
+<p>You want to write a backend program to keep track of this season’s Big 10 basketball games, so you can display live scores on your website. In your opinion, the only thing more exciting than the Big 10 conference is the Big 5 resource management functions, so you decide to implement them for the <code>Team</code> class.</p>
+<ol>
+<li>Destructor</li>
+<li>Copy Constructor</li>
+<li>Copy Assignment Operator</li>
+<li>Move Constructor</li>
+<li>Move Assignment Operator</li>
+</ol>
+<p>For reference, the header file is included below:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Team</span> &#123;</span><br>  <span class="hljs-keyword">public</span>:<br>    Team();<br><br>    ~Team();<br>    Team(<span class="hljs-keyword">const</span> Team &amp;other);<br>    Team&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Team&amp; other);<br>    Team(Team&amp;&amp; other) <span class="hljs-keyword">noexcept</span>;<br>    Team&amp; <span class="hljs-keyword">operator</span>=(Team&amp;&amp; other) <span class="hljs-keyword">noexcept</span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">EditLineup</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> idx, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> player)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ShootFreeThrow</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ShootTwo</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ShootThree</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>* <span class="hljs-title">lineup</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">score</span><span class="hljs-params">()</span></span>;<br><br>  <span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">size_t</span> kLineupSize = <span class="hljs-number">5</span>;<br><br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> *lineup_;<br>    <span class="hljs-keyword">int</span> score_;<br>&#125;;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;team.h&quot;</span></span><br><br>Team::Team() &#123;<br>    lineup_ = <span class="hljs-keyword">new</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>[kLineupSize];<br>    score_ = <span class="hljs-number">0</span>;<br>&#125;<br><br>Team::~Team() &#123;<br>    <span class="hljs-keyword">delete</span>[] lineup_;<br>&#125;<br><br>Team::Team(<span class="hljs-keyword">const</span> Team&amp; other) : score_(other.score_) &#123;<br>    lineup_ = <span class="hljs-keyword">new</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>[kLineupSize];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; kLineupSize; ++i )&#123;<br>         lineup_[i] = other.lineup_[i];<br>    &#125;<br>&#125;<br><br>Team&amp; Team::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Team&amp; other) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;other)&#123;<br>        <br>        <span class="hljs-keyword">delete</span>[] lineup_;<br>        score_ = other.score_;<br>        lineup_ = <span class="hljs-keyword">new</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>[kLineupSize];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; kLineupSize; ++i )&#123;<br>             lineup_[i] = other.lineup_[i];<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br>Team::Team(Team&amp;&amp; other) <span class="hljs-keyword">noexcept</span> &#123;<br>    score_ = other.score_;<br>    lineup_ = other.lineup_;<br>    <br>    other.score_ = <span class="hljs-number">0</span>;<br>    other.lineup_ = <span class="hljs-literal">nullptr</span>;<br>    <br>&#125;<br><br>Team&amp; Team::<span class="hljs-keyword">operator</span>=(Team&amp;&amp; other) <span class="hljs-keyword">noexcept</span> &#123;<br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;other)&#123;<br>        <span class="hljs-keyword">delete</span>[] lineup_;<br>    <br>        score_ = other.score_;<br>        lineup_ = other.lineup_;<br>        <br>        other.score_ = <span class="hljs-number">0</span>;<br>        other.lineup_ = <span class="hljs-literal">nullptr</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Team::EditLineup</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> idx, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> player)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (idx &gt;= <span class="hljs-number">0</span> &amp;&amp; idx &lt; kLineupSize) &#123;<br>        lineup_[idx] = player;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Team::ShootFreeThrow</span><span class="hljs-params">()</span> </span>&#123;<br>    score_++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Team::ShootTwo</span><span class="hljs-params">()</span> </span>&#123;<br>    score_ += <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Team::ShootThree</span><span class="hljs-params">()</span> </span>&#123;<br>    score_ += <span class="hljs-number">3</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>* <span class="hljs-title">Team::lineup</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> lineup_;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Team::score</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> score_;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Destructor"><a class="header-anchor" href="#Destructor">¶</a>Destructor</h2>
+<p>当destruct object时，destructor会被invoke，如果我们用了任何heap space，那么我们可以在destructor中调用<code>delete</code> 用来 free heap space</p>
+<h2 id="Copy-Constructor"><a class="header-anchor" href="#Copy-Constructor">¶</a>Copy Constructor</h2>
+<p>如果我们需要deep copy，可以自己定义copy constructor (默认的话是shallow copy)。</p>
+<h2 id="Copy-Assignment-Operator"><a class="header-anchor" href="#Copy-Assignment-Operator">¶</a>Copy Assignment Operator</h2>
+<p>在对已经分配空间后的对象上做assignment，和Copy Constructor 非常类似，但是需要check self-assignment 并且delete不需要的heap space。</p>
+<h2 id="Move-Constructor"><a class="header-anchor" href="#Move-Constructor">¶</a>Move Constructor</h2>
+<p>如果我们初始化对象的参数只是rvalue，即只是临时的，我们不需要copy一遍再初始化，而是直接move。记得把原来参数指向<code>nullptr</code>.</p>
+<h2 id="Move-Assignment-Operator"><a class="header-anchor" href="#Move-Assignment-Operator">¶</a>Move Assignment Operator</h2>
+<p>在已分配空间后的对象上做move assignment，和move constructor类似。</p>
+<p>这里主要记录每一种对应的概念practice，供未来参考。对于概念我觉得开始推的那个油管主讲的非常好，如果看不明白这里的代码，强推他的c++系列视频！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/c/">c++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/c/">c++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/14/leetflash/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LeetFlash 上线啦</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/20/how-to-write-good-tests/">
+                        <span class="hidden-mobile">How to Write Good Tests?</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

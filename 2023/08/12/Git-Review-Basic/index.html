@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="¶Git Review Basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Review Basics">
+<meta property="og:url" content="http://example.com/2023/08/12/Git-Review-Basic/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="¶Git Review Basic">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/git.png">
+<meta property="article:published_time" content="2023-08-12T20:47:24.326Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.326Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/git.png">
+  
+  
+  <title>Git Review Basics - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/backgrounds/chengdu/wuHouCi.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Git Review Basics">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-08-12 13:47" pubdate>
+        August 12, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Git Review Basics</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Git-Review-Basic"><a class="header-anchor" href="#Git-Review-Basic">¶</a>Git Review Basic</h1>
+<span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=en_US">https://learngitbranching.js.org/?locale=en_US</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pcottle/learnGitBranching">https://github.com/pcottle/learnGitBranching</a></p>
+<p>A way of learning git with visualization.</p>
+<div class="note note-warning">
+            <p>Since this blog post, I will bring some of my personal life into the site to make it more vivid.</p>
+          </div>
+<blockquote>
+<p>This index page image is one of the famous sceneries in my hometown --Chengdu, Sichuan, China. The mixture of green bamboo, red walls, and emerald tiles depict a beautiful, peaceful Chinese garden painting in a traditional Chinese style. It is reminiscent of my childhood in summer where I played with my friends in a park (called 梨园 Liyuan, removed years ago for the purpose to rebuild that part of the Chengdu city.)</p>
+</blockquote>
+<h1 id="Basic"><a class="header-anchor" href="#Basic">¶</a>Basic</h1>
+<h2 id="Commit"><a class="header-anchor" href="#Commit">¶</a>Commit</h2>
+<ul>
+<li><code>git commit</code> : simply a snapshot of all the <strong>tracked</strong> files in the directory</li>
+</ul>
+<h2 id="Branch"><a class="header-anchor" href="#Branch">¶</a>Branch</h2>
+<p>Branches are simply <strong>pointers to specific commit</strong>. No extra memory/ storage overhead with making many branches.</p>
+<p><em>A branch can be translated as : want to include the work of this commits and all parent commits.</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">git branch [branchname]<br>git checkout [branchname]<br><span class="hljs-comment"># Equivalent to the following</span><br>git checkout -b [branchname]<br></code></pre></td></tr></table></figure>
+<h2 id="Merging"><a class="header-anchor" href="#Merging">¶</a>Merging</h2>
+<p>Merge is to <strong>combine the work from two different branches together</strong>.</p>
+<p>Meging creates a special commit that has two unique parents.</p>
+<p><em>A commit with two parents can be translated as : want to include all the work from from these two parents and the set of all their parents.</em></p>
+<p>Note that: <code>git merge [branchname]</code> is to take all the commits from another branch and merge with current branch!</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651473.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h2 id="Rebasing"><a class="header-anchor" href="#Rebasing">¶</a>Rebasing</h2>
+<p>Rebasing is to take a set of commits, copy them, and plop them down somewhere else.</p>
+<p>If currently we are on <code>C3</code>, and we do<code>git rebase main</code></p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651132.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><code>C3</code> will be the next commit of main, and that is essentially what <code>rebase</code> do.  main is the ancestor of <code>bugFix</code>.</p>
+<p>then we will do the <code>git rebase bugFix</code> on <code>main</code> . Git notice <code>main</code>  is the ancestor of <code>bugFix</code> so it simply moves <code>main</code>  branch reference forward in history.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651490.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><em>Rebasing can be translated to: reallocate current branch to be the next branch of some branch so that a sequential commit history is shown.</em></p>
+<h2 id="HEAD"><a class="header-anchor" href="#HEAD">¶</a>HEAD</h2>
+<p>HEAD: A symbolic name for the <strong>currently checked out commit,</strong> it’s essentially <strong>what commit you’re working on top of.</strong></p>
+<p><em>HEAD can be translate to your current position in the tree</em></p>
+<ul>
+<li>HEAD always points to the most recent commit branch.</li>
+<li>HEAD points to a branch name such as <code>bugFix</code>. When commit, the status of <code>bugFix</code> is changed through looking at <code>HEAD</code></li>
+</ul>
+<p>To detach HEAD means to go back to a specific commit (not specific branch though, a branch name can be seen as the default HEAD of that branch)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout [commitHash]<br></code></pre></td></tr></table></figure>
+<h2 id="Relative-Refs"><a class="header-anchor" href="#Relative-Refs">¶</a>Relative Refs</h2>
+<ul>
+<li>Moving upwards one commit at a time with <code>^</code> (Caret)</li>
+<li>Moving upwards a number of times with <code>~&lt;num&gt;</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># find the last (parent) commit of main, set HEAD there</span><br>git checkout main^<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651688.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># (find parent and set HEAD there) x3</span><br>git checkout C3<br>git checkout HEAD^<br>git checkout HEAD^<br>git checkout HEAD^<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651277.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Go 4 levels up the tree!</span><br>git checkout HEAD~4<br></code></pre></td></tr></table></figure>
+<h3 id="Branch-forcing"><a class="header-anchor" href="#Branch-forcing">¶</a>Branch forcing</h3>
+<p>Notice that this only reassign different branch name onto another commit, but not changing the work tree.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># move a branch to a specific place by force</span><br><span class="hljs-comment"># git branch -f [branchname] [destination]</span><br>git branch -f main HEAD~3 <br></code></pre></td></tr></table></figure>
+<h2 id="Reversing-Changes"><a class="header-anchor" href="#Reversing-Changes">¶</a>Reversing Changes</h2>
+<h3 id="git-reset"><a class="header-anchor" href="#git-reset">¶</a>git reset</h3>
+<p>Reset is to reverse changes by moving a branch reference backwards in time to an older commit.</p>
+<p>git reset can be translated as rewrite the history as if the commit had never been made in the first place.</p>
+<p>use <code>git reset</code> when you have committed in your local machine but wants to discard it.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># git reset [destination]</span><br>git reset HEAD~1<br></code></pre></td></tr></table></figure>
+<h3 id="git-revert"><a class="header-anchor" href="#git-revert">¶</a>git revert</h3>
+<p>git reset works well on local machine ,but it cannot share this reset with remote repo</p>
+<p>git revert can do this job.</p>
+<p><code>git revert</code> introduces a new changes that happens to reset all changes made by <code>C2</code>.</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/202201071651724.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<h1 id="Intermediate"><a class="header-anchor" href="#Intermediate">¶</a>Intermediate</h1>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/Git-Review-Intermediate-188b651b1da94ac49b06802913e6ec19">Git Review Intermediate</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/general/">general</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/git/">git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/12/tutorial-en/">
+                        <span class="hidden-mobile">LeetFlash Tutorial</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

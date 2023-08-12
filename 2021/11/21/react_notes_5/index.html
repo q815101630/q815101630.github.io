@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lucheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My React Learning Note (5)">
+<meta property="og:url" content="http://example.com/2021/11/21/react_notes_5/index.html">
+<meta property="og:site_name" content="Deer City">
+<meta property="og:description" content="Hooks">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/image-20211121155030357.png">
+<meta property="article:published_time" content="2021-11-22T02:18:00.000Z">
+<meta property="article:modified_time" content="2023-08-12T20:47:24.343Z">
+<meta property="article:author" content="Lucheng">
+<meta property="article:tag" content="blogs">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/image-20211121155030357.png">
+  
+  
+  <title>My React Learning Note (5) - Deer City</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Deer City | Lucheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="My React Learning Note (5)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-21 18:18" pubdate>
+        November 21, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      93 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> views
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">My React Learning Note (5)</h1>
+            
+            <div class="markdown-body">
+              <p>Hooks</p>
+<span id="more"></span>
+<h1 id="My-React-Learning-Note-5"><a class="header-anchor" href="#My-React-Learning-Note-5">¶</a>My React Learning Note (5)</h1>
+<h1 id="Topic-Hooks"><a class="header-anchor" href="#Topic-Hooks">¶</a>Topic: Hooks</h1>
+<h2 id="useSelector-useDispatch"><a class="header-anchor" href="#useSelector-useDispatch">¶</a>useSelector, useDispatch</h2>
+<p><code>useSelector</code> , <code>useDispatch</code> 是两个 <code>react-redux</code> 提供的hooks,这样就不需要 <code>mapStateToProps</code></p>
+<p>和 <code>mapDispatchToProps</code></p>
+<h2 id="useState"><a class="header-anchor" href="#useState">¶</a>useState</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZhangMYihua/use-state-example">https://github.com/ZhangMYihua/use-state-example</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> [name, setName] = useState(<span class="hljs-string">&#x27;Haha&#x27;</span>)<br><br>&lt;button onClick = &#123;<span class="hljs-function">() =&gt;</span> setName(<span class="hljs-string">&quot;Wahaha&quot;</span>)&#125;&gt;<span class="hljs-built_in">Set</span> Name to Wahaha &lt;/button&gt;<br><br></code></pre></td></tr></table></figure>
+<h2 id="useEffect"><a class="header-anchor" href="#useEffect">¶</a>useEffect</h2>
+<p>a function gets called whenever the update lifecycle method (re-render) is fired</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript">userEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>&#125;) <span class="hljs-comment">//fire for any update</span><br><span class="hljs-comment">//--------------</span><br><br>userEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>&#125;, []) <span class="hljs-comment">//fire for nothing but first time load</span><br><br><span class="hljs-comment">//-------------------</span><br><br>userEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>&#125;, [user]) <span class="hljs-comment">//only filre for item in [item]</span><br><br></code></pre></td></tr></table></figure>
+<p>use Async function in <code>useEffect</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-keyword">const</span> fetchFunc = <span class="hljs-keyword">async</span> () =&gt;&#123;<br>        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://.....`</span>)<br>    	<span class="hljs-keyword">const</span> resJson = <span class="hljs-keyword">await</span> response.json()<br>        setUser(resJson[<span class="hljs-number">0</span>])<br>        &#125;<br>    fetchFunc();<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>The code above will cause an infinite loop between:</p>
+<p>setUser (update DOM) -&gt; useEffect -&gt; setUser -&gt; useEffect…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Then this will be called once when mount!</span><br>useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-keyword">const</span> fetchFunc = <span class="hljs-keyword">async</span> () =&gt;&#123;<br>        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://.....`</span>)<br>    	<span class="hljs-keyword">const</span> resJson = <span class="hljs-keyword">await</span> response.json()<br>        setUser(resJson[<span class="hljs-number">0</span>])<br>        &#125;<br>    fetchFunc();<br>&#125;, [searchQuery])<br></code></pre></td></tr></table></figure>
+<p><strong>If we want condition, we put them into <code>useEffect</code></strong></p>
+<h2 id="Class-based-component-to-Function-based-component"><a class="header-anchor" href="#Class-based-component-to-Function-based-component">¶</a>Class-based component to Function-based component</h2>
+<p>Some thing we changed from class-based components to function-based components:</p>
+<ol>
+<li>
+<p><code>this.state</code> -&gt; <code>useState</code></p>
+</li>
+<li>
+<p><code>this.props</code></p>
+<p>We destructure props we want from the input params of the function component</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> SignIn = <span class="hljs-function">(<span class="hljs-params">&#123; emailSignInStart, googleSignInStart &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> [userCredentials, setUserCredentials] = useState(&#123;<br>    email: <span class="hljs-string">&quot;&quot;</span>,<br>    password: <span class="hljs-string">&quot;&quot;</span>,<br>  &#125;);<br> <span class="hljs-keyword">return</span> (...)<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>注意，如果当我们把多个 state values 变成一个 object 然后一起更新时：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> [userCredentials, setUserCredentials] = useState(&#123;<br>    displayName: <span class="hljs-string">&quot;&quot;</span>,<br>    email: <span class="hljs-string">&quot;&quot;</span>,<br>    password: <span class="hljs-string">&quot;&quot;</span>,<br>    confirmPassword: <span class="hljs-string">&quot;&quot;</span>,<br>  &#125;);<br><br><span class="hljs-keyword">const</span> &#123; displayName, email, password, confirmPassword &#125; = userCredentials;  <br><br><span class="hljs-keyword">const</span> handleChange = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;here&quot;</span>);<br>    <span class="hljs-built_in">console</span>.log(event.target);<br>    <span class="hljs-keyword">const</span> &#123; name, value &#125; = event.target;<br>	<br>    <span class="hljs-comment">// only update the one we want!</span><br>    setUserCredentials(&#123; ...userCredentials, [name]: value &#125;);<br>  &#125;;<br></code></pre></td></tr></table></figure>
+<p>One component will re-render only in three conditions:</p>
+<ol>
+<li>Props change</li>
+<li><code>setState</code> from <code>useState</code></li>
+<li>parent re-render</li>
+</ol>
+<h2 id="userEffect-Unmount"><a class="header-anchor" href="#userEffect-Unmount">¶</a>userEffect -&gt; Unmount</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>	<br>    <span class="hljs-comment">//clean up function</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>    <br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;I am subscribing&quot;</span>);<br>  <span class="hljs-keyword">const</span> unsubscribeFromCollection = firestore<br>    .collection(<span class="hljs-string">&quot;collections&quot;</span>)<br>    .onSnapshot(<span class="hljs-function">(<span class="hljs-params">snapshot</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(snapshot));<br>  <br>    <span class="hljs-comment">// cleanup function</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;I am unsubscribing!&quot;</span>);<br>    unsubscribeFromCollection();<br>  &#125;;<br>&#125;, []); <span class="hljs-comment">// pass empty list to avoid infinite loop</span><br><br></code></pre></td></tr></table></figure>
+<h1 id="useEffect-Cheat-Sheet"><a class="header-anchor" href="#useEffect-Cheat-Sheet">¶</a>useEffect Cheat Sheet</h1>
+<p>A quick recap of what we have learned about useEffect:</p>
+<h4 id="ComponentDidMount"><a class="header-anchor" href="#ComponentDidMount">¶</a>ComponentDidMount</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//Class</span><br><span class="hljs-function"><span class="hljs-title">componentDidMount</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;I just mounted!&#x27;</span>);<br>&#125;<br><br><span class="hljs-comment">//Hooks</span><br>useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;I just mounted!&#x27;</span>);<br>&#125;, [])<br></code></pre></td></tr></table></figure>
+<h4 id="ComponentWillUnmount"><a class="header-anchor" href="#ComponentWillUnmount">¶</a>ComponentWillUnmount</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//Class</span><br><span class="hljs-function"><span class="hljs-title">componentWillUnmount</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;I am unmounting&#x27;</span>);<br>&#125;<br><br><span class="hljs-comment">//Hooks</span><br>useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;I am unmounting&#x27;</span>);<br>&#125;, [])<br></code></pre></td></tr></table></figure>
+<h4 id="ComponentWillReceiveProps"><a class="header-anchor" href="#ComponentWillReceiveProps">¶</a>ComponentWillReceiveProps</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//Class</span><br><span class="hljs-function"><span class="hljs-title">componentWillReceiveProps</span>(<span class="hljs-params">nextProps</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (nextProps.count !== <span class="hljs-built_in">this</span>.props.count) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;count changed&#x27;</span>, nextProps.count);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//Hooks</span><br>useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;count changed&#x27;</span>, props.count);<br>&#125;, [props.count])<br></code></pre></td></tr></table></figure>
+<h1 id="Custom-Hook"><a class="header-anchor" href="#Custom-Hook">¶</a>Custom Hook</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZhangMYihua/custom-hook-example">https://github.com/ZhangMYihua/custom-hook-example</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs JAVASCRIPT"><span class="hljs-comment">// src/effects/use-fetch.effect.js</span><br><br><br><span class="hljs-keyword">import</span> &#123; useState, useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><br><span class="hljs-keyword">const</span> useFetch = <span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> [data, setData] = useState(<span class="hljs-literal">null</span>);<br><br>  useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> fetchData = <span class="hljs-keyword">async</span> () =&gt; &#123;<br>      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(url);<br>      <span class="hljs-keyword">const</span> dataArray = <span class="hljs-keyword">await</span> res.json();<br>      setData(dataArray[<span class="hljs-number">0</span>]);<br>    &#125;;<br><br>    fetchData();<br>  &#125;, [url]);<br><span class="hljs-comment">//only fire when url change, or if we want to always update data whenver something change, don&#x27;t pass second param</span><br>  <span class="hljs-keyword">return</span> data;<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> useFetch;<br></code></pre></td></tr></table></figure>
+<h1 id="useReducer"><a class="header-anchor" href="#useReducer">¶</a>useReducer</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZhangMYihua/useReducer-example">https://github.com/ZhangMYihua/useReducer-example</a></p>
+<p><a target="_blank" rel="noopener" href="https://reactjs.org/docs/hooks-reference.html#usereducer">https://reactjs.org/docs/hooks-reference.html#usereducer</a></p>
+<p><a target="_blank" rel="noopener" href="https://react-redux.js.org/api/hooks">https://react-redux.js.org/api/hooks</a></p>
+<h1 id="React-Redux-Hook"><a class="header-anchor" href="#React-Redux-Hook">¶</a>React-Redux Hook</h1>
+<h2 id="useSelector-useDispatch-v2"><a class="header-anchor" href="#useSelector-useDispatch-v2">¶</a>useSelector, useDispatch</h2>
+<blockquote>
+<p>useSelector: Allows you to extract data from the Redux store state, using a selector function.</p>
+<p>The selector is approximately equivalent to the <a target="_blank" rel="noopener" href="https://react-redux.js.org/using-react-redux/connect-mapstate"><code>mapStateToProps</code> argument to <code>connect</code></a> conceptually.</p>
+<p><code>useSelector()</code> will also subscribe to the Redux store, and run your selector whenever an action is dispatched.</p>
+</blockquote>
+<blockquote>
+<p>useDispatch: This hook returns a reference to the <code>dispatch</code> function from the Redux store. You may use it to dispatch actions as needed.</p>
+</blockquote>
+<p>selector itself is a function receives state object</p>
+<p><code>useSelector</code> receives a selector that returns some state, and useSelector will ensure to up-to-date with the state.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-keyword">const</span> App = <span class="hljs-function">() =&gt;</span> &#123;<br>   <br>  <span class="hljs-keyword">const</span> currentUser = useSelector(selectCurrentUser);<br>  <span class="hljs-keyword">const</span> dispatch = useDispatch();<br>    <br>  <span class="hljs-comment">// const func = ()=&gt;&#123;...&#125;</span><br>  <span class="hljs-comment">// This will re-assign  everytime re-render</span><br>    <br>  <span class="hljs-comment">//Only when mount</span><br>  useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    dispatch(checkUserSession());<br>  &#125;, [dispatch]);<br>   <br>  <span class="hljs-keyword">return</span> (...)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="Adavanced-useState-useEffect"><a class="header-anchor" href="#Adavanced-useState-useEffect">¶</a>Adavanced useState, useEffect</h1>
+<p>When a functional component gets re-rendered, do it from top to bottom in synchronous manner.</p>
+<p>A component is re-rendered if</p>
+<ol>
+<li>Props change</li>
+<li>State change</li>
+<li>parent re-render</li>
+</ol>
+<p>We can pass in a function into <code>useState</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">setCount(<span class="hljs-function">(<span class="hljs-params">prev</span>) =&gt;</span> prev+<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>If a function is dependent on a state, we shall put that function into <code>useEffect</code>. If not, we can place it out of component so it only renders once.</p>
+<h2 id="useCallback"><a class="header-anchor" href="#useCallback">¶</a>useCallback</h2>
+<p>If a function depends on a state but is outside of <code>useEffect</code> We cannot know its dependency from looking at the code.</p>
+<p>we can use <code>useEffect</code> to preserve function outside of <code>useEffect</code> and know its dependency</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> myFunc = useCallback(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;effect on&#x27;</span> + test1)<br>&#125;, [test1])<br><br>useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    myFunc()<br>&#125;, myFunc)<br></code></pre></td></tr></table></figure>
+<h2 id="useMemo"><a class="header-anchor" href="#useMemo">¶</a>useMemo</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">cosnt myObj = &#123;<br>    a: <span class="hljs-string">&#x27;my value of a is &#x27;</span>+ test1<br>&#125;<br><br>useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(myObj.a)<br>&#125;, [myObj])<br></code></pre></td></tr></table></figure>
+<p>This will always be re-rendered every single time regardless of whether <code>myObj</code> changed or not</p>
+<p>(reference comparison, a new object is initialize every single time for the functional component re-rendering)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">cosnt myObj = useMemo(<span class="hljs-function">() =&gt;</span> (&#123;<br>    a: <span class="hljs-string">&#x27;my value of a is &#x27;</span>+ test1<br>&#125;), [test1])<br><br>useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(myObj.a)<br>&#125;, [myObj])<br></code></pre></td></tr></table></figure>
+<p><strong>useMemo and useCallback can be very helpful when you want some behavior to be performed based on a specific object or function</strong></p>
+<h2 id="useLayoutEffect"><a class="header-anchor" href="#useLayoutEffect">¶</a>useLayoutEffect</h2>
+<p><code>useEffect</code> runs after the paint of the component</p>
+<p><code>useLayoutEffect</code> runs before the paint of the component</p>
+<p><img src="https://raw.githubusercontent.com/q815101630/pic_storage/main/img/image-20211121155030357.png" srcset="/img/loading.gif" lazyload alt="image-20211121155030357"></p>
+<h2 id="useContext"><a class="header-anchor" href="#useContext">¶</a>useContext</h2>
+<p>Component way of using context (replacing Redux)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; connect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-redux&quot;</span>;<br><br><span class="hljs-keyword">import</span> CollectionItem <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../components/collection-item/collection-item.component&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; selectCollection &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../redux/shop/shop.selectors&quot;</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./collection.styles.scss&quot;</span>;<br><br><span class="hljs-keyword">import</span> CollectionsContext <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../contexts/collections/collections.context&quot;</span>;<br><br><span class="hljs-keyword">const</span> CollectionPage = <span class="hljs-function">(<span class="hljs-params">&#123; match &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> (<br>    &lt;CollectionsContext.Consumer&gt;<br>      &#123;<span class="hljs-function">(<span class="hljs-params">collections</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">/* Input param is the context we get from CollectionsContext.Consumer */</span><br>        <span class="hljs-keyword">const</span> collection = collections[match.params.collectionId];<br>        <span class="hljs-keyword">const</span> &#123; title, items &#125; = collection;<br>        <span class="hljs-keyword">return</span> (<br>          &lt;div className=<span class="hljs-string">&quot;collection-page&quot;</span>&gt;<br>            &lt;h2 className=<span class="hljs-string">&quot;title&quot;</span>&gt;&#123;title&#125;&lt;/h2&gt;<br>            &lt;div className=<span class="hljs-string">&quot;items&quot;</span>&gt;<br>              &#123;items.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> (<br>                &lt;CollectionItem key=&#123;item.id&#125; item=&#123;item&#125; /&gt;<br>              ))&#125;<br>            &lt;/div&gt;<br>          &lt;/div&gt;<br>        );<br>      &#125;&#125;<br>    &lt;/CollectionsContext.Consumer&gt;<br>  );<br>&#125;;<br><br><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> (&#123;<br>  collection: selectCollection(ownProps.match.params.collectionId)(state),<br>&#125;);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> CollectionPage;<br><br></code></pre></td></tr></table></figure>
+<p><code>useContext</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; useContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; connect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-redux&quot;</span>;<br><br><span class="hljs-keyword">import</span> CollectionItem <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../components/collection-item/collection-item.component&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; selectCollection &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../redux/shop/shop.selectors&quot;</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./collection.styles.scss&quot;</span>;<br><br><span class="hljs-keyword">import</span> CollectionsContext <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../contexts/collections/collections.context&quot;</span>;<br><br><span class="hljs-keyword">const</span> CollectionPage = <span class="hljs-function">(<span class="hljs-params">&#123; match &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> collections = useContext(CollectionsContext);<br>  <span class="hljs-keyword">const</span> &#123; title, items &#125; = collections[match.params.collectionId];<br>  <span class="hljs-keyword">return</span> (<br>    &lt;div className=<span class="hljs-string">&quot;collection-page&quot;</span>&gt;<br>      &lt;h2 className=<span class="hljs-string">&quot;title&quot;</span>&gt;&#123;title&#125;&lt;/h2&gt;<br>      &lt;div className=<span class="hljs-string">&quot;items&quot;</span>&gt;<br>        &#123;items.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> (<br>          &lt;CollectionItem key=&#123;item.id&#125; item=&#123;item&#125; /&gt;<br>        ))&#125;<br>      &lt;/div&gt;<br>    &lt;/div&gt;<br>  );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> CollectionPage;<br></code></pre></td></tr></table></figure>
+<p>However, <code>useContext</code> is not very handy when we need to update a state.  The problem it solves is to easily pass a state of a high node in the DOM tree easily to the lower state.</p>
+<p>An example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//src/providers/cart/cart.provider.jsx</span><br><span class="hljs-keyword">import</span> React, &#123; createContext, useContext, useEffect, useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; addItemToCart, removeItemFromCart &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./cart.utils&quot;</span>;<br><br><span class="hljs-comment">// Vehicle to pass around the local state</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CartContext = createContext(&#123;<br>  hidden: <span class="hljs-literal">true</span>,<br>  toggleHidden: <span class="hljs-function">() =&gt;</span> &#123;&#125;,<br>  cartItems: [],<br>  addItem: <span class="hljs-function">() =&gt;</span> &#123;&#125;,<br>  removeItem: <span class="hljs-function">() =&gt;</span> &#123;&#125;,<br>  clearItemFromCart: <span class="hljs-function">() =&gt;</span> &#123;&#125;,<br>  cartItemsCount: <span class="hljs-number">0</span>,<br>&#125;);<br><br><span class="hljs-keyword">const</span> CartProvider = <span class="hljs-function">(<span class="hljs-params">&#123; children &#125;</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//the actual state that is passed down to children components </span><br>  <span class="hljs-keyword">const</span> [cartItems, setCartItems] = useState([]);<br>  <span class="hljs-keyword">const</span> [cartItemsCount, setCartItemsCount] = useState(<span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">const</span> [hidden, setHidden] = useState(<span class="hljs-literal">true</span>);<br><br>  <span class="hljs-keyword">const</span> toggleHidden = <span class="hljs-function">() =&gt;</span> setHidden(!hidden);<br><br>  <span class="hljs-keyword">const</span> addItem = <span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> setCartItems(addItemToCart(cartItems, item));<br><br>  <span class="hljs-keyword">return</span> (<br>    &lt;CartContext.Provider<br>      value=&#123;&#123; hidden, toggleHidden, cartItems, addItem, cartItemsCount &#125;&#125;<br>    &gt;<br>      &#123;children&#125;<br>    &lt;/CartContext.Provider&gt;<br>  );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> CartProvider;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//src/index.js</span><br><br><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; BrowserRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; Provider &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-redux&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; PersistGate &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;redux-persist/integration/react&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; store, persistor &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./redux/store&quot;</span>;<br><span class="hljs-keyword">import</span> CartProvider <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./providers/cart/cart.provider&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./index.css&quot;</span>;<br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App&quot;</span>;<br><br><span class="hljs-comment">// Now all children components of CartProvider can access the state stored in the CartProvider component through the vehicle of useContext! </span><br>ReactDOM.render(<br>  &lt;Provider store=&#123;store&#125;&gt;<br>    &#123;<span class="hljs-comment">/* The actual provider we pass down*/</span>&#125;<br>    &lt;CartProvider&gt;<br>      &lt;BrowserRouter&gt;<br>        &lt;PersistGate persistor=&#123;persistor&#125;&gt;<br>          &lt;App /&gt;<br>        &lt;/PersistGate&gt;<br>      &lt;/BrowserRouter&gt;<br>    &lt;/CartProvider&gt;<br>  &lt;/Provider&gt;,<br>  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;root&quot;</span>)<br>);<br></code></pre></td></tr></table></figure>
+<p>具体实现看下面的代码， 非常有帮助！</p>
+<p>Very helpful!</p>
+<p>Code below:</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZhangMYihua/react-context-practice">https://github.com/ZhangMYihua/react-context-practice</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ZhangMYihua/react-context-complete">https://github.com/ZhangMYihua/react-context-complete</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/React/">React</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/blogs/">blogs</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JS/">JS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/22/react_notes_6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">My React Learning Note (6)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/20/react_notes_4/">
+                        <span class="hidden-mobile">My React Learning Note (4)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://blog-comments-ccgxtufa6-q815101630.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="/music_player/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/music_player/APlayer.min.js"></script><script type="text/javascript" src="/js/music_player.js"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            
+            <span id="busuanzi_value_site_pv"></span>
+             views in total
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            
+            <span id="busuanzi_value_site_uv"></span>
+             people visited
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
